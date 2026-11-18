@@ -1,0 +1,94 @@
+{
+  "name": "National University of Mongolia",
+  "nameMn": "Монгол Улсын Их Сургууль",
+  "city": "Ulaanbaatar",
+  "website": "https://www.num.edu.mn",
+  "foundedYear": null,
+  "descriptionMn": "Монгол Улсын Их Сургууль нь өөрийгөө Монголын хамгийн эртний их сургууль хэмээн танилцуулдаг. Бакалавр, магистр, докторын түвшний болон тасралтгүй боловсролын хөтөлбөртэй. Дээд сургууль, Хууль зүй, Бизнесийн, Мэдээллийн технологи электроникийн, Инженер технологийн зэрэг сургуулиудтай, мөн орон нутгийн салбартай.",
+  "degreeLevels": [
+    "bachelor",
+    "master",
+    "phd"
+  ],
+  "languagesOfInstruction": [],
+  "faculties": [
+    "Graduate School",
+    "School of Arts and Sciences",
+    "Business School",
+    "School of Law",
+    "School of Political Science, International Relations and Public Administration",
+    "School of Information Technology and Electronics",
+    "School of Engineering and Technology",
+    "Science and Technology Park",
+    "School of Business and Information Technology in Zavkhan Province",
+    "Eastern Regional Branch",
+    "Western Regional Branch"
+  ],
+  "subjects": [],
+  "tuition": [
+    {
+      "level": "bachelor",
+      "audience": "international",
+      "currency": "MNT",
+      "annualFee": 5910000,
+      "annualFeeMax": 12270000,
+      "academicYear": "2026-2027",
+      "note": "Branch campus 5,910,000; main university 12,270,000",
+      "sourceUrl": "https://www.num.edu.mn/admissions/undergraduate/fees-and-funding/course-fees/"
+    },
+    {
+      "level": "master",
+      "audience": "international",
+      "currency": "MNT",
+      "annualFee": 5792000,
+      "annualFeeMax": 12112000,
+      "academicYear": "2026-2027",
+      "note": "Branch campus 5,792,000; main university 12,112,000; joint programmes taught in English 7,272,000",
+      "sourceUrl": "https://www.num.edu.mn/admissions/undergraduate/fees-and-funding/course-fees/"
+    },
+    {
+      "level": "phd",
+      "audience": "international",
+      "currency": "MNT",
+      "annualFee": 8656000,
+      "annualFeeMax": 13088000,
+      "academicYear": "2026-2027",
+      "note": "Branch campus 8,656,000; main university 13,088,000",
+      "sourceUrl": "https://www.num.edu.mn/admissions/undergraduate/fees-and-funding/course-fees/"
+    }
+  ],
+  "dorm": {
+    "annualCost": null,
+    "currency": null,
+    "note": null,
+    "sourceUrl": "https://www.num.edu.mn/en/campus-life/housing-and-accommodation/"
+  },
+  "admission": {
+    "ieltsMin": null,
+    "toeflMin": null,
+    "otherEnglishNote": null,
+    "requirements": [
+      "Foreign and stateless applicants are admitted under the NUM regulation on enrolling foreign citizens (МУИС-д гадаадын иргэнийг суралцуулах журам)"
+    ],
+    "deadlines": [],
+    "intakes": [],
+    "applicationUrl": "https://registration.num.edu.mn/",
+    "applicationFee": null
+  },
+  "scholarships": [
+    {
+      "name": "NUM and external scholarships",
+      "coverage": "More than 40 scholarships awarded yearly to about 1,000 bachelor, master and doctoral students, roughly 1 billion MNT in total",
+      "url": "https://www.num.edu.mn/en/admissions/international-students/"
+    }
+  ],
+  "rankings": [],
+  "sources": [
+    "https://www.num.edu.mn/en",
+    "https://www.num.edu.mn/en/academics/tuition-and-fees/",
+    "https://www.num.edu.mn/en/campus-life/housing-and-accommodation/",
+    "https://www.num.edu.mn/en/admissions/international-students/",
+    "https://www.num.edu.mn/admissions/undergraduate/fees-and-funding/course-fees/"
+  ],
+  "verifiedAt": "2026-11-14"
+}

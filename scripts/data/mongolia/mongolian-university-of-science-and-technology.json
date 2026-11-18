@@ -1,0 +1,62 @@
+{
+  "name": "Mongolian University of Science and Technology",
+  "nameMn": "Монгол Улсын Шинжлэх Ухаан Технологийн Их Сургууль",
+  "city": "Ulaanbaatar",
+  "website": "https://www.must.edu.mn",
+  "foundedYear": 1959,
+  "descriptionMn": "ШУТИС нь 1959 оноос эхэлсэн түүхтэй гэж албан ёсны сайтдаа дурдсан. Инженер, технологи, нийгэм хүмүүнлэг, менежмент, гадаад хэлний зэрэг 13 сургуультай (Дархан, Эрдэнэтийн технологийн сургууль орно). Сайтад 20,080 оюутан, 925 багш, 328 хөтөлбөртэй гэж заасан.",
+  "degreeLevels": [
+    "bachelor",
+    "master",
+    "phd"
+  ],
+  "languagesOfInstruction": [],
+  "faculties": [
+    "School of Civil Engineering and Architecture",
+    "School of Social Sciences and Humanities",
+    "School of Food, Light Industry and Design",
+    "School of Geology and Mining Engineering",
+    "School of Information and Telecommunication Technology",
+    "School of Power Engineering",
+    "School of Mechanical Engineering and Transportation",
+    "School of Applied Sciences",
+    "School of Management",
+    "School of Foreign Language",
+    "School of Technology, Darkhan",
+    "School of Technology, Erdenet",
+    "High School"
+  ],
+  "subjects": [],
+  "tuition": [],
+  "dorm": {
+    "annualCost": null,
+    "currency": null,
+    "note": null,
+    "sourceUrl": "https://www.must.edu.mn/en/page/982"
+  },
+  "admission": {
+    "ieltsMin": null,
+    "toeflMin": null,
+    "otherEnglishNote": null,
+    "requirements": [
+      "Non-Mongolian citizen with certificate of full secondary education (undergraduate international admission)"
+    ],
+    "deadlines": [],
+    "intakes": [
+      "fall",
+      "spring"
+    ],
+    "applicationUrl": "https://admission.must.edu.mn/programs",
+    "applicationFee": null
+  },
+  "scholarships": [],
+  "rankings": [],
+  "sources": [
+    "https://www.must.edu.mn/en",
+    "https://www.must.edu.mn/en/page/982",
+    "https://www.must.edu.mn/en/page/967",
+    "https://www.must.edu.mn/en/page/958",
+    "https://www.must.edu.mn/en/page/969"
+  ],
+  "verifiedAt": "2026-11-14"
+}

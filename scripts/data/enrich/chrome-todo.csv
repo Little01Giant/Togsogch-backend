@@ -1,0 +1,149 @@
+chunk,order,name,countrySlug,city
+1,139,University of Geneva,switzerland,Geneva
+1,140,Texas A&M University,usa,College Station
+1,141,Indian Institute of Technology Madras (IITM),india,Chennai
+1,147,Queen's University Belfast,uk,Belfast
+1,148,Cardiff University,uk,Cardiff
+1,154,Curtin University,australia,Perth
+1,171,Universitat Autònoma de Barcelona,spain,Barcelona
+1,182,University of Ottawa,canada,Ottawa
+1,184,Griffith University,australia,Nathan
+1,191,Queensland University of Technology (QUT),australia,Brisbane
+2,192,La Trobe University,australia,Melbourne
+2,195,"The University of Newcastle, Australia (UON)",australia,Newcastle
+2,201,Technical University of Darmstadt,germany,Darmstadt
+2,205,University of Minnesota (System),usa,Minneapolis
+2,208,University of Massachusetts Amherst,usa,Amherst
+2,210,Universitat Pompeu Fabra,spain,Barcelona
+2,213,University of Virginia,usa,Charlottesville
+2,216,University of Milan,italy,Milan
+2,217,Charles University,czech-republic,Prague
+2,223,University of Southern Denmark (SDU),denmark,Odense
+3,231,Dalhousie University,canada,Halifax
+3,239,Kyung Hee University,south-korea,Seoul
+3,240,Shandong University,china,Jinan
+3,241,University of Tasmania,australia,Hobart
+3,245,Universidad Carlos III de Madrid (UC3M),spain,Madrid
+3,246,University of Leicester,uk,Leicester
+3,248,Bauman Moscow State Technical University,russia,Moscow
+3,254,York University,canada,Toronto
+3,258,Jagiellonian University,poland,Krakow
+3,269,Indian Institute of Technology Guwahati (IITG),india,Guwahati
+4,278,City St George’s University of London,uk,London
+4,279,Universidad Politécnica de Madrid (UPM),spain,Madrid
+4,280,Université de Liège,belgium,Liège
+4,281,Virginia Polytechnic Institute and State University,usa,Blacksburg
+4,284,University of Victoria (UVic),canada,Victoria
+4,286,Flinders University,australia,Adelaide
+4,288,Gwangju Institute of Science and Technology (GIST),south-korea,Gwangju
+4,289,George Washington University,usa,Washington D.C.
+4,290,University of East Anglia (UEA),uk,Norwich
+4,291,Daegu Gyeongbuk Institute of Science and Technology (DGIST),south-korea,Daegu
+5,293,Université Grenoble Alpes,france,Grenoble
+5,299,Università degli Studi di Pavia,italy,Pavia
+5,300,University of Turin,italy,Turin
+5,304,University of Naples - Federico II,italy,Naples
+5,305,Ruhr-Universität Bochum,germany,Bochum
+5,306,Dublin City University,ireland,Dublin
+5,308,University of Florence,italy,Florence
+5,310,Singapore Management University,singapore,Singapore
+5,317,Lincoln University,new-zealand,Lincoln
+5,323,Julius-Maximilians-Universität Würzburg,germany,Würzburg
+6,324,Auckland University of Technology (AUT),new-zealand,Auckland
+6,325,Chung-Ang University (CAU),south-korea,Seoul
+6,327,Universitat Politècnica de Catalunya - BarcelonaTech (UPC),spain,Barcelona
+6,329,Central Queensland University (CQUniversity Australia),australia,Norman Gardens
+6,331,"Essex, University of",uk,Colchester
+6,332,James Cook University,australia,Townsville
+6,336,Shanghai University,china,Shanghai
+6,340,University of Granada,spain,Granada
+6,341,Pusan National University,south-korea,Busan
+6,342,Universitat de Valencia,spain,Valencia
+7,347,USI - Università della Svizzera italiana,switzerland,Lugano
+7,351,University of Connecticut,usa,Storrs
+7,353,Chongqing University,china,Chongqing
+7,354,Università Vita-Salute San Raffaele,italy,Milan
+7,357,Anna University,india,Chennai
+7,358,Leibniz University Hannover,germany,Hanover
+7,359,University of Bayreuth,germany,Bayreuth
+7,361,Universitat Ramon Llull,spain,Barcelona
+7,363,Hunan University,china,Changsha
+7,364,University of Canberra,australia,Bruce
+8,365,Hiroshima University,japan,Higashihiroshima
+8,366,Kyungpook National University,south-korea,Daegu
+8,369,Universidad de Sevilla,spain,Seville
+8,374,University of Electronic Science and Technology of China,china,Chengdu
+8,375,Sogang University,south-korea,Seoul
+8,376,Concordia University,canada,Montreal
+8,384,Warsaw University of Technology,poland,Warsaw
+8,385,Indian Institute of Technology BHU Varanasi (IIT BHU Varanasi),india,Varanasi
+8,386,Tomsk State University,russia,Tomsk
+8,393,Renmin (People's) University of China,china,Beijing
+9,400,The University of Georgia,usa,Athens
+9,404,Universität Leipzig,germany,Leipzig
+9,405,University of Milano-Bicocca,italy,Milan
+9,406,Edith Cowan University,australia,Joondalup
+9,411,Charles Darwin University,australia,Casuarina
+9,413,Inha University,south-korea,Incheon
+9,416,University of Salamanca,spain,Salamanca
+9,419,Université Paul Sabatier Toulouse III,france,Toulouse
+9,421,Universität Jena,germany,Jena
+9,423,Paris Lodron University of Salzburg,austria,Salzburg
+10,425,"Birla Institute of Technology and Science, Pilani",india,Pilani
+10,433,Universität Bremen,germany,Bremen
+10,434,University of Brescia,italy,Brescia
+10,435,Zhengzhou University,china,Zhengzhou
+10,437,Indian Institute of Technology Hyderabad (IITH),india,Sangareddy
+10,438,Saarland University,germany,Saarbrücken
+10,439,Technische Universität Bergakademie Freiberg,germany,Freiberg
+10,440,Eötvös Loránd University,hungary,Budapest
+10,441,Ulster University,uk,Belfast
+10,457,Universidade de Santiago de Compostela,spain,Santiago de Compostela
+11,461,MGIMO University,russia,Moscow
+11,462,Nottingham Trent University,uk,Nottingham
+11,469,The Catholic University of Korea (CUK),south-korea,Gyeonggi
+11,473,Università Politecnica delle Marche,italy,Ancona
+11,478,East China University of Science and Technology,china,Shanghai
+11,481,Nanjing University of Science and Technology,china,Nanjing
+11,487,University of the Basque Country,spain,Leioa
+11,492,"Kingston University, London",uk,Kingston upon Thames
+11,493,Université de Lille,france,Lille
+11,495,TU Dortmund University,germany,Dortmund
+12,497,Karl-Franzens-Universität Graz,austria,Graz
+12,501,"Indian Institute of Technology (Indian School of Mines), Dhanbad",india,Dhanbad
+12,503,Thapar Institute of Engineering & Technology,india,Patiala
+12,505,Universidad de Zaragoza,spain,Zaragoza
+12,506,Bharathiar University,india,Coimbatore
+12,509,Soochow University,china,Suzhou
+12,513,Jadavpur University,india,Kolkata
+12,514,Lanzhou University,china,Lanzhou
+12,519,Plekhanov Russian University of Economics,russia,Moscow
+12,523,Beijing Forestry University,china,Beijing
+13,528,Universidad de Alcalá,spain,Madrid
+13,532,National Research Tomsk Polytechnic University,russia,Tomsk
+13,534,University of Bari,italy,Bari
+13,536,Brandeis University,usa,Waltham
+13,539,O.P. Jindal Global University (JGU),india,Sonepat
+13,547,Beijing Jiaotong University,china,Beijing
+13,557,Savitribai Phule Pune University,india,Pune
+13,563,Bournemouth University,uk,Poole
+13,568,Georgia State University,usa,Clarkston
+13,572,Ocean University of China,china,Qingdao
+14,576,Universidade de Vigo,spain,Vigo
+14,581,University of Modena and Reggio Emilia,italy,Modena
+14,582,University of Mons,belgium,Mons
+14,589,Australian Catholic University,australia,Melbourne
+14,591,Chiba University,japan,Chiba
+14,594,Indian Institute of Technology Gandhinagar (IITGN),india,Gandhinagar
+14,596,Manipal Academy of Higher Education,india,Manipal
+14,599,Southwest Jiaotong University,china,Chengdu
+14,600,The New School,usa,New York
+14,602,Università degli Studi della Tuscia (University of Tuscia),italy,Viterbo
+15,603,Università degli studi Roma Tre,italy,Rome
+15,605,University of Alicante,spain,Alicante
+15,608,University of Hertfordshire,uk,Hatfield
+15,609,University of Hyderabad,india,Hyderabad
+15,615,University of Ulsan,south-korea,Ulsan
+15,616,University of Westminster,uk,London
+15,618,Williams College,usa,Williamstown
+15,619,Xidian University,china,Xi'an

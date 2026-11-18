@@ -1,0 +1,56 @@
+{
+  "name": "University of Finance and Economics (UFE)",
+  "nameMn": "Санхүү эдийн засгийн их сургууль (СЭЗИС)",
+  "city": "Ulaanbaatar",
+  "website": "https://ufe.edu.mn",
+  "foundedYear": 1924,
+  "descriptionMn": "СЭЗИС нь 1924 оны 6-р сард Сангийн яамны дэргэд гаалийн түр сургуулиар эхэлсэн, С.Довчины нэрэмжит их сургууль. Албан сайтад 15 чиглэлээр мэргэжилтэн бэлтгэдэг, 6,000 орчим оюутантай, 40,000 гаруй төгсөгчтэй гэж бичсэн. Бакалавр, магистр, докторын хөтөлбөртэй (2021-2022 онд 15 бакалавр, 7 магистр, 2 докторын хөтөлбөр).",
+  "degreeLevels": [
+    "bachelor",
+    "master",
+    "phd"
+  ],
+  "languagesOfInstruction": [],
+  "faculties": [],
+  "subjects": [
+    "Accounting",
+    "Finance",
+    "Banking",
+    "Insurance",
+    "Economics",
+    "Law",
+    "Trade",
+    "Marketing",
+    "Business management",
+    "Information systems",
+    "Data analysis",
+    "Tourism and hospitality",
+    "Entrepreneurship",
+    "Translation"
+  ],
+  "tuition": [],
+  "dorm": {
+    "annualCost": null,
+    "currency": null,
+    "note": null,
+    "sourceUrl": null
+  },
+  "admission": {
+    "ieltsMin": null,
+    "toeflMin": null,
+    "otherEnglishNote": null,
+    "requirements": [],
+    "deadlines": [],
+    "intakes": [],
+    "applicationUrl": "https://admission.ufe.edu.mn/",
+    "applicationFee": null
+  },
+  "scholarships": [],
+  "rankings": [],
+  "sources": [
+    "https://ufe.edu.mn",
+    "https://ufe.edu.mn/c/28",
+    "https://admission.ufe.edu.mn/"
+  ],
+  "verifiedAt": "2026-11-14"
+}

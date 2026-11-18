@@ -1,0 +1,56 @@
+{
+  "name": "Mongolian University of Life Sciences",
+  "nameMn": "Хөдөө аж ахуйн их сургууль",
+  "city": "Ulaanbaatar",
+  "website": "https://www.muls.edu.mn",
+  "foundedYear": null,
+  "descriptionMn": "Монгол Улсын Хөдөө аж ахуйн их сургууль (ХААИС) нь албан ёсны сайтад 6 бүрэлдэхүүн сургууль, Баянхонгор, Дархан-Уул аймаг дахь 2 салбар сургууль, мөн Булган, Сэлэнгэ, Төв аймгийн 3 политехник коллежтой гэж бичсэн байна. Сургуулийн байгуулагдсан он, суралцагчдын тоо сайтын нүүр хуудсанд заагдаагүй.",
+  "degreeLevels": [],
+  "languagesOfInstruction": [],
+  "faculties": [
+    "Мал эмнэлгийн сургууль",
+    "Мал аж ахуй, Биотехнологийн сургууль",
+    "Инженер технологийн сургууль",
+    "Агроэкологийн сургууль",
+    "Эдийн засаг бизнесийн сургууль",
+    "Хэрэглээний шинжлэх ухааны сургууль"
+  ],
+  "subjects": [
+    "Veterinary medicine",
+    "Animal husbandry and biotechnology",
+    "Engineering and technology",
+    "Agroecology",
+    "Economics and business",
+    "Applied sciences"
+  ],
+  "tuition": [],
+  "dorm": {
+    "annualCost": null,
+    "currency": null,
+    "note": null,
+    "sourceUrl": null
+  },
+  "admission": {
+    "ieltsMin": null,
+    "toeflMin": null,
+    "otherEnglishNote": null,
+    "requirements": [],
+    "deadlines": [],
+    "intakes": [],
+    "applicationUrl": "https://elselt.muls.edu.mn",
+    "applicationFee": null
+  },
+  "scholarships": [
+    {
+      "name": "Тогтвортой хөдөө аж ахуйг дэмжих (student scholarship program, per news item)",
+      "coverage": null,
+      "url": "https://lce.muls.edu.mn/view_news.php?value_id=ZW5jb2RldXNlcmlkNDU4OA=="
+    }
+  ],
+  "rankings": [],
+  "sources": [
+    "https://www.muls.edu.mn",
+    "https://eng.muls.edu.mn"
+  ],
+  "verifiedAt": "2026-11-14"
+}

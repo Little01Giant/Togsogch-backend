@@ -1,0 +1,115 @@
+countrySlug,name,city,rank,rankText
+usa,Massachusetts Institute of Technology (MIT),Cambridge,1,
+usa,Stanford University,Stanford,2,
+usa,Harvard University,Cambridge,5,
+usa,California Institute of Technology (Caltech),Pasadena,7,
+usa,University of Pennsylvania,Philadelphia,15,
+usa,Cornell University,Ithaca,16,
+usa,Yale University,New Haven,16,
+usa,Johns Hopkins University,Baltimore,20,
+usa,"University of California, Berkeley (UCB)",Berkeley,20,
+usa,University of Chicago,Chicago,24,
+usa,Princeton University,Princeton,27,
+usa,Columbia University,New York City,43,
+usa,Northwestern University,Evanston,45,
+usa,"University of California, Los Angeles (UCLA)",Los Angeles,49,
+usa,University of Michigan-Ann Arbor,Ann Arbor,51,
+usa,Carnegie Mellon University,Pittsburgh,55,
+usa,New York University (NYU),New York City,58,
+usa,Brown University,Providence,66,
+usa,Duke University,Durham,70,
+usa,University of Texas at Austin,Austin,72,
+usa,University of Illinois Urbana-Champaign,Champaign,74,
+usa,"University of California, San Diego (UCSD)",San Diego,81,
+usa,Pennsylvania State University,University Park,92,
+usa,University of Washington,Seattle,92,
+usa,Boston University,Boston,94,
+usa,Purdue University,West Lafayette,100,
+usa,Rice University,Houston,122,
+usa,University of Wisconsin-Madison,Madison,131,
+usa,"University of California, Davis",Davis,137,
+usa,Georgia Institute of Technology,Atlanta,142,
+usa,University of Southern California,Los Angeles,153,
+usa,University of North Carolina at Chapel Hill,Chapel Hill,158,
+usa,Washington University in St. Louis,St. Louis,162,
+usa,Texas A&M University,College Station,169,
+usa,Arizona State University,Phoenix,172,
+usa,"University of California, Santa Barbara (UCSB)",Santa Barbara,173,
+usa,Michigan State University,East Lansing,182,
+usa,Emory University,Atlanta,183,
+usa,The Ohio State University,Columbus,201,
+usa,University of Florida,Gainesville,228,
+usa,University of Rochester,Rochester,251,
+usa,"University of California, Irvine",Irvine,252,
+usa,"University of Maryland, College Park",College Park,252,
+usa,University of Minnesota (System),Minneapolis,255,
+usa,University of Massachusetts Amherst,Amherst,260,
+usa,Vanderbilt University,Nashville,265,
+usa,University of Virginia,Charlottesville,268,
+usa,Dartmouth College,Hanover,270,
+usa,University of Pittsburgh,Pittsburgh,279,
+usa,Georgetown University,Washington D.C.,289,
+usa,University of Notre Dame,Notre Dame,300,
+usa,The University of Arizona,Tucson,313,
+usa,Rutgers University–New Brunswick,New Brunswick,314,
+usa,North Carolina State University,Raleigh,320,
+usa,University of Colorado Boulder,Boulder,320,
+usa,Case Western Reserve University,Cleveland,326,
+usa,Tufts University,Medford,338,
+usa,University of Miami,Miami,338,
+usa,Indiana University Bloomington,Bloomington,360,
+usa,Virginia Polytechnic Institute and State University,Blacksburg,366,
+usa,University of Illinois Chicago (UIC),Chicago,370,
+usa,George Washington University,Washington D.C.,381,
+usa,Northeastern University,Boston,385,
+usa,"University of California, Riverside",Riverside,398,
+usa,University at Buffalo SUNY,Buffalo,416,
+usa,"University of California, Santa Cruz",Santa Cruz,458,
+usa,University of Connecticut,Storrs,458,
+usa,"Stony Brook University, State University of New York",Stony Brook,468,
+usa,Washington State University,Pullman,510,
+usa,University of Kansas,Lawrence,515,
+usa,University of Utah,Salt Lake City,533,
+usa,The University of Georgia,Athens,536,
+usa,Colorado State University,Fort Collins,540,
+usa,Iowa State University,Ames,540,
+usa,Florida State University,Tallahassee,546,
+usa,Boston College,Chestnut Hill,549,
+usa,University of Houston,Houston,551,
+usa,Colorado School of Mines,Golden,575,
+usa,University of Delaware,Newark,575,
+usa,Rensselaer Polytechnic Institute,Troy,581,
+usa,Tulane University,New Orleans,597,
+usa,University of Iowa,Iowa City,597,
+usa,Illinois Institute of Technology,Chicago,620,
+usa,University of Hawaiʻi at Mānoa,Honolulu,643,
+usa,American University,Washington D.C.,646,
+usa,Florida International University (FIU),Miami,659,
+usa,Lehigh University,Bethlehem,670,
+usa,Stevens Institute of Technology,Hoboken,675,
+usa,City University of New York,New York City,677,
+usa,University of Texas at Dallas,Richardson,686,
+usa,"The University of Tennessee, Knoxville",Knoxville,,701-710
+usa,Oregon State University,Corvallis,,711-720
+usa,University of Oregon,Eugene,,711-720
+usa,University of South Carolina,Columbia,,711-720
+usa,"University of Missouri, Columbia",Columbia,,721-730
+usa,Syracuse University,Syracuse,,731-740
+usa,University of Central Florida,Orlando,,731-740
+usa,New Jersey Institute of Technology (NJIT),Newark,,741-750
+usa,University of Cincinnati,Cincinnati,,741-750
+usa,Brandeis University,Waltham,,751-760
+usa,Missouri University of Science and Technology,Rolla,,751-760
+usa,Temple University,Philadelphia,,751-760
+usa,Texas Tech University,Lubbock,,761-770
+usa,University of South Florida,Tampa,,761-770
+usa,Drexel University,Philadelphia,,771-780
+usa,University of New Mexico,Albuquerque,,771-780
+usa,University of Oklahoma,Norman,,771-780
+usa,Georgia State University,Clarkston,,801-850
+usa,Rutgers University–Newark,Newark,,801-850
+usa,"University of Maryland, Baltimore",Baltimore,,801-850
+usa,"University of Maryland, Baltimore County",Baltimore,,801-850
+usa,University of Nebraska - Lincoln,Lincoln,,801-850
+usa,Wake Forest University,Winston-Salem,,801-850
+usa,Wayne State University,Detroit,,801-850

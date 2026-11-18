@@ -1,0 +1,100 @@
+{
+  "name": "University of the Humanities",
+  "nameMn": "Хүмүүнлэгийн ухааны их сургууль",
+  "city": "Ulaanbaatar",
+  "website": "https://www.humanities.edu.mn",
+  "foundedYear": 1979,
+  "descriptionMn": "Хүмүүнлэгийн ухааны их сургууль нь 1979 онд Монгол улсын их сургуулийн дэргэд Орос хэлний институт нэртэй байгуулагдсанаас эхтэй бөгөөд 1999 онд их сургууль болсон. Албан ёсны сайтад Олон улсын харилцаа, нийгэм судлалын сургууль, Бизнесийн сургууль, Мэдээлэл харилцааны менежментийн сургууль, Хэл соёлын сургууль гэсэн сургуулиудтай, бакалавр, магистр, докторын зэрэг олгодог гэж бичсэн.",
+  "degreeLevels": [
+    "bachelor",
+    "master",
+    "phd"
+  ],
+  "languagesOfInstruction": [],
+  "faculties": [
+    "Олон улсын харилцаа, нийгэм судлалын сургууль",
+    "Бизнесийн сургууль",
+    "Мэдээлэл, харилцааны менежментийн сургууль",
+    "Хэл, соёлын сургууль"
+  ],
+  "subjects": [
+    "International Relations and Sociology",
+    "Business Management",
+    "Psychology",
+    "Finance and Economics",
+    "Computer Science",
+    "Foreign Languages",
+    "Journalism and Media",
+    "Education"
+  ],
+  "tuition": [
+    {
+      "level": "bachelor",
+      "audience": "domestic",
+      "currency": "MNT",
+      "annualFee": null,
+      "annualFeeMax": null,
+      "academicYear": null,
+      "note": "Per credit 310,000-338,000 MNT (full-time, 120 credits over 4 years); evening 310,000-328,000 per credit (60 credits). Academic year not stated on page; annual total not stated.",
+      "sourceUrl": "https://www.humanities.edu.mn/admission"
+    },
+    {
+      "level": "master",
+      "audience": "domestic",
+      "currency": "MNT",
+      "annualFee": null,
+      "annualFeeMax": null,
+      "academicYear": null,
+      "note": "Per credit 362,500-385,320 MNT (30-32 credits, 1-1.5 years)",
+      "sourceUrl": "https://www.humanities.edu.mn/admission"
+    },
+    {
+      "level": "phd",
+      "audience": "domestic",
+      "currency": "MNT",
+      "annualFee": null,
+      "annualFeeMax": null,
+      "academicYear": null,
+      "note": "Per credit 398,772-423,852 MNT (60 credits, 3-6 years)",
+      "sourceUrl": "https://www.humanities.edu.mn/admission"
+    }
+  ],
+  "dorm": {
+    "annualCost": null,
+    "currency": null,
+    "note": null,
+    "sourceUrl": null
+  },
+  "admission": {
+    "ieltsMin": null,
+    "toeflMin": null,
+    "otherEnglishNote": null,
+    "requirements": [],
+    "deadlines": [
+      "2026-2027 admissions open (no dates read)"
+    ],
+    "intakes": [],
+    "applicationUrl": "https://elselt.humanities.edu.mn/Course",
+    "applicationFee": null
+  },
+  "scholarships": [
+    {
+      "name": "Grant (Буцалтгүй тусламж)",
+      "coverage": "Tuition for full-time Mongolian citizens in eligible groups (orphans, disabled, 3+ children family etc.)",
+      "url": "https://www.humanities.edu.mn/admission"
+    },
+    {
+      "name": "Student Development Loan (Оюутан хөгжлийн зээл)",
+      "coverage": "Mongolian citizens in priority fields within annual quota",
+      "url": "https://www.humanities.edu.mn/admission"
+    }
+  ],
+  "rankings": [],
+  "sources": [
+    "https://humanities.edu.mn/",
+    "https://www.humanities.edu.mn/history",
+    "https://www.humanities.edu.mn/admission",
+    "https://www.humanities.edu.mn/departments"
+  ],
+  "verifiedAt": "2026-11-14"
+}

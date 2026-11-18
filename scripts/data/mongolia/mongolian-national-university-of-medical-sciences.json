@@ -1,0 +1,80 @@
+{
+  "name": "Mongolian National University of Medical Sciences",
+  "nameMn": "Анагаахын шинжлэх ухааны үндэсний их сургууль",
+  "city": "Ulaanbaatar",
+  "website": "https://www.mnums.edu.mn",
+  "foundedYear": 1942,
+  "descriptionMn": "АШУҮИС нь 1942 онд Улсын их сургуулийн Анагаах ухааны факультет болон байгуулагдаж, 2014 онд одоогийн нэрийг авсан. Албан ёсны сайтад 8 бүрэлдэхүүн сургууль, 4 салбар сургууль жагсаасан бөгөөд 2026 оны 10-р сарын 28-ны байдлаар 14,200 суралцагчтай гэж бичсэн байна.",
+  "degreeLevels": [
+    "bachelor",
+    "master",
+    "phd"
+  ],
+  "languagesOfInstruction": [
+    "Mongolian",
+    "English"
+  ],
+  "faculties": [
+    "Ахисан түвшний сургууль",
+    "Анагаах ухааны сургууль",
+    "Био-анагаахын сургууль",
+    "Нийгмийн эрүүл мэндийн сургууль",
+    "Нүүр ам судлалын сургууль",
+    "Эм зүйн сургууль",
+    "Сувилахуйн сургууль",
+    "Монгол анагаах ухааны олон улсын сургууль"
+  ],
+  "subjects": [
+    "Medicine",
+    "Bio-medicine",
+    "Public health",
+    "Dentistry",
+    "Pharmacy",
+    "Nursing",
+    "Mongolian traditional medicine"
+  ],
+  "tuition": [],
+  "dorm": {
+    "annualCost": null,
+    "currency": null,
+    "note": null,
+    "sourceUrl": null
+  },
+  "admission": {
+    "ieltsMin": 6,
+    "toeflMin": 70,
+    "otherEnglishNote": "English-taught study: IELTS 6.0, TOEFL iBT 70 or TOEIC 600. Mongolian-taught study: TOMFL level 4.",
+    "requirements": [
+      "International applicants: online application form, valid passport (more than 3 years remaining), diploma and transcript (English or Mongolian), recent 3.5x4.5 cm photo",
+      "Mandatory life and health insurance, health exam (HIV, TPHA, TB), no-criminal-record certificate",
+      "Domestic bachelor: admission by national entrance exam (ЭЕШ) score"
+    ],
+    "deadlines": [
+      "Foreign bachelor applicants: April 1 - June 15 each year",
+      "Domestic bachelor/associate 2026: May 28 - June 28",
+      "Master/doctoral autumn: 8/10 - 9/01; spring: Jan 15 - Feb 1",
+      "International results announced by July 10; Rector's order first week of August"
+    ],
+    "intakes": [
+      "fall",
+      "spring"
+    ],
+    "applicationUrl": "https://admission.mnums.edu.mn",
+    "applicationFee": "One-time non-refundable registration fee; amount not stated"
+  },
+  "scholarships": [],
+  "rankings": [
+    {
+      "provider": "OTHER",
+      "rankText": "Round University Ranking: #1169 worldwide, #2 in Mongolia",
+      "year": null,
+      "sourceUrl": "https://www.mnums.edu.mn/en"
+    }
+  ],
+  "sources": [
+    "https://www.mnums.edu.mn",
+    "https://www.mnums.edu.mn/admission",
+    "https://www.mnums.edu.mn/en"
+  ],
+  "verifiedAt": "2026-11-14"
+}

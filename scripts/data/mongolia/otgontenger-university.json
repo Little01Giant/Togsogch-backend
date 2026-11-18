@@ -1,0 +1,45 @@
+{
+  "name": "Otgontenger University",
+  "nameMn": "Отгонтэнгэр их сургууль",
+  "city": "Ulaanbaatar",
+  "website": "https://www.otgontenger.edu.mn",
+  "foundedYear": null,
+  "descriptionMn": "Отгонтэнгэр их сургууль нь Улаанбаатар хотод байрладаг бөгөөд албан ёсны сайтад Хүмүүнлэгийн сургууль, Эдийн засаг бизнесийн удирдлагын сургууль, Хууль зүйн сургууль гэсэн гурван салбар сургууль жагсаасан байна. Бакалавр, магистр, докторын түвшний хөтөлбөр болон богино хугацааны сургалт явуулдаг.",
+  "degreeLevels": [
+    "bachelor",
+    "master",
+    "phd"
+  ],
+  "languagesOfInstruction": [],
+  "faculties": [
+    "Хүмүүнлэгийн сургууль",
+    "Эдийн засаг бизнесийн удирдлагын сургууль",
+    "Хууль зүйн сургууль"
+  ],
+  "subjects": [],
+  "tuition": [],
+  "dorm": {
+    "annualCost": null,
+    "currency": null,
+    "note": null,
+    "sourceUrl": null
+  },
+  "admission": {
+    "ieltsMin": null,
+    "toeflMin": null,
+    "otherEnglishNote": null,
+    "requirements": [],
+    "deadlines": [],
+    "intakes": [],
+    "applicationUrl": "https://elselt.otu.edu.mn/home",
+    "applicationFee": null
+  },
+  "scholarships": [],
+  "rankings": [],
+  "sources": [
+    "https://www.otgontenger.edu.mn",
+    "https://www.otgontenger.edu.mn/programs/tuition-fees",
+    "https://www.otgontenger.edu.mn/enrollment"
+  ],
+  "verifiedAt": "2026-11-14"
+}

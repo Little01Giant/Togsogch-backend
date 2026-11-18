@@ -1,0 +1,139 @@
+Role: You are a careful higher-education data researcher. Use ONLY primary sources: the university's official website (and its official admissions / tuition / fees pages). NEVER invent, estimate, translate from memory, or "fill in typical values". An empty cell is always better than an unverified value.
+
+TASK
+For each of the universities in the list below, collect the following facts and return them as one CSV.
+
+LIST (order,name,countrySlug,city,rankProvider,rank,rankText,rankEdition,rankYear,rankSourceUrl):
+
+order,name,countrySlug,city,rankProvider,rank,rankText,rankEdition,rankYear,rankSourceUrl
+521,"University of Missouri, Columbia",usa,Columbia,QS_WORLD,,721-730,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+522,Adam Mickiewicz University,poland,Poznań,QS_WORLD,,731-740,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+523,Beijing Forestry University,china,Beijing,QS_WORLD,,731-740,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+524,Beijing University of Technology,china,Beijing,QS_WORLD,,731-740,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+525,Czech University of Life Sciences Prague,czech-republic,Prague,QS_WORLD,,731-740,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+526,Northwest Agriculture and Forestry University,china,Yangling,QS_WORLD,,731-740,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+527,Syracuse University,usa,Syracuse,QS_WORLD,,731-740,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+528,Universidad de Alcalá,spain,Madrid,QS_WORLD,,731-740,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+529,Université de Rennes,france,Rennes,QS_WORLD,,731-740,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+530,University of Central Florida,usa,Orlando,QS_WORLD,,731-740,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+531,Far Eastern Federal University,russia,Vladivostok,QS_WORLD,,741-750,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+532,National Research Tomsk Polytechnic University,russia,Tomsk,QS_WORLD,,741-750,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+533,New Jersey Institute of Technology (NJIT),usa,Newark,QS_WORLD,,741-750,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+534,University of Bari,italy,Bari,QS_WORLD,,741-750,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+535,University of Cincinnati,usa,Cincinnati,QS_WORLD,,741-750,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+536,Brandeis University,usa,Waltham,QS_WORLD,,751-760,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+537,Budapest University of Technology and Economics,hungary,Budapest,QS_WORLD,,751-760,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+538,Missouri University of Science and Technology,usa,Rolla,QS_WORLD,,751-760,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+539,O.P. Jindal Global University (JGU),india,Sonepat,QS_WORLD,,751-760,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+540,Temple University,usa,Philadelphia,QS_WORLD,,751-760,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+541,AGH University of Krakow,poland,Krakow,QS_WORLD,,761-770,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+542,Texas Tech University,usa,Lubbock,QS_WORLD,,761-770,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+543,University of Messina (UniME),italy,Messina,QS_WORLD,,761-770,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+544,University of South Florida,usa,Tampa,QS_WORLD,,761-770,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+545,University of Trieste,italy,Trieste,QS_WORLD,,761-770,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+546,UWE Bristol (University of the West of England),uk,Bristol,QS_WORLD,,761-770,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+547,Beijing Jiaotong University,china,Beijing,QS_WORLD,,771-780,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+548,Drexel University,usa,Philadelphia,QS_WORLD,,771-780,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+549,Jiangnan University,china,Wuxi,QS_WORLD,,771-780,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+550,University of Hohenheim,germany,Stuttgart,QS_WORLD,,771-780,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+551,University of New Mexico,usa,Albuquerque,QS_WORLD,,771-780,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+552,University of Oklahoma,usa,Norman,QS_WORLD,,771-780,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+553,Chonnam National University,south-korea,Gwangju,QS_WORLD,,781-790,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+554,Technische Universität Braunschweig,germany,Braunschweig,QS_WORLD,,781-790,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+555,Verona University,italy,Verona,QS_WORLD,,781-790,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+556,Lovely Professional University (LPU),india,Chaheru,QS_WORLD,,791-800,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+557,Savitribai Phule Pune University,india,Pune,QS_WORLD,,791-800,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+558,Technological University Dublin,ireland,Dublin,QS_WORLD,,791-800,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+559,University of Greenwich,uk,Greenwich,QS_WORLD,,791-800,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+560,University of Pecs,hungary,Pécs,QS_WORLD,,791-800,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+561,Yeungnam University,south-korea,Gyeongsan,QS_WORLD,,791-800,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+562,Aberystwyth University,uk,Aberystwyth,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+563,Bournemouth University,uk,Poole,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+564,Carleton University,canada,Ottawa,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+565,Chungnam National University,south-korea,Daejeon,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+566,Edinburgh Napier University,uk,Edinburgh,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+567,Gdańsk University of Technology,poland,Gdańsk,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+568,Georgia State University,usa,Clarkston,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+569,ITMO University,russia,St. Petersburg,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+570,Keele University,uk,Keele,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+571,Martin-Luther-Universität Halle-Wittenberg,germany,Halle,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+572,Ocean University of China,china,Qingdao,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+573,Rutgers University–Newark,usa,Newark,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+574,"Saveetha Institute of Medical And Technical Sciences (SIMATS), Tamil Nadu, India",india,Tiruvallur,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+575,The National University of Science and Technology MISIS,russia,Moscow,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+576,Universidade de Vigo,spain,Vigo,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+577,Universität Duisburg-Essen,germany,Duisburg,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+578,Université de Lorraine,france,Nancy,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+579,"University of Maryland, Baltimore",usa,Baltimore,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+580,"University of Maryland, Baltimore County",usa,Baltimore,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+581,University of Modena and Reggio Emilia,italy,Modena,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+582,University of Mons,belgium,Mons,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+583,University of Namur,belgium,Namur,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+584,University of Nebraska - Lincoln,usa,Lincoln,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+585,University of Palermo,italy,Palermo,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+586,Wake Forest University,usa,Winston-Salem,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+587,Wayne State University,usa,Detroit,QS_WORLD,,801-850,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+588,Auburn University,usa,Auburn,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+589,Australian Catholic University,australia,Melbourne,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+590,Catania University,italy,Catania,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+591,Chiba University,japan,Chiba,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+592,De Montfort University,uk,Leicester,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+593,Donghua University,china,Shanghai,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+594,Indian Institute of Technology Gandhinagar (IITGN),india,Gandhinagar,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+595,Liverpool John Moores University,uk,Liverpool,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+596,Manipal Academy of Higher Education,india,Manipal,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+597,Montanuniversität Leoben,austria,Leoben,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+598,Sechenov University,russia,Moscow,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+599,Southwest Jiaotong University,china,Chengdu,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+600,The New School,usa,New York,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+601,Tokyo University of Science,japan,Tokyo,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+602,Università degli Studi della Tuscia (University of Tuscia),italy,Viterbo,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+603,Università degli studi Roma Tre,italy,Rome,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+604,Universitat Rovira i Virgili,spain,Tarragona,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+605,University of Alicante,spain,Alicante,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+606,University of Calabria,italy,Rende,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+607,University of Colorado Denver | Anschutz Medical Campus,usa,Denver,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+608,University of Hertfordshire,uk,Hatfield,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+609,University of Hyderabad,india,Hyderabad,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+610,University of Lincoln,uk,Lincoln,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+611,University of Salerno,italy,Fisciano,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+612,University of Seoul,south-korea,Seoul,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+613,University of the Arts London,uk,London,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+614,University of the Sunshine Coast,australia,Sippy Downs,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+615,University of Ulsan,south-korea,Ulsan,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+616,University of Westminster,uk,London,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+617,University of Wroclaw,poland,Wroclaw,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+618,Williams College,usa,Williamstown,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+619,Xidian University,china,Xi'an,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+620,Zurich University of Applied Sciences (ZHAW),switzerland,Winterthur,QS_WORLD,,851-900,QS World University Rankings 2027,2026,https://www.topuniversities.com/world-university-rankings
+
+
+OUTPUT
+ONE CSV in a single code block, UTF-8, comma-separated, quote any cell that contains a comma, exact header:
+name,countrySlug,city,website,type,foundedYear,degreeLevels,subjects,description,rankProvider,rank,rankText,rankEdition,rankYear,rankSourceUrl,tuitionLevel,tuitionAnnualUsd,tuitionAcademicYear,tuitionSourceUrl,sourceName,sourceUrl,academicYear
+
+Copy name, countrySlug, city, rankProvider, rank, rankText, rankEdition, rankYear, rankSourceUrl EXACTLY from the list (do not change them). One row per university, same order.
+
+Column rules:
+- website: the official homepage, https:// only.
+- type: public or private (exactly these two words), from the university's own site or its official status.
+- foundedYear: 4-digit year from the official "about/history" page.
+- degreeLevels: values separated by a semicolon, only from: bachelor;master;phd — only levels the university actually awards to students.
+- subjects: values separated by a semicolon, ONLY from this list of keys, only the fields where the university has a faculty/school/department: engineering, computer_science, business, medicine, law, education, economics, art_design, natural_science, social_science, other.
+- description: one factual sentence in Mongolian (max 200 characters) based on the university's official self-description. No marketing language, no ranking claims. If you cannot write it accurately in Mongolian, leave it empty.
+- tuitionLevel: bachelor or master — the level for which the figure below applies.
+- tuitionAnnualUsd: the standard annual tuition fee for an INTERNATIONAL (non-EU/non-resident) student, as a plain number (no symbol, no comma). Convert from the local currency only if you state the rate used in the final report; use the official figure for the most recent academic year. If fees vary a lot by programme and the university publishes no single standard figure, leave empty. NEVER average or guess.
+- tuitionAcademicYear: the academic year the figure belongs to, e.g. 2025/2026.
+- tuitionSourceUrl: the exact official page where that fee is published (https://). If tuitionAnnualUsd is empty, leave this empty as well.
+- sourceName: "Official university website".
+- sourceUrl: the official page you used for the general facts (https:// only).
+- academicYear: the academic year the general facts refer to (e.g. 2025/2026) or leave empty.
+
+STRICT RULES
+- If a value cannot be verified on an official page, leave the cell EMPTY. Do not write "N/A", "unknown", "~", or ranges.
+- Do not use Wikipedia, aggregator sites, agency blogs, or forums as the source for any value except where explicitly allowed (none are).
+- Every non-empty URL must be a real page you actually opened.
+- Do not change the order or the number of rows. If you could not research a university at all, still output its row with only the copied columns filled.
+
+AFTER THE TABLE
+A short report (max 15 lines): how many rows have a verified tuition figure, how many have empty tuition, the currency conversion rates you used (with date), and the names of rows where you were uncertain about any value.

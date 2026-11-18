@@ -1,0 +1,11 @@
+order,name,tuitionLevel,tuitionAmount,tuitionCurrency,tuitionAcademicYear,tuitionNote,tuitionSourceUrl,ieltsMin,toeflMin,languagesOfInstruction,intakes,applicationDeadlines,scholarshipsForInternational,scholarshipsSourceUrl,degreeLevels,admissionSourceUrl,verifiedAt,notes
+431,Coventry University,,,,,,,,,,,"Nov 2026: 16 Sep 2026; Jan 2027: 1 Dec 2026; Mar 2027: 27 Jan 2027; May 2027: 5 Apr 2027; Jul 2027: 25 May 2027",Financial awards for international students subject to availability and competitive application; no amounts on page,https://www.coventry.ac.uk/international-students-hub/fees-and-funding/,,https://www.coventry.ac.uk/international-students-hub/apply/,2026-11-09,Fees are per course page only; IELTS page returned HTTP 400 so not verified
+432,Rensselaer Polytechnic Institute,bachelor,66300,USD,2026/2027,"Undergraduate tuition only; mandatory fees of $1,676 are separate; not specific to international students",https://financialaid.rpi.edu/cost-attendance,,,,,,,,,https://www.rpi.edu/admissions,2026-11-09,Admissions pages gave no deadlines/English minimums/scholarship data; not verified
+433,Universität Bremen,,,,,,,,,,,,,,,,2026-11-09,Official pages tried returned 404; no data verified
+434,University of Brescia,,,,,,,,,,,,,,,,2026-11-09,Official site returned 403; no data verified
+435,Zhengzhou University,,,,,,,,,,,,,,,,2026-11-09,Official English site not reachable (DNS failure); no data verified
+436,Brno University of Technology,bachelor,4500,EUR,,"FEKT faculty English-taught bachelor programmes, non-EU students, per year; fees set by faculty",https://www.fekt.vut.cz/en/applicants/studies_in_english/fees,,,English,,"Tuition proof of payment due by 15 September",,,,https://www.fekt.vut.cz/en/applicants/studies_in_english/fees,2026-11-09,Only FEKT faculty fee verified; other faculties may differ; no academic year stated on page
+437,Indian Institute of Technology Hyderabad (IITH),,,,,,,,,,,,,,,,2026-11-09,Official admissions page returned 404; no data verified
+438,Saarland University,,,,,,,,,,,,,,,,2026-11-09,Official fee page returned 404; no data verified
+439,Technische Universität Bergakademie Freiberg,,,,,,,,,,,,,,,,2026-11-09,Official page returned 404; only third-party sources found so not used
+440,Eötvös Loránd University,,,,,,,,,,,,,,,,2026-11-09,Official fees page returned 404; no data verified

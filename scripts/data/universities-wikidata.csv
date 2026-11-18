@@ -1,0 +1,621 @@
+order,name,countrySlug,city,wikidataId,matchedLabel,website,type,foundedYear
+1,Massachusetts Institute of Technology (MIT),usa,Cambridge,Q49108,Massachusetts Institute of Technology,https://mit.edu,private,1861
+2,Imperial College London,uk,London,Q189022,Imperial College London,https://www.imperial.ac.uk/,public,1907
+3,Stanford University,usa,Stanford,Q41506,Stanford University,https://stanford.edu,private,1885
+4,University of Oxford,uk,Oxford,Q34433,University of Oxford,https://ox.ac.uk/,public,1096
+5,Harvard University,usa,Cambridge,Q13371,Harvard University,https://www.harvard.edu,private,1636
+6,University of Cambridge,uk,Cambridge,Q35794,University of Cambridge,https://www.cam.ac.uk/,public,1209
+7,California Institute of Technology (Caltech),usa,Pasadena,Q161562,California Institute of Technology,https://caltech.edu,private,1891
+8,ETH Zurich,switzerland,Zürich,Q11942,ETH Zurich,https://www.ethz.ch/,public,1855
+9,UCL,uk,London,Q193196,University College London,https://www.ucl.ac.uk,public,1826
+10,National University of Singapore (NUS),singapore,Singapore,Q738236,National University of Singapore,https://nus.edu.sg,,1905
+11,"Nanyang Technological University, Singapore (NTU Singapore)",singapore,Singapore,,,,,
+12,Peking University,china,Beijing,Q16952,Peking University,https://pku.edu.cn,public,1898
+13,Tsinghua University,china,Beijing,Q16955,Tsinghua University,https://www.tsinghua.edu.cn,public,1911
+14,University of Pennsylvania,usa,Philadelphia,Q49117,University of Pennsylvania,https://upenn.edu,private,1740
+15,Cornell University,usa,Ithaca,Q49115,Cornell University,https://cornell.edu,private,1865
+16,Yale University,usa,New Haven,Q49112,Yale University,https://yale.edu,private,1701
+17,The University of New South Wales (UNSW Sydney),australia,Sydney,Q734764,University of New South Wales,https://www.unsw.edu.au/,public,1949
+18,Johns Hopkins University,usa,Baltimore,Q193727,Johns Hopkins University,https://jhu.edu,private,1876
+19,"University of California, Berkeley (UCB)",usa,Berkeley,Q168756,"University of California, Berkeley",https://berkeley.edu,public,1868
+20,EPFL – École polytechnique fédérale de Lausanne,switzerland,Lausanne,,,,,
+21,The University of Melbourne,australia,Melbourne,Q319078,University of Melbourne,https://www.unimelb.edu.au/,public,1853
+22,University of Chicago,usa,Chicago,Q131252,University of Chicago,https://uchicago.edu/,private,1890
+23,Technical University of Munich,germany,Munich,Q157808,Technical University of Munich,https://www.tum.de/,public,1868
+24,Fudan University,china,Shanghai,Q495015,Fudan University,https://www.fudan.edu.cn,public,1905
+25,Princeton University,usa,Princeton,Q21578,Princeton University,https://princeton.edu,private,1746
+26,The University of Sydney,australia,Sydney,Q487556,University of Sydney,https://www.sydney.edu.au/,,1850
+27,Australian National University (ANU),australia,Canberra,Q127990,Australian National University,https://www.anu.edu.au/,public,1946
+28,McGill University,canada,Montreal,Q201492,McGill University,https://www.mcgill.ca/,public,1821
+29,Monash University,australia,Melbourne,Q598841,Monash University,https://www.monash.edu/,public,1958
+30,University of Toronto,canada,Toronto,Q180865,University of Toronto,https://www.utoronto.ca/,public,1827
+31,Université PSL,france,Paris,,,,,
+32,The University of Edinburgh,uk,Edinburgh,Q160302,University of Edinburgh,https://www.ed.ac.uk,public,1583
+33,Shanghai Jiao Tong University,china,Shanghai,Q525169,Shanghai Jiao Tong University,https://www.sjtu.edu.cn/,,1896
+34,King's College London,uk,London,Q245247,King's College London,https://kcl.ac.uk/,public,1829
+35,Seoul National University,south-korea,Seoul,Q39913,Seoul National University,https://www.snu.ac.kr,,1946
+36,The University of Tokyo,japan,Tokyo,Q7842,University of Tokyo,https://www.u-tokyo.ac.jp/ja/index.html,,1877
+37,The University of Manchester,uk,Manchester,Q230899,University of Manchester,https://manchester.ac.uk,public,1824
+38,The University of Queensland,australia,Brisbane,Q866012,University of Queensland,https://www.uq.edu.au,public,1909
+39,Yonsei University,south-korea,Seoul,Q39988,Yonsei University,https://www.yonsei.ac.kr/,private,1957
+40,Columbia University,usa,New York City,Q49088,Columbia University,https://columbia.edu,private,1754
+41,Institut Polytechnique de Paris,france,Paris,Q48759778,Polytechnic Institute of Paris,https://www.ip-paris.fr/,,2019
+42,Northwestern University,usa,Evanston,Q309350,Northwestern University,,private,1851
+43,University of British Columbia,canada,Vancouver,Q391028,University of British Columbia,https://www.ubc.ca/,public,1908
+44,Zhejiang University,china,Hangzhou,Q197543,Zhejiang University,https://www.zju.edu.cn,,1897
+45,"University of California, Los Angeles (UCLA)",usa,Los Angeles,Q174710,"University of California, Los Angeles",https://ucla.edu,public,1919
+46,University of Michigan-Ann Arbor,usa,Ann Arbor,Q230492,University of Michigan,https://umich.edu,public,1817
+47,Korea University,south-korea,Seoul,,,,,
+48,Carnegie Mellon University,usa,Pittsburgh,Q190080,Carnegie Mellon University,https://cmu.edu,private,1900
+49,University of Bristol,uk,Bristol,Q459506,University of Bristol,https://bristol.ac.uk,public,1909
+50,New York University (NYU),usa,New York City,Q49210,New York University,https://nyu.edu,private,1831
+51,KU Leuven,belgium,Leuven,Q2901923,KU Leuven Association,https://associatie.kuleuven.be/,,2002
+52,Ludwig-Maximilians-Universität München,germany,Munich,Q55044,LMU Munich,https://www.lmu.de/,public,1472
+53,The London School of Economics and Political Science (LSE),uk,London,Q174570,London School of Economics and Political Science,https://lse.ac.uk,public,1895
+54,Kyoto University,japan,Kyoto,Q336264,Kyoto University,http://kyoto-u.ac.jp,,1897
+55,KAIST,south-korea,Daejeon,Q39949,KAIST,https://kaist.ac.kr,public,1971
+56,Brown University,usa,Providence,Q49114,Brown University,https://www.brown.edu/,private,1765
+57,The University of Auckland,new-zealand,Auckland,Q492467,University of Auckland,https://www.auckland.ac.nz/en.html,public,1883
+58,University of Birmingham,uk,Birmingham,,,,,
+59,University of Warwick,uk,Coventry,Q865528,University of Warwick,https://warwick.ac.uk/,,1965
+60,Duke University,usa,Durham,Q168751,Duke University,https://duke.edu,private,1838
+61,Lund University,sweden,Lund,Q218506,Lund University,https://www.lu.se,public,1666
+62,University of Texas at Austin,usa,Austin,Q49213,University of Texas at Austin,https://www.utexas.edu/,public,1883
+63,Sorbonne University,france,Paris,Q41497113,Sorbonne University,https://www.sorbonne-universite.fr/,public,2018
+64,University of Illinois Urbana-Champaign,usa,Champaign,Q457281,University of Illinois Urbana-Champaign,https://illinois.edu,public,1867
+65,"Trinity College Dublin, The University of Dublin",ireland,Dublin,Q100549725,"Trinity College Dublin, the University of Dublin Superannuation Scheme 2018",,,
+66,Université Paris-Saclay,france,Paris,Q65225634,Université Paris-Saclay,https://www.societedugrandparis.fr/gpe/gare/orsay-gif,,
+67,The University of Western Australia,australia,Perth,Q1517021,University of Western Australia,https://www.uwa.edu.au/,public,1911
+68,University of Leeds,uk,Leeds,Q503424,University of Leeds,https://leeds.ac.uk/,,1904
+69,Adelaide University,australia,Adelaide,Q123125135,Adelaide University,https://adelaide.edu.au/,public,2026
+70,University of Glasgow,uk,Glasgow,Q192775,University of Glasgow,https://gla.ac.uk/,,1451
+71,"University of California, San Diego (UCSD)",usa,San Diego,Q622664,"University of California, San Diego",https://ucsd.edu,public,1960
+72,KTH Royal Institute of Technology,sweden,Stockholm,Q854280,Royal Institute of Technology,https://www.kth.se,,1827
+73,The University of Sheffield,uk,Sheffield,Q823917,University of Sheffield,https://sheffield.ac.uk/,,1905
+74,Durham University,uk,Durham,Q458393,Durham University,https://durham.ac.uk,public,1832
+75,Universität Heidelberg,germany,Heidelberg,Q151510,Heidelberg University,https://www.uni-heidelberg.de/,public,1386
+76,Politecnico di Milano,italy,Milan,Q124297060,Politecnico di Milano,http://www.biblio.polimi.it/risorse/archivi-storici/,,
+77,The University of Technology Sydney (UTS),australia,Sydney,Q1145731,University of Technology Sydney,https://www.uts.edu.au/,public,1988
+78,Uppsala University,sweden,Uppsala,Q185246,Uppsala University,https://www.uu.se,,1477
+79,Nanjing University,china,Nanjing,Q683580,Nanjing University,https://www.nju.edu.cn/main.htm,public,1915
+80,University of Copenhagen,denmark,Copenhagen,Q186285,University of Copenhagen,https://www.ku.dk/,public,1479
+81,Pennsylvania State University,usa,University Park,Q739627,Pennsylvania State University,,public,1855
+82,University of Washington,usa,Seattle,Q98844905,University of Washington Department of Architecture,http://arch.be.uw.edu/,,1961
+83,Boston University,usa,Boston,Q49110,Boston University,https://bu.edu/,private,1869
+84,The University of Osaka,japan,Osaka,Q651233,University of Osaka,https://www.osaka-u.ac.jp/ja,,1931
+85,University of Alberta,canada,Edmonton,Q640694,University of Alberta,https://www.ualberta.ca,public,1906
+86,Institute of Science Tokyo,japan,Tokyo,Q116264906,Institute of Science Tokyo,https://www.isct.ac.jp/,public,2024
+87,University of Nottingham,uk,Nottingham,Q472316,University of Nottingham,https://www.nottingham.ac.uk/,public,1881
+88,Freie Universitaet Berlin,germany,Berlin,,,,,
+89,University of Zurich,switzerland,Zürich,Q206702,University of Zurich,https://www.uzh.ch/,public,1833
+90,Purdue University,usa,West Lafayette,Q217741,Purdue University,https://purdue.edu,public,1869
+91,University College Dublin,ireland,Dublin,Q1068258,University College Dublin,https://www.ucd.ie/,public,1854
+92,Tohoku University,japan,Sendai,Q1062129,Tohoku University,http://www.tohoku.ac.jp/,,1907
+93,Queen Mary University of London,uk,London,Q195668,Queen Mary University of London,https://qmul.ac.uk,public,1882
+94,RWTH Aachen University,germany,Aachen,Q273263,RWTH Aachen University,https://www.rwth-aachen.de/,public,1870
+95,Technical University of Denmark,denmark,Kongens Lyngby,Q1269766,Technical University of Denmark,https://www.dtu.dk/,public,1829
+96,Pohang University of Science And Technology (POSTECH),south-korea,Pohang,Q40018,Pohang University of Science and Technology,http://www.postech.edu/,private,1986
+97,Sungkyunkwan University (SKKU),south-korea,Seoul,Q41085,Sungkyunkwan University,https://www.skku.edu/,private,1398
+98,"KIT, Karlsruhe Institute of Technology",germany,Karlsruhe,,,,,
+99,Sapienza University of Rome,italy,Rome,,,,,
+100,University of Southampton,uk,Southampton,Q76473,University of Southampton,https://southampton.ac.uk/,public,1862
+101,University of Waterloo,canada,Waterloo,Q1049470,University of Waterloo,https://uwaterloo.ca,public,1956
+102,Lomonosov Moscow State University,russia,Moscow,Q13164,Lomonosov Moscow State University,https://www.msu.ru/,public,1755
+103,University of St Andrews,uk,St. Andrews,Q216273,University of St Andrews,https://st-andrews.ac.uk,public,1413
+104,Indian Institute of Technology Delhi (IITD),india,New Delhi,Q1194650,Indian Institute of Technology Delhi,http://www.iitd.ac.in,public,1961
+105,RMIT University,australia,Melbourne,Q1057890,RMIT University,https://www.rmit.edu.au/,public,1887
+106,Rice University,usa,Houston,Q842909,Rice University,https://rice.edu,private,1891
+107,Alma Mater Studiorum - Università di Bologna,italy,Bologna,Q131262,University of Bologna,https://www.unibo.it,public,1088
+108,University of Helsinki,finland,Helsinki,Q28695,University of Helsinki,https://www.helsinki.fi/en,public,1640
+109,University of Bath,uk,Bath,Q1422458,University of Bath,https://www.bath.ac.uk/,public,1966
+110,Aalto University,finland,Espoo,,,,,
+111,Macquarie University,australia,Sydney,Q741082,Macquarie University,https://www.mq.edu.au/,public,1964
+112,Aarhus University,denmark,Aarhus,Q924265,Aarhus University,https://www.au.dk/,public,1928
+113,University of Wisconsin-Madison,usa,Madison,Q838330,University of Wisconsin–Madison,https://wisc.edu,public,1848
+114,Indian Institute of Technology Bombay (IITB),india,Mumbai,Q1661242,Indian Institute of Technology Bombay,https://www.iitb.ac.in,public,1958
+115,University of Science and Technology of China,china,Hefei,Q1074103,University of Science and Technology of China,https://ustc.edu.cn,,1958
+116,University of Exeter,uk,Exeter,Q1414861,University of Exeter,https://www.exeter.ac.uk/,public,1955
+117,"University of California, Davis",usa,Davis,Q129421,"University of California, Davis",https://ucdavis.edu,public,1905
+118,University of Liverpool,uk,Liverpool,Q499510,University of Liverpool,https://liverpool.ac.uk/,public,1903
+119,Humboldt-Universität zu Berlin,germany,Berlin,Q152087,Humboldt-Universität zu Berlin,https://www.hu-berlin.de/,public,1809
+120,University of Vienna,austria,Vienna,Q165980,University of Vienna,https://www.univie.ac.at/,public,1365
+121,Georgia Institute of Technology,usa,Atlanta,Q16246732,Georgia Institute of Technology College of Engineering,http://www.coe.gatech.edu,,1885
+122,Western University,canada,London,Q1144262,University of Western Ontario,https://www.uwo.ca/,public,1878
+123,Tongji University,china,Shanghai,Q16947,Tongji University,https://www.tongji.edu.cn/,,1907
+124,Newcastle University,uk,Newcastle upon Tyne,Q837164,Newcastle University,https://www.ncl.ac.uk/,,1963
+125,Ghent University,belgium,Ghent,Q1137665,Ghent University,https://www.ugent.be/,public,1817
+126,University of Basel,switzerland,Basel,,,,,
+127,University of Southern California,usa,Los Angeles,Q4614,University of Southern California,https://usc.edu,private,1880
+128,Hanyang University,south-korea,Seoul,Q40006,Hanyang University,https://hanyang.ac.kr,private,1939
+129,Nagoya University,japan,Nagoya,Q1191132,Nagoya University,https://www.nagoya-u.ac.jp,,1939
+130,Technische Universität Berlin (TU Berlin),germany,Berlin,Q51985,Technische Universität Berlin,https://www.tu.berlin/,public,1946
+131,University of North Carolina at Chapel Hill,usa,Chapel Hill,Q192334,University of North Carolina at Chapel Hill,https://unc.edu,public,1789
+132,University of York,uk,York,Q967165,University of York,https://york.ac.uk/,public,1963
+133,Université de Montréal,canada,Montreal,Q392189,Université de Montréal,https://www.umontreal.ca/,,1878
+134,Washington University in St. Louis,usa,St. Louis,Q777403,Washington University in St. Louis,https://washu.edu/,private,1853
+135,Lancaster University,uk,Lancaster,Q6483279,Lancaster University Management School,http://www.lums.lancs.ac.uk,,1964
+136,Universitat de Barcelona,spain,Barcelona,Q11921483,Universitat de Barcelona. Facultat de Ciències Econòmiques i Empresarials,https://web.ub.edu/web/facultat-economia-empresa,,2008
+137,Wuhan University,china,Wuhan,,,,,
+138,Stockholm University,sweden,Stockholm,Q221645,Stockholm University,https://su.se,public,1878
+139,University of Geneva,switzerland,Geneva,Q503473,University of Geneva,https://www.unige.ch,public,1559
+140,Texas A&M University,usa,College Station,Q49212,Texas A&M University,https://www.tamu.edu,public,1876
+141,Indian Institute of Technology Madras (IITM),india,Chennai,Q858662,Indian Institute of Technology Madras,http://www.iitm.ac.in,public,1959
+142,Kyushu University,japan,Fukuoka,Q1188786,Kyushu University,https://www.kyushu-u.ac.jp/ja/,,1911
+143,Arizona State University,usa,Phoenix,Q670897,Arizona State University,https://www.asu.edu/,public,1885
+144,"University of California, Santa Barbara (UCSB)",usa,Santa Barbara,Q263064,"University of California, Santa Barbara",https://ucsb.edu,public,1909
+145,Chalmers University of Technology,sweden,Gothenburg,Q836805,Chalmers University of Technology,http://www.chalmers.se/,,1829
+146,McMaster University,canada,Hamilton,Q632891,McMaster University,https://www.mcmaster.ca/,public,1887
+147,Queen's University Belfast,uk,Belfast,Q877925,Queen's University Belfast,https://qub.ac.uk/,public,1845
+148,Cardiff University,uk,Cardiff,Q1035745,Cardiff University,https://cardiff.ac.uk/,public,1883
+149,Hokkaido University,japan,Sapporo,Q1057199,Hokkaido University,https://www.hokudai.ac.jp/,,1918
+150,Queen's University at Kingston,canada,Kingston,Q1420038,Queen's University,https://queensu.ca/,,1841
+151,Michigan State University,usa,East Lansing,Q270222,Michigan State University,https://msu.edu/,public,1855
+152,Emory University,usa,Atlanta,Q621043,Emory University,https://emory.edu,private,1836
+153,Technische Universität Dresden,germany,Dresden,Q158158,TU Dresden,https://tu-dresden.de/,,1828
+154,Curtin University,australia,Perth,Q1145497,Curtin University,https://www.curtin.edu.au/,public,1987
+155,Harbin Institute of Technology,china,Harbin,Q632558,Harbin Institute of Technology,http://www.hit.edu.cn/,,1920
+156,Technische Universität Wien,austria,Vienna,Q689400,TU Wien,https://www.tuwien.at/,public,1815
+157,University of Bern,switzerland,Bern,Q659080,University of Bern,https://www.unibe.ch/,public,1834
+158,University of Wollongong,australia,Wollongong,Q1350021,University of Wollongong,https://uow.edu.au,public,1951
+159,Université catholique de Louvain (UCLouvain),belgium,Louvain-la-Neuve,Q20638293,Université catholique de Louvain (1970- ). Centre d'études théâtrales,,,1968
+160,University of Reading,uk,Reading,Q1432632,University of Reading,https://www.reading.ac.uk/,,1926
+161,University of Otago,new-zealand,Dunedin,Q1201513,University of Otago,https://www.otago.ac.nz/,public,1869
+162,Complutense University of Madrid,spain,Madrid,Q219694,Complutense University of Madrid,https://www.ucm.es,public,1970
+163,The Ohio State University,usa,Columbus,,,,,
+164,Waseda University,japan,Tokyo,Q274486,Waseda University,https://www.waseda.jp/,private,1882
+165,Loughborough University,uk,Loughborough,Q1434547,Loughborough University,https://www.lboro.ac.uk/,public,1909
+166,Università di Padova,italy,Padua,Q193510,University of Padua,https://www.unipd.it,,1222
+167,Indian Institute of Technology Kharagpur (IIT-KGP),india,Kharagpur,Q1661243,Indian Institute of Technology Kharagpur,https://www.iitkgp.ac.in,public,1951
+168,Politecnico di Torino,italy,Turin,Q124297063,"Politecnico di Torino. Dipartimento Interateneo di Scienze, progetto e politiche del Territorio - DIST",http://www.dist.polito.it,,
+169,Rheinische Friedrich-Wilhelms-Universität Bonn,germany,Bonn,Q152171,University of Bonn,https://www.uni-bonn.de,public,1818
+170,Universität Hamburg,germany,Hamburg,Q156725,University of Hamburg,https://www.uni-hamburg.de/,public,1919
+171,Universitat Autònoma de Barcelona,spain,Barcelona,Q33036024,Universitat Autònoma de Barcelona. Centre d'Estudis Olimpics,http://www.ceo-uab.net/,,1989
+172,Keio University,japan,Tokyo,Q815432,Keio University,https://www.keio.ac.jp/ja/,private,1858
+173,Massey University,new-zealand,Palmerston North,Q1134606,Massey University,https://www.massey.ac.nz,public,1927
+174,Friedrich-Alexander-Universität Erlangen-Nürnberg,germany,Erlangen,,,,,
+175,University College Cork,ireland,Cork,Q1574185,University College Cork,https://www.ucc.ie,public,1845
+176,Indian Institute of Science (IISc) Bangalore,india,Bangalore,Q948720,"Indian Institute of Science, Bengaluru",https://www.iisc.ac.in/,public,1909
+177,Indian Institute of Technology Kanpur (IITK),india,Kanpur,Q782682,Indian Institute of Technology Kanpur,http://www.iitk.ac.in/,public,1959
+178,University of Gothenburg,sweden,Gothenburg,Q371522,University of Gothenburg,https://www.gu.se,,1954
+179,Universidad Autónoma de Madrid,spain,Madrid,Q788091,Autonomous University of Madrid,https://www.uam.es,public,1968
+180,Deakin University,australia,Melbourne,Q1180978,Deakin University,http://www.deakin.edu.au/,public,1974
+181,University of Florida,usa,Gainesville,Q501758,University of Florida,https://www.ufl.edu/,public,1853
+182,University of Ottawa,canada,Ottawa,Q627969,University of Ottawa,https://www.uottawa.ca/en,public,1848
+183,Eberhard Karls Universität Tübingen,germany,Tübingen,Q153978,University of Tübingen,https://uni-tuebingen.de/,public,1477
+184,Griffith University,australia,Nathan,Q1202292,Griffith University,http://www.griffith.edu.au/,public,1971
+185,University of Strathclyde,uk,Glasgow,,,,,
+186,University of Lausanne,switzerland,Lausanne,Q658975,University of Lausanne,https://www.unil.ch/,public,1537
+187,École Normale Supérieure de Lyon,france,Lyon,Q10159,École Normale Supérieure de Lyon,http://www.ens-lyon.fr/,,2010
+188,Tianjin University,china,Tianjin,Q2031560,Tianjin University,http://www.tju.edu.cn,,1895
+189,Beijing Normal University,china,Beijing,Q1604022,Beijing Normal University,http://www.bnu.edu.cn/,public,1902
+190,Central European University,austria,Vienna,Q757391,Central European University,https://www.ceu.edu,private,1991
+191,Queensland University of Technology (QUT),australia,Brisbane,Q1144750,Queensland University of Technology,https://www.qut.edu.au/,public,1908
+192,La Trobe University,australia,Melbourne,Q1478723,La Trobe University,https://www.latrobe.edu.au,public,1967
+193,Victoria University of Wellington,new-zealand,Wellington,Q1150437,Victoria University of Wellington,https://www.victoria.ac.nz/,public,1897
+194,Beijing Institute of Technology,china,Beijing,Q23101,Beijing Institute of Technology,http://www.bit.edu.cn/,,1940
+195,"The University of Newcastle, Australia (UON)",australia,Newcastle,Q531285,University of Newcastle,http://www.newcastle.edu.au/,public,1965
+196,Albert-Ludwigs-Universitaet Freiburg,germany,Freiburg im Breisgau,,,,,
+197,Université Paris 1 Panthéon-Sorbonne,france,Paris,Q999763,University of Paris 1 Pantheon-Sorbonne,https://www.pantheonsorbonne.fr,public,1971
+198,University of Surrey,uk,Guildford,Q546976,University of Surrey,https://www.surrey.ac.uk/,public,1966
+199,Université libre de Bruxelles,belgium,Brussels,Q574606,Université libre de Bruxelles,https://www.ulb.be/,,1969
+200,University of Calgary,canada,Calgary,Q1067471,University of Calgary,https://www.ucalgary.ca/,public,1966
+201,Technical University of Darmstadt,germany,Darmstadt,Q310695,Technical University of Darmstadt,https://www.tu-darmstadt.de/,public,1877
+202,University of Rochester,usa,Rochester,Q149990,University of Rochester,https://www.rochester.edu/,private,1850
+203,"University of California, Irvine",usa,Irvine,Q868421,"University of California, Irvine",https://uci.edu,public,1965
+204,"University of Maryland, College Park",usa,College Park,Q503415,University of Maryland,https://umd.edu,public,1858
+205,University of Minnesota (System),usa,Minneapolis,Q238101,University of Minnesota,https://twin-cities.umn.edu/,public,1851
+206,University of Canterbury,new-zealand,Christchurch,Q432475,University of Canterbury,https://www.canterbury.ac.nz/,public,1873
+207,Sun Yat-sen University,china,Guangzhou,,,,,
+208,University of Massachusetts Amherst,usa,Amherst,Q15142,University of Massachusetts Amherst,https://www.umass.edu/,public,1863
+209,University of Göttingen,germany,Göttingen,Q152838,University of Göttingen,https://www.uni-goettingen.de/,public,1734
+210,Universitat Pompeu Fabra,spain,Barcelona,Q24543,Pompeu Fabra University,https://www.upf.edu,public,1990
+211,Vanderbilt University,usa,Nashville,Q29052,Vanderbilt University,https://www.vanderbilt.edu/,private,1873
+212,Singapore University of Technology and Design,singapore,Singapore,Q11081251,Singapore University of Technology and Design,http://www.sutd.edu.sg/,,2012
+213,University of Virginia,usa,Charlottesville,Q213439,University of Virginia,https://virginia.edu,public,1819
+214,University of Cologne,germany,Cologne,Q54096,University of Cologne,https://uni-koeln.de,public,1388
+215,Dartmouth College,usa,Hanover,Q49116,Dartmouth College,https://home.dartmouth.edu,private,1769
+216,University of Milan,italy,Milan,Q46210,University of Milan,https://www.unimi.it,,1923
+217,Charles University,czech-republic,Prague,Q31519,Charles University,https://cuni.cz,public,1348
+218,University of Sussex,uk,Brighton,,,,,
+219,University of Galway,ireland,Galway,Q644478,University of Galway,https://www.universityofgalway.ie/,public,1845
+220,University of Antwerp,belgium,Antwerp,Q175241,University of Antwerp,https://www.uantwerpen.be/,,2003
+221,University of Navarra,spain,Pamplona,Q56247883,School of Communication of University of Navarra,https://www.unav.edu/web/facultad-de-comunicacion,,1958
+222,University of Pittsburgh,usa,Pittsburgh,Q235034,University of Pittsburgh,https://www.pitt.edu,private,1787
+223,University of Southern Denmark (SDU),denmark,Odense,Q2166335,University of Southern Denmark,https://www.sdu.dk/,public,1998
+224,University of Aberdeen,uk,Aberdeen,Q270532,University of Aberdeen,https://abdn.ac.uk/,,1495
+225,Georgetown University,usa,Washington D.C.,Q333886,Georgetown University,https://www.georgetown.edu,private,1789
+226,University of Warsaw,poland,Warsaw,Q144488,University of Warsaw,https://www.uw.edu.pl/,,1816
+227,Swinburne University of Technology,australia,Melbourne,Q787234,Swinburne University of Technology,http://www.swinburne.edu.au,public,1908
+228,University of Waikato,new-zealand,Hamilton,Q606140,University of Waikato,https://www.waikato.ac.nz,public,1964
+229,Vrije Universiteit Brussel (VUB),belgium,Brussels,Q612665,Vrije Universiteit Brussel,https://www.vub.be/,,1969
+230,Xi’an Jiaotong University,china,Xi'an,Q981237,Xi'an Jiaotong University,http://www.xjtu.edu.cn/,,
+231,Dalhousie University,canada,Halifax,Q579321,Dalhousie University,https://www.dal.ca/,public,1818
+232,Ulsan National Institute of Science and Technology (UNIST),south-korea,Ulsan,Q484108,Ulsan National Institute of Science and Technology,http://www.unist.ac.kr/,,2009
+233,Sichuan University,china,Chengdu,Q2281517,Sichuan University,https://scu.edu.cn,,1896
+234,University of Notre Dame,usa,Notre Dame,,,,,
+235,Université Paris Cité,france,Paris,Q130611741,Groupe hospitalo-universitaire AP-HP Centre – Université Paris Cité,https://u-paris.fr/,,
+236,Xiamen University,china,Xiamen,Q1153539,Xiamen University,https://www.xmu.edu.cn/,public,1921
+237,Huazhong University of Science and Technology,china,Wuhan,Q1711196,Huazhong University of Science and Technology,http://www.hust.edu.cn,,1953
+238,Linköping University,sweden,Linköping,Q782600,Linköping University,https://liu.se,,1975
+239,Kyung Hee University,south-korea,Seoul,Q496536,Kyung Hee University,http://www.khu.ac.kr/,private,1949
+240,Shandong University,china,Jinan,Q604470,Shandong University,https://www.sdu.edu.cn/,,1901
+241,University of Tasmania,australia,Hobart,Q962011,University of Tasmania,https://www.utas.edu.au/,public,1890
+242,Simon Fraser University,canada,Burnaby,Q201603,Simon Fraser University,https://www.sfu.ca/,public,1965
+243,The University of Arizona,usa,Tucson,Q503419,University of Arizona,https://www.arizona.edu,public,1885
+244,Rutgers University–New Brunswick,usa,New Brunswick,Q7382826,Rutgers University–New Brunswick,http://www.rutgers.edu/,,1766
+245,Universidad Carlos III de Madrid (UC3M),spain,Madrid,,,,,
+246,University of Leicester,uk,Leicester,Q1333399,University of Leicester,https://le.ac.uk,,1921
+247,Southern University of Science and Technology (SUSTech),china,Shenzhen,Q7568723,Southern University of Science and Technology,https://sustech.edu.cn,public,2009
+248,Bauman Moscow State Technical University,russia,Moscow,Q1472245,Bauman Moscow State Technical University,https://bmstu.ru/,public,1830
+249,Universität Stuttgart,germany,Stuttgart,Q122453,University of Stuttgart,https://www.uni-stuttgart.de,public,1829
+250,North Carolina State University,usa,Raleigh,Q1132346,North Carolina State University,https://ncsu.edu,public,1887
+251,University of Colorado Boulder,usa,Boulder,Q736674,University of Colorado Boulder,https://www.colorado.edu/,public,1876
+252,Swansea University,uk,Swansea,Q1420500,Swansea University,http://www.swansea.ac.uk/,public,1920
+253,University of Delhi,india,New Delhi,Q665105,University of Delhi,https://www.du.ac.in/,,1922
+254,York University,canada,Toronto,Q849751,York University,https://www.yorku.ca/,public,1959
+255,Heriot-Watt University,uk,Edinburgh,,,,,
+256,Case Western Reserve University,usa,Cleveland,Q1047060,Case Western Reserve University,https://case.edu,private,1967
+257,Aalborg University,denmark,Aalborg,Q601956,Aalborg University,https://www.aau.dk,public,1974
+258,Jagiellonian University,poland,Krakow,Q189441,Jagiellonian University,https://www.uj.edu.pl/,public,1364
+259,Nankai University,china,Tianjin,Q254204,Nankai University,https://www.nankai.edu.cn/,public,1919
+260,Universität Innsbruck,austria,Innsbruck,Q875788,University of Innsbruck,https://www.uibk.ac.at,public,1669
+261,Indian Institute of Technology Roorkee (IITR),india,Roorkee,Q3366382,Indian Institute of Technology Roorkee,https://www.iitr.ac.in,public,1847
+262,Southeast University,china,Nanjing,Q3551770,Southeast University,https://www.seu.edu.cn/,public,1902
+263,Tufts University,usa,Medford,Q49120,Tufts University,https://tufts.edu,private,1852
+264,University of Miami,usa,Miami,Q738258,University of Miami,https://welcome.miami.edu/,private,1925
+265,University of Pisa,italy,Pisa,Q645663,University of Pisa,https://www.unipi.it,public,1343
+266,South China University of Technology,china,Guangzhou,,,,,
+267,"University of Rome ""Tor Vergata""",italy,Rome,,,,,
+268,Beihang University (former BUAA),china,Beijing,Q2299797,Beihang University,https://buaa.edu.cn,,1952
+269,Indian Institute of Technology Guwahati (IITG),india,Guwahati,Q3518863,Indian Institute of Technology Guwahati,http://www.iitg.ac.in,public,1994
+270,University of Tsukuba,japan,Tsukuba,Q743615,University of Tsukuba,https://www.tsukuba.ac.jp/,,1973
+271,Brunel University of London,uk,London,Q932411,Brunel University London,https://www.brunel.ac.uk/,,1966
+272,"Birkbeck, University of London",uk,London,Q375606,"Birkbeck, University of London",https://bbk.ac.uk,public,1823
+273,Sciences Po,france,Paris,Q273553,École Libre des Sciences Politiques,,,1872
+274,RUDN University,russia,Moscow,Q839669,Peoples' Friendship University of Russia,http://www.rudn.ru,,1960
+275,Indiana University Bloomington,usa,Bloomington,Q1079140,Indiana University Bloomington,https://bloomington.iu.edu,public,1820
+276,University of Chinese Academy of Sciences (UCAS),china,Beijing,Q6544465,University of Chinese Academy of Sciences,https://www.ucas.ac.cn,,1978
+277,University of Oulu,finland,Oulu,,,,,
+278,City St George’s University of London,uk,London,,,,,
+279,Universidad Politécnica de Madrid (UPM),spain,Madrid,Q25864,Technical University of Madrid,https://www.upm.es/,public,1971
+280,Université de Liège,belgium,Liège,Q1334582,University of Liège,https://www.uliege.be/,public,1817
+281,Virginia Polytechnic Institute and State University,usa,Blacksburg,Q65379,Virginia Tech,https://www.vt.edu/,public,1872
+282,University of Illinois Chicago (UIC),usa,Chicago,Q955764,University of Illinois Chicago,https://www.uic.edu/,public,1983
+283,University of Münster,germany,Münster,Q168426,University of Münster,https://www.uni-muenster.de/,public,1780
+284,University of Victoria (UVic),canada,Victoria,Q1458113,University of Victoria,https://www.uvic.ca/,,1903
+285,Western Sydney University,australia,Parramatta,Q1141452,Western Sydney University,https://www.westernsydney.edu.au/,public,1989
+286,Flinders University,australia,Adelaide,Q15575,Flinders University,https://www.flinders.edu.au/,public,1966
+287,Goethe-University Frankfurt am Main,germany,Frankfurt am Main,,,,,
+288,Gwangju Institute of Science and Technology (GIST),south-korea,Gwangju,Q484900,Gwangju Institute of Science and Technology,https://www.gist.ac.kr/kr/main.html,,1993
+289,George Washington University,usa,Washington D.C.,,,,,
+290,University of East Anglia (UEA),uk,Norwich,Q1045828,University of East Anglia,https://www.uea.ac.uk/,,1963
+291,Daegu Gyeongbuk Institute of Science and Technology (DGIST),south-korea,Daegu,Q12591209,Daegu Gyeongbuk Institute of Science and Technology,https://dgist.ac.kr/,,2004
+292,Northeastern University,usa,Boston,Q37548,Northeastern University,https://www.northeastern.edu/,private,1898
+293,Université Grenoble Alpes,france,Grenoble,Q945876,Grenoble Alpes University,https://www.univ-grenoble-alpes.fr/,public,2020
+294,Università Cattolica del Sacro Cuore,italy,Milan,Q7896802,Università Cattolica del Sacro Cuore Library,https://biblioteche.unicatt.it/biblioteca/sbda-home,,1921
+295,University of Limerick,ireland,Limerick,Q573954,University of Limerick,https://www.ul.ie/,,1972
+296,LUT University,finland,Lappeenranta,Q1809949,Lappeenranta-Lahti University of Technology LUT,https://www.lut.fi/,,1969
+297,Saint Petersburg State University,russia,Saint Petersburg,Q27621,Saint Petersburg State University,http://www.spbu.ru/,public,1724
+298,East China Normal University,china,Shanghai,Q2034790,East China Normal University,http://www.ecnu.edu.cn,public,1951
+299,Università degli Studi di Pavia,italy,Pavia,Q219317,University of Pavia,https://portale.unipv.it/it,public,1361
+300,University of Turin,italy,Turin,,,,,
+301,Sejong University,south-korea,Seoul,Q491711,Sejong University,http://www.sejong.ac.kr/,private,1940
+302,"University of California, Riverside",usa,Riverside,Q1075148,"University of California, Riverside",https://ucr.edu,public,1954
+303,University of Turku,finland,Turku,Q501841,University of Turku,https://www.utu.fi/,public,1920
+304,University of Naples - Federico II,italy,Naples,,,,,
+305,Ruhr-Universität Bochum,germany,Bochum,Q309948,Ruhr University Bochum,https://www.ruhr-uni-bochum.de/de,public,1962
+306,Dublin City University,ireland,Dublin,Q1202897,Dublin City University,https://www.dcu.ie/,public,1975
+307,Graz University of Technology,austria,Graz,Q689775,Graz University of Technology,https://www.tugraz.at/,,1811
+308,University of Florence,italy,Florence,Q820887,University of Florence,https://www.unifi.it/,,1321
+309,Oxford Brookes University,uk,Oxford,Q132478,Oxford Brookes University,https://www.brookes.ac.uk/,public,1865
+310,Singapore Management University,singapore,Singapore,Q950609,Singapore Management University,http://www.smu.edu.sg,,2000
+311,University of Saskatchewan,canada,Saskatoon,,,,,
+312,University of Southern Queensland,australia,Toowoomba,Q978124,University of Southern Queensland,http://www.usq.edu.au/,public,1967
+313,University of Kent,uk,Canterbury,Q1516684,University of Kent,https://www.kent.ac.uk,public,1965
+314,Aston University,uk,Birmingham,Q750066,Aston University,http://www.aston.ac.uk/,public,1895
+315,Shenzhen University,china,Shenzhen,Q1945756,Shenzhen University,https://www.szu.edu.cn,,1983
+316,University at Buffalo SUNY,usa,Buffalo,Q101015766,University at Buffalo SUNY Department of Political Science,,,
+317,Lincoln University,new-zealand,Lincoln,Q1048626,Lincoln University,https://www.lincoln.ac.nz/,public,1878
+318,Murdoch University,australia,Murdoch,Q1375146,Murdoch University,https://www.murdoch.edu.au/,public,1973
+319,HSE University,russia,Moscow,Q1959511,National Research University – Higher School of Economics,http://www.hse.ru/,public,1992
+320,Northwestern Polytechnical University,china,Xi'an,Q832550,Northwestern Polytechnical University,http://www.nwpu.edu.cn/,,1938
+321,Universität Konstanz,germany,Konstanz,Q835440,University of Konstanz,https://www.uni-konstanz.de/,public,1966
+322,Universität Mannheim,germany,Mannheim,Q317070,University of Mannheim,https://www.uni-mannheim.de/,public,1907
+323,Julius-Maximilians-Universität Würzburg,germany,Würzburg,Q161976,University of Würzburg,http://www.uni-wuerzburg.de/,public,1402
+324,Auckland University of Technology (AUT),new-zealand,Auckland,Q758659,Auckland University of Technology,https://www.aut.ac.nz/,,2000
+325,Chung-Ang University (CAU),south-korea,Seoul,Q41790,Chung-Ang University,https://www.cau.ac.kr/,private,1918
+326,Czech Technical University in Prague,czech-republic,Prague,Q1329478,Czech Technical University in Prague,https://cvut.cz,public,1707
+327,Universitat Politècnica de Catalunya - BarcelonaTech (UPC),spain,Barcelona,,,,,
+328,Universitat Politecnica de Valencia,spain,Valencia,Q2003976,Technical University of Valencia,https://www.upv.es/,public,1968
+329,Central Queensland University (CQUniversity Australia),australia,Norman Gardens,Q1053985,Central Queensland University,https://www.cqu.edu.au/,public,1992
+330,Tampere University,finland,Tampere,Q56403399,Tampere University,https://www.tuni.fi,public,2019
+331,"Essex, University of",uk,Colchester,,,,,
+332,James Cook University,australia,Townsville,Q536512,James Cook University,http://www.jcu.edu.au/,public,1970
+333,Umea University,sweden,Umeå,Q1144565,Umeå University,https://www.umu.se,public,1965
+334,University of Trento,italy,Trento,Q930528,University of Trento,https://www.unitn.it,,1962
+335,Aix-Marseille University,france,Marseille,Q2302586,Aix-Marseille University,https://www.univ-amu.fr/,public,2012
+336,Shanghai University,china,Shanghai,Q1343386,Shanghai University,http://www.shu.edu.cn,public,1994
+337,University of Science and Technology Beijing,china,Beijing,Q1510516,University of Science and Technology Beijing,http://www.ustb.edu.cn,,1952
+338,IE University,spain,Segovia,Q283501,IE University,https://www.ie.edu/es/universidad/,private,1997
+339,University of Dundee,uk,Dundee,Q1249005,University of Dundee,http://www.dundee.ac.uk/,public,1881
+340,University of Granada,spain,Granada,Q1232180,University of Granada,https://www.ugr.es,public,1531
+341,Pusan National University,south-korea,Busan,Q53122,Pusan National University,http://www.pusan.ac.kr/,,1946
+342,Universitat de Valencia,spain,Valencia,Q383568,University of Valencia,https://www.uv.es/,public,1499
+343,Central South University,china,Changsha,Q5061828,Central South University,http://www.csu.edu.cn/,,2000
+344,Shoolini University of Biotechnology and Management Sciences,india,Solan,,,,,
+345,Masaryk University,czech-republic,Brno,Q763586,Masaryk University,https://www.muni.cz,public,1919
+346,Université de Strasbourg,france,Strasbourg,Q3064312,Université de Strasbourg. Faculté de théologie catholique,https://theocatho.unistra.fr/,,1902
+347,USI - Università della Svizzera italiana,switzerland,Lugano,,,,,
+348,Johannes Kepler University Linz,austria,Linz,Q682739,Johannes Kepler University Linz,https://www.jku.at/,public,1966
+349,SOAS University of London,uk,London,Q220144,"SOAS, University of London",https://soas.ac.uk,,1916
+350,"University of California, Santa Cruz",usa,Santa Cruz,Q1047293,"University of California, Santa Cruz",https://ucsc.edu,public,1965
+351,University of Connecticut,usa,Storrs,Q49206,University of Connecticut,https://uconn.edu/,public,1881
+352,Dalian University of Technology,china,Dalian,Q1477368,Dalian University of Technology,http://www.dlut.edu.cn,,1949
+353,Chongqing University,china,Chongqing,Q834857,Chongqing University,https://www.cqu.edu.cn,,1929
+354,Università Vita-Salute San Raffaele,italy,Milan,Q3551506,Vita-Salute San Raffaele University,https://www.unisr.it,private,1996
+355,Kazan (Volga region) Federal University,russia,Kazan,Q113788,Kazan Federal University,https://kpfu.ru/,,1804
+356,"Stony Brook University, State University of New York",usa,Stony Brook,,,,,
+357,Anna University,india,Chennai,Q165053,Anna University,http://annauniv.edu,,1978
+358,Leibniz University Hannover,germany,Hanover,Q678982,Leibniz University Hannover,https://www.uni-hannover.de/,public,1831
+359,University of Bayreuth,germany,Bayreuth,Q702482,University of Bayreuth,https://www.uni-bayreuth.de/,public,1975
+360,Université de Montpellier,france,Montpellier,Q132370180,université de Montpellier Paul-Valéry (UMPV),,public,2024
+361,Universitat Ramon Llull,spain,Barcelona,Q85693040,Biblioteca de la Universitat Ramon Llull - Facultat de Psicologia i Ciències de l'Educació i l'Esport Blanquerna,http://biblioteca.blanquerna.edu/es/fpcee,,
+362,China Agricultural University,china,Beijing,Q257655,China Agricultural University,http://www.cau.edu.cn/,,1905
+363,Hunan University,china,Changsha,Q649868,Hunan University,https://www.hnu.edu.cn,,976
+364,University of Canberra,australia,Bruce,Q1640648,University of Canberra,https://www.canberra.edu.au/,public,1990
+365,Hiroshima University,japan,Higashihiroshima,Q115220,Hiroshima University,https://www.hiroshima-u.ac.jp/,,1949
+366,Kyungpook National University,south-korea,Daegu,Q487841,Kyungpook National University,http://www.knu.ac.kr/,,1946
+367,Jinan University (China),china,Guangzhou,Q2687517,Jinan University,http://www.jnu.edu.cn/,,1906
+368,"Royal Holloway, University of London",uk,London,Q1202039,"Royal Holloway, University of London",https://royalholloway.ac.uk/,,1879
+369,Universidad de Sevilla,spain,Seville,Q1229996,University of Seville,https://www.us.es/,public,1505
+370,University of Bordeaux,france,Talence,Q13344,University of Bordeaux,https://www.u-bordeaux.fr/,,2014
+371,Ewha Womans University,south-korea,Seoul,Q41114,Ewha Womans University,https://www.ewha.ac.kr/,private,1886
+372,Jilin University,china,Changchun,Q1432030,Jilin University,http://www.jlu.edu.cn/,,1946
+373,Novosibirsk State University,russia,Novosibirsk,Q1637997,Novosibirsk State University,http://www.nsu.ru/,,1959
+374,University of Electronic Science and Technology of China,china,Chengdu,Q5971900,University of Electronic Science and Technology of China,http://www.uestc.edu.cn/,,1956
+375,Sogang University,south-korea,Seoul,Q374457,Sogang University,http://www.sogang.ac.kr/,private,1960
+376,Concordia University,canada,Montreal,Q326342,Concordia University,https://www.concordia.ca/,,1974
+377,University of Bradford,uk,Bradford,Q954035,University of Bradford,http://www.brad.ac.uk/,public,1966
+378,Johannes Gutenberg Universität Mainz,germany,Mainz,Q161982,Johannes Gutenberg University Mainz,https://www.uni-mainz.de/,public,1477
+379,Universität Potsdam,germany,Potsdam,Q153012,University of Potsdam,https://www.uni-potsdam.de/,public,1991
+380,University of Genoa,italy,Genoa,Q593321,University of Genoa,https://unige.it,,1481
+381,Kobe University,japan,Kobe,Q1192597,Kobe University,https://www.kobe-u.ac.jp/,,1949
+382,Moscow Institute of Physics and Technology (MIPT / Moscow Phystech),russia,Dolgoprudny,Q1367256,Moscow Institute of Physics and Technology,https://mipt.ru/,,1946
+383,Ural Federal University - UrFU,russia,Ekaterinburg,,,,,
+384,Warsaw University of Technology,poland,Warsaw,Q1718656,Warsaw University of Technology,https://www.pw.edu.pl/,,1899
+385,Indian Institute of Technology BHU Varanasi (IIT BHU Varanasi),india,Varanasi,,,,,
+386,Tomsk State University,russia,Tomsk,Q742494,Tomsk State University,http://www.tsu.ru/,,1878
+387,Washington State University,usa,Pullman,Q597236,Washington State University,https://wsu.edu,public,1959
+388,Conservatoire National des Arts et Métiers (CNAM),france,Paris,Q524289,Conservatoire national des Arts et Métiers,https://www.cnam.fr/,,1794
+389,University of Kansas,usa,Lawrence,Q52413,University of Kansas,https://www.ku.edu,public,1864
+390,Bond University,australia,Gold Coast,Q892188,Bond University,http://www.bond.edu.au/,private,1987
+391,Dongguk University,south-korea,Seoul,Q487804,Dongguk University,https://www.dongguk.edu,private,1906
+392,Justus-Liebig-University Giessen,germany,Giessen,Q317053,University of Giessen,https://www.uni-giessen.de/,public,1607
+393,Renmin (People's) University of China,china,Beijing,Q1074117,Renmin University of China,https://www.ruc.edu.cn/,public,1937
+394,University of Huddersfield,uk,Huddersfield,Q3056815,University of Huddersfield,http://hud.ac.uk/,public,1992
+395,University of Jyväskylä,finland,Jyväskylä,Q578326,University of Jyväskylä,https://www.jyu.fi/,,1934
+396,Chandigarh University (Punjab),india,Mohali,Q16858934,Chandigarh University,https://www.cuchd.in,private,2012
+397,Université Laval,canada,Québec,Q5429093,Faculté de droit de l'Université Laval,https://www.fd.ulaval.ca,,1854
+398,Northumbria University,uk,Newcastle upon Tyne,,,,,
+399,University of Utah,usa,Salt Lake City,Q168515,University of Utah,https://www.utah.edu,public,1850
+400,The University of Georgia,usa,Athens,,,,,
+401,University of Windsor,canada,Windsor,Q2065769,University of Windsor,https://www.uwindsor.ca/,,1963
+402,Colorado State University,usa,Fort Collins,Q1111640,Colorado State University,https://www.colostate.edu/,public,1870
+403,Iowa State University,usa,Ames,Q1136919,Iowa State University,https://www.iastate.edu,public,1858
+404,Universität Leipzig,germany,Leipzig,Q154804,Leipzig University,https://www.uni-leipzig.de/,public,1409
+405,University of Milano-Bicocca,italy,Milan,Q1073674,University of Milan-Bicocca,https://www.unimib.it,public,1998
+406,Edith Cowan University,australia,Joondalup,Q1284960,Edith Cowan University,https://www.ecu.edu.au/,public,1991
+407,Florida State University,usa,Tallahassee,Q861548,Florida State University,https://fsu.edu,public,1851
+408,Indian Institute of Technology Indore,india,Indore,Q6020729,Indian Institute of Technology Indore,http://www.iiti.ac.in,public,2009
+409,University of Guelph,canada,Guelph,Q795988,University of Guelph,https://www.uoguelph.ca/,,1964
+410,Boston College,usa,Chestnut Hill,Q49118,Boston College,https://bc.edu,private,1863
+411,Charles Darwin University,australia,Casuarina,Q1064071,Charles Darwin University,http://www.cdu.edu.au/,public,2003
+412,University of Houston,usa,Houston,Q1472358,University of Houston,https://www.uh.edu/,public,1927
+413,Inha University,south-korea,Incheon,Q488851,Inha University,https://www.inha.ac.kr,private,1954
+414,Jawaharlal Nehru University,india,New Delhi,Q1147063,Jawaharlal Nehru University,https://www.jnu.ac.in,public,1969
+415,University of Manitoba,canada,Winnipeg,Q1191833,University of Manitoba,https://umanitoba.ca/,public,1877
+416,University of Salamanca,spain,Salamanca,Q308963,University of Salamanca,https://www.usal.es/,public,1218
+417,University of Stirling,uk,Stirling,Q963530,University of Stirling,http://www.stir.ac.uk,public,1967
+418,Zhejiang University of Technology,china,Hangzhou,Q986087,Zhejiang University of Technology,https://www.zjut.edu.cn/,,1953
+419,Université Paul Sabatier Toulouse III,france,Toulouse,,,,,
+420,Bangor University,uk,Bangor,Q790029,Bangor University,https://www.bangor.ac.uk/,public,1884
+421,Universität Jena,germany,Jena,Q154561,University of Jena,https://www.uni-jena.de/,public,1558
+422,Ajou University,south-korea,Suwon,Q491082,Ajou University,http://www.ajou.ac.kr/,,1973
+423,Paris Lodron University of Salzburg,austria,Salzburg,,,,,
+424,University of Siena,italy,Siena,Q1245999,University of Siena,https://www.unisi.it,,1240
+425,"Birla Institute of Technology and Science, Pilani",india,Pilani,,,,,
+426,Colorado School of Mines,usa,Golden,Q1111367,Colorado School of Mines,https://www.mines.edu/,public,1873
+427,Hitotsubashi University,japan,Tokyo,Q204626,Hitotsubashi University,https://www.hit-u.ac.jp/,,1875
+428,Ulm University,germany,Ulm,Q835662,Ulm University,https://www.uni-ulm.de/,public,1967
+429,University of Delaware,usa,Newark,Q1068072,University of Delaware,https://www.udel.edu/,public,1743
+430,University of Hull,uk,Hull,Q1474019,University of Hull,https://www.hull.ac.uk/,public,1927
+431,Coventry University,uk,Coventry,Q1138080,Coventry University,https://www.coventry.ac.uk/,,1970
+432,Rensselaer Polytechnic Institute,usa,Troy,Q49211,Rensselaer Polytechnic Institute,http://www.rpi.edu,private,1824
+433,Universität Bremen,germany,Bremen,Q1664722,Universitat Bremen Institut Arbeit und Wirtschaft,http://www.iaw.uni-bremen.de/ccm/navigation/,,
+434,University of Brescia,italy,Brescia,Q1781263,University of Brescia,https://www.unibs.it,,1982
+435,Zhengzhou University,china,Zhengzhou,Q649895,Zhengzhou University,http://www.zzu.edu.cn,,1956
+436,Brno University of Technology,czech-republic,Brno,Q1122171,Brno University of Technology,https://www.vut.cz/,,1899
+437,Indian Institute of Technology Hyderabad (IITH),india,Sangareddy,Q2808676,Indian Institute of Technology Hyderabad,http://www.iith.ac.in/,public,2008
+438,Saarland University,germany,Saarbrücken,Q700758,Saarland University,https://www.uni-saarland.de/,public,1948
+439,Technische Universität Bergakademie Freiberg,germany,Freiberg,Q689854,Freiberg University of Mining and Technology,https://tu-freiberg.de/,public,1765
+440,Eötvös Loránd University,hungary,Budapest,Q390287,Eötvös Loránd University,https://www.elte.hu/,public,1635
+441,Ulster University,uk,Belfast,Q2096524,Ulster University,https://www.ulster.ac.uk/,,1984
+442,Tulane University,usa,New Orleans,Q1193547,Tulane University,https://tulane.edu,private,1834
+443,University of Iowa,usa,Iowa City,Q182973,University of Iowa,https://uiowa.edu,public,1847
+444,"Vellore Institute of Technology (VIT), Vellore, India",india,Vellore,,,,,
+445,Ca' Foscari University of Venice,italy,Venice,Q1546906,Ca' Foscari University of Venice,https://www.unive.it,public,1868
+446,"China University of Petroleum, Beijing",china,Beijing,Q3274786,China University of Petroleum (Beijing),http://www.cup.edu.cn,,1953
+447,Manchester Metropolitan University,uk,Manchester,Q1888771,Manchester Metropolitan University,https://www.mmu.ac.uk/,public,1842
+448,University of Debrecen,hungary,Debrecen,Q903092,University of Debrecen,https://unideb.hu/,,1538
+449,Free University of Bozen-Bolzano,italy,Bolzano,Q1231433,Free University of Bozen-Bolzano,https://www.unibz.it,,1997
+450,Université Claude Bernard Lyon 1,france,Villeurbanne,Q4032,Claude Bernard University Lyon 1,https://www.univ-lyon1.fr/,public,1970
+451,Peter the Great St. Petersburg Polytechnic University,russia,St. Petersburg,Q1379834,Peter the Great Saint Petersburg State Polytechnical University,http://www.spbstu.ru/,,1899
+452,Christian-Albrechts-University zu Kiel,germany,Kiel,,,,,
+453,HUFS - Hankuk (Korea) University of Foreign Studies,south-korea,Seoul,,,,,
+454,Illinois Institute of Technology,usa,Chicago,Q659706,Illinois Institute of Technology,http://www.iit.edu,private,1940
+455,National Research Nuclear University MEPhI (Moscow Engineering Physics Institute),russia,Moscow,Q56837,National Research Nuclear University,https://www.mephi.ru/,,1942
+456,University of Eastern Finland,finland,Kuopio,,,,,
+457,Universidade de Santiago de Compostela,spain,Santiago de Compostela,Q1473677,University of Santiago de Compostela,https://www.usc.gal/gl,public,1495
+458,University of Szeged,hungary,Szeged,Q369839,University of Szeged,https://u-szeged.hu,public,1921
+459,Southern Cross University,australia,Lismore,Q1278780,Southern Cross University,http://www.scu.edu.au/,public,1994
+460,Hasselt University,belgium,Diepenbeek,Q1781858,Hasselt University,http://www.uhasselt.be/,public,1971
+461,MGIMO University,russia,Moscow,Q322964,Moscow State Institute of International Relations,http://www.mgimo.ru/,,1944
+462,Nottingham Trent University,uk,Nottingham,,,,,
+463,Comillas Pontifical University,spain,Madrid,Q1687025,Comillas Pontifical University,https://www.comillas.edu,,1890
+464,University of Hawaiʻi at Mānoa,usa,Honolulu,Q2000129,University of Hawaiʻi at Mānoa,https://manoa.hawaii.edu/,public,1907
+465,American University,usa,Washington D.C.,Q168000,American University,https://american.edu,private,1893
+466,Institut National Polytechnique de Toulouse,france,Toulouse,Q3152453,National Polytechnic Institute of Toulouse,http://www.inp-toulouse.fr,,1969
+467,Otto-von-Guericke-Universität Magdeburg,germany,Magdeburg,Q655866,University of Magdeburg,http://www.ovgu.de/,public,1993
+468,Beijing University of Chemical Technology,china,Beijing,Q2496210,Beijing University of Chemical Technology,http://www.buct.edu.cn/,,1958
+469,The Catholic University of Korea (CUK),south-korea,Gyeonggi,Q16095606,"The Catholic University of Korea, Seoul St. Mary's Hospital",https://www.cmcseoul.or.kr/,,1980
+470,"University of Chemistry and Technology, Prague",czech-republic,Prague,Q1476341,University of Chemistry and Technology,http://www.vscht.cz/,,1952
+471,Symbiosis International (Deemed University),india,Pune,Q7661132,Symbiosis International University,http://siu.edu.in/HTML_SIU/index.php,private,2002
+472,Florida International University (FIU),usa,Miami,Q1065809,Florida International University,https://www.fiu.edu/,public,1965
+473,Università Politecnica delle Marche,italy,Ancona,,,,,
+474,University of Portsmouth,uk,Portsmouth,Q2744209,University of Portsmouth,https://port.ac.uk,public,1869
+475,École Centrale de Lyon,france,Lyon,Q10177,École Centrale de Lyon,https://www.ec-lyon.fr/,,1857
+476,Toronto Metropolitan University (formerly Ryerson University),canada,Toronto,Q611723,Toronto Metropolitan University,https://www.torontomu.ca/,public,1948
+477,Abo Akademi University,finland,Turku,Q917874,Åbo Akademi University,https://www.abo.fi/,public,1918
+478,East China University of Science and Technology,china,Shanghai,Q2655352,East China University of Science and Technology,http://www.ecust.edu.cn/,public,1952
+479,Lehigh University,usa,Bethlehem,Q622137,Lehigh University,https://www2.lehigh.edu/,private,1865
+480,University of Fribourg,switzerland,Fribourg,Q36188,University of Fribourg,https://www.unifr.ch,public,1889
+481,Nanjing University of Science and Technology,china,Nanjing,Q3953805,Nanjing University of Science and Technology,http://www.njust.edu.cn/,public,1953
+482,Stevens Institute of Technology,usa,Hoboken,Q657222,Stevens Institute of Technology,https://www.stevens.edu/,private,1870
+483,China University of Geosciences,china,Wuhan,Q1074097,China University of Geosciences,http://www.cug.edu.cn,,1952
+484,City University of New York,usa,New York City,Q762266,City University of New York,https://cuny.edu,public,1961
+485,Jeonbuk National University,south-korea,Jeonju,Q623851,Jeonbuk National University,http://www.jbnu.ac.kr/,,1947
+486,University of New Brunswick,canada,Fredericton,Q1112515,University of New Brunswick,https://www.unb.ca/,,1785
+487,University of the Basque Country,spain,Leioa,Q1232428,University of the Basque Country,https://www.ehu.eus/eu/,public,1980
+488,Konkuk University,south-korea,Seoul,Q41765,Konkuk University,https://konkuk.ac.kr,private,1931
+489,Ritsumeikan University,japan,Kyoto,Q1152190,Ritsumeikan University,http://www.ritsumei.jp/index_j.html,private,1900
+490,University of Klagenfurt,austria,Klagenfurt,Q690639,University of Klagenfurt,https://www.aau.at/,,1970
+491,Jamia Millia Islamia,india,New Delhi,Q2340211,Jamia Millia Islamia,https://jmi.ac.in,public,1920
+492,"Kingston University, London",uk,Kingston upon Thames,,,,,
+493,Université de Lille,france,Lille,Q3551621,University of Lille,https://www.univ-lille.fr/,,1559
+494,University of Texas at Dallas,usa,Richardson,Q1781394,University of Texas at Dallas,https://www.utdallas.edu/,public,1961
+495,TU Dortmund University,germany,Dortmund,Q685557,Technical University of Dortmund,https://www.tu-dortmund.de/,public,1968
+496,University of Plymouth,uk,Plymouth,Q1711558,University of Plymouth,https://www.plymouth.ac.uk,,1992
+497,Karl-Franzens-Universität Graz,austria,Graz,Q622683,University of Graz,https://www.uni-graz.at/de/,,1585
+498,Universität Regensburg,germany,Regensburg,Q574571,University of Regensburg,https://www.uni-regensburg.de/,public,1962
+499,Victoria University,australia,Footscray,Q180514,Victoria University,https://www.vu.edu.au/,public,1916
+500,"Goldsmiths, University of London",uk,London,Q528231,"Goldsmiths, University of London",https://gold.ac.uk,public,1891
+501,"Indian Institute of Technology (Indian School of Mines), Dhanbad",india,Dhanbad,Q6021557,IIT (ISM) Dhanbad,https://www.iitism.ac.in,public,1926
+502,Jiangsu University,china,Zhenjiang,Q6191740,Jiangsu University,http://www.ujs.edu.cn,,1902
+503,Thapar Institute of Engineering & Technology,india,Patiala,,,,,
+504,"The University of Tennessee, Knoxville",usa,Knoxville,,,,,
+505,Universidad de Zaragoza,spain,Zaragoza,Q633561,University of Zaragoza,https://unizar.es/,public,1542
+506,Bharathiar University,india,Coimbatore,Q3534400,Bharathiar University,https://b-u.ac.in/,public,1983
+507,Oregon State University,usa,Corvallis,Q861888,Oregon State University,https://oregonstate.edu/,public,1856
+508,Palacký University Olomouc,czech-republic,Olomouc,Q1637611,Palacký University Olomouc,http://www.upol.cz/en/,public,1573
+509,Soochow University,china,Suzhou,Q1639978,Soochow University,http://www.suda.edu.cn/,public,1900
+510,Université Côte d'Azur,france,Nice,Q19370961,University of Côte d'Azur,https://univ-cotedazur.fr/,public,2019
+511,University of Oregon,usa,Eugene,Q766145,University of Oregon,http://www.uoregon.edu,public,1876
+512,University of South Carolina,usa,Columbia,Q1024426,University of South Carolina,https://sc.edu/,public,1801
+513,Jadavpur University,india,Kolkata,Q2579702,Jadavpur University,https://jadavpuruniversity.in,public,1955
+514,Lanzhou University,china,Lanzhou,Q4475799,Lanzhou University,http://www.lzu.edu.cn/,,1909
+515,Maynooth University,ireland,Maynooth,,,,,
+516,Memorial University of Newfoundland,canada,St. John's,Q1895354,Memorial University of Newfoundland,http://www.mun.ca/,public,1925
+517,Nanjing University of Aeronautics and Astronautics,china,Nanjing,Q23110,Nanjing University of Aeronautics and Astronautics,http://www.nuaa.edu.cn,,1952
+518,"National Institute of Technology, Tiruchirappalli",india,Tiruchirappalli,Q3521821,"National Institute of Technology, Tiruchirappalli",https://www.nitt.edu,public,1964
+519,Plekhanov Russian University of Economics,russia,Moscow,Q2004114,Plekhanov Russian Economic University,https://www.rea.ru/,public,1907
+520,TUHH Hamburg University of Technology,germany,Hamburg,,,,,
+521,"University of Missouri, Columbia",usa,Columbia,,,,,
+522,Adam Mickiewicz University,poland,Poznań,Q348402,Adam Mickiewicz University in Poznań,http://www.amu.edu.pl/,,1919
+523,Beijing Forestry University,china,Beijing,Q4881133,Beijing Forestry University,http://www.bjfu.edu.cn/,,1952
+524,Beijing University of Technology,china,Beijing,Q1674548,Beijing University of Technology,https://www.bjut.edu.cn/,public,1960
+525,Czech University of Life Sciences Prague,czech-republic,Prague,Q1460141,Czech University of Life Sciences Prague,http://www.czu.cz/en/,,1952
+526,Northwest Agriculture and Forestry University,china,Yangling,Q985808,Northwest A&F University,http://www.nwsuaf.edu.cn/,,1934
+527,Syracuse University,usa,Syracuse,,,,,
+528,Universidad de Alcalá,spain,Madrid,Q1243904,University of Alcalá,https://www.uah.es,public,1977
+529,Université de Rennes,france,Rennes,Q459026,University of Rennes 2 – Upper Brittany,https://www.univ-rennes2.fr/,public,1971
+530,University of Central Florida,usa,Orlando,Q143451,University of Central Florida,http://www.ucf.edu,public,1963
+531,Far Eastern Federal University,russia,Vladivostok,Q702303,Far Eastern Federal University,https://www.dvfu.ru/,,1899
+532,National Research Tomsk Polytechnic University,russia,Tomsk,Q1466666,Tomsk Polytechnic University,http://www.tpu.ru/,,1896
+533,New Jersey Institute of Technology (NJIT),usa,Newark,Q3272013,New Jersey Institute of Technology,https://www.njit.edu/,public,1881
+534,University of Bari,italy,Bari,Q1236136,University of Bari,https://www.uniba.it,,1925
+535,University of Cincinnati,usa,Cincinnati,Q153265,University of Cincinnati,https://www.uc.edu/,public,1819
+536,Brandeis University,usa,Waltham,Q49119,Brandeis University,https://www.brandeis.edu/,private,1948
+537,Budapest University of Technology and Economics,hungary,Budapest,Q1186843,Budapest University of Technology and Economics,https://bme.hu,public,1782
+538,Missouri University of Science and Technology,usa,Rolla,,,,,
+539,O.P. Jindal Global University (JGU),india,Sonepat,Q7072154,O.P. Jindal Global (Institution of Eminence Deemed to be University),https://www.jgu.edu.in,private,2009
+540,Temple University,usa,Philadelphia,Q1420239,Temple University,https://www.temple.edu/,public,1884
+541,AGH University of Krakow,poland,Krakow,Q414245,AGH University of Science and Technology,https://www.agh.edu.pl/,public,1913
+542,Texas Tech University,usa,Lubbock,Q1423756,Texas Tech University,https://www.ttu.edu/,public,1923
+543,University of Messina (UniME),italy,Messina,Q1245318,University of Messina,https://www.unime.it,public,1548
+544,University of South Florida,usa,Tampa,Q500606,University of South Florida,http://www.usf.edu/,public,1956
+545,University of Trieste,italy,Trieste,Q1751060,University of Trieste,https://units.it,public,1924
+546,UWE Bristol (University of the West of England),uk,Bristol,Q2002520,University of the West of England,https://www.uwe.ac.uk/,public,1970
+547,Beijing Jiaotong University,china,Beijing,Q4587760,Beijing Jiaotong University,http://www.bjtu.edu.cn/,,1896
+548,Drexel University,usa,Philadelphia,Q603034,Drexel University,https://drexel.edu/,private,1891
+549,Jiangnan University,china,Wuxi,,,,,
+550,University of Hohenheim,germany,Stuttgart,Q690912,University of Hohenheim,https://www.uni-hohenheim.de/,public,1818
+551,University of New Mexico,usa,Albuquerque,Q1190812,University of New Mexico,https://www.unm.edu/,public,1889
+552,University of Oklahoma,usa,Norman,Q640652,University of Oklahoma,http://www.ou.edu,public,1890
+553,Chonnam National University,south-korea,Gwangju,Q494681,Chonnam National University,http://www.jnu.ac.kr/,,1952
+554,Technische Universität Braunschweig,germany,Braunschweig,Q734324,TU Braunschweig,https://www.tu-braunschweig.de/,public,1745
+555,Verona University,italy,Verona,,,,,
+556,Lovely Professional University (LPU),india,Chaheru,Q5756621,Lovely Professional University,https://www.lpu.in,private,2005
+557,Savitribai Phule Pune University,india,Pune,Q3135913,Savitribai Phule Pune University,https://www.unipune.ac.in,public,1948
+558,Technological University Dublin,ireland,Dublin,Q55619051,Technological University Dublin,https://www.tudublin.ie,,2019
+559,University of Greenwich,uk,Greenwich,Q1896148,University of Greenwich,https://www.gre.ac.uk/,,1890
+560,University of Pecs,hungary,Pécs,,,,,
+561,Yeungnam University,south-korea,Gyeongsan,Q56148,Yeungnam University,http://www.yu.ac.kr/,private,1967
+562,Aberystwyth University,uk,Aberystwyth,Q319761,Aberystwyth University,https://www.aber.ac.uk/en/,public,1872
+563,Bournemouth University,uk,Poole,Q3182943,Bournemouth University,http://www.bournemouth.ac.uk,,1992
+564,Carleton University,canada,Ottawa,Q1041737,Carleton University,https://carleton.ca/,public,1943
+565,Chungnam National University,south-korea,Daejeon,Q489488,Chungnam National University,http://www.cnu.ac.kr,public,1952
+566,Edinburgh Napier University,uk,Edinburgh,Q1277357,Edinburgh Napier University,https://www.napier.ac.uk/,public,1965
+567,Gdańsk University of Technology,poland,Gdańsk,Q465922,Gdańsk University of Technology,https://pg.edu.pl/,public,1904
+568,Georgia State University,usa,Clarkston,Q1509333,Georgia State University,http://www.gsu.edu,public,1913
+569,ITMO University,russia,St. Petersburg,,,,,
+570,Keele University,uk,Keele,Q1737734,Keele University,https://www.keele.ac.uk/,,1949
+571,Martin-Luther-Universität Halle-Wittenberg,germany,Halle,,,,,
+572,Ocean University of China,china,Qingdao,Q1074015,Ocean University of China,http://www.ouc.edu.cn/,,1924
+573,Rutgers University–Newark,usa,Newark,Q7382780,Rutgers University–Newark,https://www.newark.rutgers.edu/,,1936
+574,"Saveetha Institute of Medical And Technical Sciences (SIMATS), Tamil Nadu, India",india,Tiruvallur,,,,,
+575,The National University of Science and Technology MISIS,russia,Moscow,,,,,
+576,Universidade de Vigo,spain,Vigo,Q666916,Vigo University,https://www.uvigo.gal/,public,1989
+577,Universität Duisburg-Essen,germany,Duisburg,Q696757,University of Duisburg-Essen,https://www.uni-due.de/,public,2003
+578,Université de Lorraine,france,Nancy,Q4173330,University of Lorraine,https://www.univ-lorraine.fr/,public,2012
+579,"University of Maryland, Baltimore",usa,Baltimore,Q4119470,"University of Maryland, Baltimore",https://www.umaryland.edu/,public,1807
+580,"University of Maryland, Baltimore County",usa,Baltimore,Q735049,"University of Maryland, Baltimore County",https://www.umbc.edu/,public,1966
+581,University of Modena and Reggio Emilia,italy,Modena,Q1243705,University of Modena and Reggio Emilia,https://www.unimore.it,,1175
+582,University of Mons,belgium,Mons,,,,,
+583,University of Namur,belgium,Namur,Q1391755,University of Namur,http://www.unamur.be,,1831
+584,University of Nebraska - Lincoln,usa,Lincoln,,,,,
+585,University of Palermo,italy,Palermo,Q1641504,University of Palermo,https://www.unipa.it/,,1806
+586,Wake Forest University,usa,Winston-Salem,Q392667,Wake Forest University,https://wfu.edu,private,1834
+587,Wayne State University,usa,Detroit,Q349055,Wayne State University,https://wayne.edu,public,1868
+588,Auburn University,usa,Auburn,Q540672,Auburn University,https://auburn.edu,public,1856
+589,Australian Catholic University,australia,Melbourne,Q781371,Australian Catholic University,http://www.acu.edu.au/,public,1991
+590,Catania University,italy,Catania,,,,,
+591,Chiba University,japan,Chiba,Q1321803,Chiba University,http://www.chiba-u.ac.jp/,,1923
+592,De Montfort University,uk,Leicester,Q3551402,De Montfort University,https://dmu.ac.uk/home.aspx,public,1992
+593,Donghua University,china,Shanghai,Q837544,Donghua University,http://www.dhu.edu.cn/,,1951
+594,Indian Institute of Technology Gandhinagar (IITGN),india,Gandhinagar,Q3440920,Indian Institute of Technology Gandhinagar,https://iitgn.ac.in,,2008
+595,Liverpool John Moores University,uk,Liverpool,Q1627967,Liverpool John Moores University,http://www.ljmu.ac.uk/,public,1823
+596,Manipal Academy of Higher Education,india,Manipal,Q4095278,Manipal Academy of Higher Education,http://manipal.edu/mu.html,,1956
+597,Montanuniversität Leoben,austria,Leoben,Q674568,Technical University of Leoben,http://www.unileoben.ac.at/,,1840
+598,Sechenov University,russia,Moscow,Q1962613,I.M. Sechenov First Moscow State Medical University,https://sechenov.ru/,,1758
+599,Southwest Jiaotong University,china,Chengdu,Q3551422,Southwest Jiaotong University,https://www.swjtu.edu.cn,,
+600,The New School,usa,New York,Q599316,The New School,https://newschool.edu/,private,1919
+601,Tokyo University of Science,japan,Tokyo,Q1069994,Tokyo University of Science,https://www.tus.ac.jp/,,1881
+602,Università degli Studi della Tuscia (University of Tuscia),italy,Viterbo,Q1780458,University of Tuscia,http://www.unitus.it/,,1979
+603,Università degli studi Roma Tre,italy,Rome,Q2297486,Università degli Studi Roma Tre,http://www.uniroma3.it,public,1992
+604,Universitat Rovira i Virgili,spain,Tarragona,,,,,
+605,University of Alicante,spain,Alicante,Q2037040,University of Alicante,https://www.ua.es,public,1979
+606,University of Calabria,italy,Rende,Q1752540,University of Calabria,https://www.unical.it,,1972
+607,University of Colorado Denver | Anschutz Medical Campus,usa,Denver,,,,,
+608,University of Hertfordshire,uk,Hatfield,Q1745633,University of Hertfordshire,https://www.herts.ac.uk/,public,1992
+609,University of Hyderabad,india,Hyderabad,Q1191166,University of Hyderabad,https://uohyd.ac.in,,1974
+610,University of Lincoln,uk,Lincoln,,,,,
+611,University of Salerno,italy,Fisciano,Q1633215,University of Salerno,https://www.unisa.it,public,1968
+612,University of Seoul,south-korea,Seoul,Q488334,University of Seoul,http://www.uos.ac.kr,,1997
+613,University of the Arts London,uk,London,Q2065666,University of the Arts London,https://www.arts.ac.uk/,public,1986
+614,University of the Sunshine Coast,australia,Sippy Downs,Q1423677,University of the Sunshine Coast,http://www.usc.edu.au/,public,1996
+615,University of Ulsan,south-korea,Ulsan,Q491717,University of Ulsan,http://www.ulsan.ac.kr,,1969
+616,University of Westminster,uk,London,Q1247544,University of Westminster,http://www.westminster.ac.uk,public,1838
+617,University of Wroclaw,poland,Wroclaw,Q315658,University of Wrocław,https://uwr.edu.pl/,,1702
+618,Williams College,usa,Williamstown,Q49166,Williams College,https://www.williams.edu/,private,1793
+619,Xidian University,china,Xi'an,Q649906,Xidian University,http://www.xidian.edu.cn/,public,1931
+620,Zurich University of Applied Sciences (ZHAW),switzerland,Winterthur,Q2605554,ZHAW Zurich University of Applied Sciences,https://www.zhaw.ch,,1986

@@ -1,0 +1,92 @@
+{
+  "name": "Ikh Zasag International University",
+  "nameMn": "Их засаг олон улсын их сургууль",
+  "city": "Ulaanbaatar",
+  "website": "https://ikhzasag.edu.mn",
+  "foundedYear": 1994,
+  "descriptionMn": "Их засаг олон улсын их сургууль нь 1994 онд байгуулагдаж, 2011 онд олон улсын их сургууль нэртэй болсон. Албан ёсны сайтад жилд ойролцоогоор 7,000 оюутан суралцдаг, Улаанбаатарт хоёр кампустай, нийт 14 сургуультай гэж бичсэн. Бакалаврын хөтөлбөрүүд 10 сургуульд 40 гаруй мэргэжлээр явагддаг бөгөөд хууль, нягтлан бодох бүртгэл, аялал жуулчлалын магистр, хуулийн докторын хөтөлбөртэй.",
+  "degreeLevels": [
+    "bachelor",
+    "master",
+    "phd"
+  ],
+  "languagesOfInstruction": [],
+  "faculties": [
+    "Law School",
+    "School of Engineering and Technology",
+    "School of Medicine and Health Sciences",
+    "School of Economics and Business",
+    "Chingis Khaan School of International Relations",
+    "School of Security and Law Enforcement",
+    "School of Science and Technology",
+    "School of Humanities"
+  ],
+  "subjects": [
+    "Law",
+    "Engineering and Technology",
+    "Medicine and Health Sciences",
+    "Economics and Business",
+    "International Relations",
+    "Security and Law Enforcement"
+  ],
+  "tuition": [],
+  "dorm": {
+    "annualCost": null,
+    "currency": null,
+    "note": "Two student dormitories exist (Ikh Zasag Chingis complex and Chingis SOOSE complex); cost not published on the page. Foreign students pay dormitory fees themselves.",
+    "sourceUrl": "https://ikhzasag.edu.mn/page/oyuutny-dotuur-bair"
+  },
+  "admission": {
+    "ieltsMin": null,
+    "toeflMin": null,
+    "otherEnglishNote": "Foreign bachelor applicants must demonstrate English proficiency; a placement test is given on enrollment. No minimum score stated.",
+    "requirements": [
+      "Foreign bachelor applicants: high school education recognized in Mongolia (verified via Education Evaluation Center)",
+      "Application form, national ID copy, passport copy",
+      "Previous diploma copies with Mongolian certified translation",
+      "Three 3x4 photos",
+      "English diploma reference with QR code"
+    ],
+    "deadlines": [
+      "Fall intake: June 20 - September 20",
+      "Spring intake: February 1 - March 1"
+    ],
+    "intakes": [
+      "fall",
+      "spring"
+    ],
+    "applicationUrl": "https://ikhzasag.edu.mn/page/elseltiin-zhuram666",
+    "applicationFee": "Mongolian applicants: 5,000 MNT registration fee; foreign applicant fee not stated"
+  },
+  "scholarships": [
+    {
+      "name": "Entrance exam score discount",
+      "coverage": "Score 800: 100% tuition; 650-799: 50%",
+      "url": "https://ikhzasag.edu.mn/page/tetgeleg-kh-ng-l-lt"
+    },
+    {
+      "name": "Super Student scholarship",
+      "coverage": "Study at foreign universities with 100% tuition coverage",
+      "url": "https://ikhzasag.edu.mn/page/tetgeleg-kh-ng-l-lt"
+    },
+    {
+      "name": "Olympiad achievement scholarship",
+      "coverage": "20-100% tuition discount",
+      "url": "https://ikhzasag.edu.mn/page/tetgeleg-kh-ng-l-lt"
+    },
+    {
+      "name": "Rector's Scholarship / Chinggis Khaan Scholarship",
+      "coverage": "For five / six consecutive quarters of A grades",
+      "url": "https://ikhzasag.edu.mn/page/tetgeleg-kh-ng-l-lt"
+    }
+  ],
+  "rankings": [],
+  "sources": [
+    "https://ikhzasag.edu.mn",
+    "https://ikhzasag.edu.mn/page/t-khen-zamnal",
+    "https://ikhzasag.edu.mn/page/tetgeleg-kh-ng-l-lt",
+    "https://ikhzasag.edu.mn/page/oyuutny-dotuur-bair",
+    "https://ikhzasag.edu.mn/page/elseltiin-zhuram666"
+  ],
+  "verifiedAt": "2026-11-14"
+}

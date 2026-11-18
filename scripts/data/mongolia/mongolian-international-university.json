@@ -1,0 +1,48 @@
+{
+  "name": "Mongolia International University (MIU)",
+  "nameMn": "Монгол улсын олон улсын их сургууль (MIU)",
+  "city": "Ulaanbaatar",
+  "website": "https://miu.edu.mn",
+  "foundedYear": 2002,
+  "descriptionMn": "Mongolia International University (MIU) нь Улаанбаатар хотод байрладаг, 2002 онд байгуулагдсан гэж албан ёсны сайтад бичсэн. Сайтад 11 бакалаврын хөтөлбөр (Бизнесийн удирдлага, Програм хангамжийн инженерчлэл, Компьютерийн ухаан, Сэтгэл судлал гэх мэт), MBA болон Програм хангамжийн инженерчлэлийн магистрын хөтөлбөр байдаг ба оюутнуудын 34 хувь нь гадаадын иргэн гэж дурдсан.",
+  "degreeLevels": [
+    "bachelor",
+    "master"
+  ],
+  "languagesOfInstruction": [],
+  "faculties": [
+    "Graduate School of FLE"
+  ],
+  "subjects": [
+    "Business Administration",
+    "Software Engineering",
+    "Computer Science",
+    "Psychology"
+  ],
+  "tuition": [],
+  "dorm": {
+    "annualCost": null,
+    "currency": null,
+    "note": null,
+    "sourceUrl": null
+  },
+  "admission": {
+    "ieltsMin": null,
+    "toeflMin": null,
+    "otherEnglishNote": null,
+    "requirements": [],
+    "deadlines": [],
+    "intakes": [],
+    "applicationUrl": "https://miu.edu.mn/application_form",
+    "applicationFee": null
+  },
+  "scholarships": [],
+  "rankings": [],
+  "sources": [
+    "https://miu.edu.mn",
+    "https://miu.edu.mn/about_miu/overview",
+    "https://miu.edu.mn/application_form",
+    "https://miu.edu.mn/resources/faq"
+  ],
+  "verifiedAt": "2026-11-14"
+}

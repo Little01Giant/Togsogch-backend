@@ -1,0 +1,72 @@
+{
+  "name": "Mongolian National University of Education",
+  "nameMn": "Монгол Улсын Боловсролын Их Сургууль (МУБИС)",
+  "city": "Ulaanbaatar",
+  "website": "https://www.msue.edu.mn",
+  "foundedYear": 1922,
+  "descriptionMn": "МУБИС нь 1922 онд багш бэлтгэх түр курсээр эхэлсэн бөгөөд бакалавр, магистр, докторын хөтөлбөртэй. Төв байрандаа Багшийн, Биеийн тамирын, Боловсрол судлалын, Дүрслэх урлаг технологийн, Математик байгалийн шинжлэх ухааны, Нийгэм хүмүүнлэгийн, Сургуулийн өмнөх боловсролын гэсэн 7 сургууль, Архангай болон Баян-Өлгийн салбар сургуультай. Албан сайтад 11,259 оюутантай, 11 дотуур байрны 2,950 оромжтой гэж бичсэн.",
+  "degreeLevels": [
+    "bachelor",
+    "master",
+    "phd"
+  ],
+  "languagesOfInstruction": [],
+  "faculties": [
+    "Багшийн сургууль",
+    "Биеийн тамирын сургууль",
+    "Боловсрол судлалын сургууль",
+    "Дүрслэх урлаг, технологийн сургууль",
+    "Математик, байгалийн шинжлэх ухааны сургууль",
+    "Нийгмийн ухаан, хүмүүнлэгийн сургууль",
+    "Сургуулийн өмнөх боловсролын сургууль",
+    "Архангай салбар сургууль",
+    "Баян-Өлгий салбар сургууль",
+    "Дунд сургууль (харьяа ерөнхий боловсролын сургууль)"
+  ],
+  "subjects": [
+    "Education",
+    "Teacher training",
+    "Mathematics and natural sciences",
+    "Social sciences and humanities",
+    "Fine arts and technology",
+    "Physical education",
+    "Preschool education"
+  ],
+  "tuition": [],
+  "dorm": {
+    "annualCost": null,
+    "currency": null,
+    "note": "11 dormitories, capacity 2,950 students; cost not published on pages read",
+    "sourceUrl": "https://www.msue.edu.mn/p/r/5600"
+  },
+  "admission": {
+    "ieltsMin": null,
+    "toeflMin": null,
+    "otherEnglishNote": null,
+    "requirements": [],
+    "deadlines": [],
+    "intakes": [],
+    "applicationUrl": "https://burtgel.msue.edu.mn/",
+    "applicationFee": null
+  },
+  "scholarships": [
+    {
+      "name": "Сургалтын төлбөрийн тэтгэлэг (state, Mongolian citizens)",
+      "coverage": "100% if new student's field exam score above 501; continuing: 100% at GPA>=3.0, 70% at GPA 2.8-3.0",
+      "url": "https://www.msue.edu.mn/p/r/6651"
+    },
+    {
+      "name": "Сургалтын зээл (reduced-interest loan)",
+      "coverage": "Tuition loan; entrants avg exam score >=500, GPA>=2.8 bachelor / 3.0 master, phd",
+      "url": "https://www.msue.edu.mn/p/r/6651"
+    }
+  ],
+  "rankings": [],
+  "sources": [
+    "https://www.msue.edu.mn",
+    "https://www.msue.edu.mn/p/r/5600",
+    "https://www.msue.edu.mn/p/r/5644",
+    "https://www.msue.edu.mn/p/r/6651"
+  ],
+  "verifiedAt": "2026-11-14"
+}

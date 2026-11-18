@@ -1,0 +1,7 @@
+node_modules
+dist
+.env
+.devdb
+dist-e2e
+*.log
+scripts/data/*.xlsx
