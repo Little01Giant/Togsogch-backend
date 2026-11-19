@@ -98,9 +98,8 @@ export function buildUniversity(list: Record<string, string>, enrich?: Record<st
     const englishTests: any[] = [];
     if (enrich.ieltsMin && /^\d+(\.\d+)?$/.test(enrich.ieltsMin)) englishTests.push({ test: 'IELTS', minScore: enrich.ieltsMin });
     if (enrich.toeflMin && /^\d+(\.\d+)?$/.test(enrich.toeflMin)) englishTests.push({ test: 'TOEFL', minScore: enrich.toeflMin });
-    const deadlines = enrich.applicationDeadlines ? [{ label: 'Application', date: enrich.applicationDeadlines }] : [];
     const links = isHttps(enrich.admissionSourceUrl) ? [{ title: 'Admissions', url: enrich.admissionSourceUrl }] : [];
-    if (englishTests.length || deadlines.length || links.length) admission = { englishTests, deadlines, applicationLinks: links };
+    if (englishTests.length || links.length) admission = { englishTests, applicationLinks: links };
     languagesOfInstruction = splitList(enrich.languagesOfInstruction);
     intakes = [...new Set(splitList(enrich.intakes).map((s) => INTAKE_TOKENS[s.toLowerCase()]).filter(Boolean))];
   }

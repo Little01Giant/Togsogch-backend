@@ -155,9 +155,6 @@ export class University {
     type: {
       englishTests: [{ test: String, minScore: String, note: String, _id: false }],
       standardizedTests: [{ test: String, minScore: String, note: String, _id: false }],
-      requirements: [String],
-      documents: [String],
-      deadlines: [{ label: String, date: String, note: String, _id: false }],
       procedure: [String],
       applicationLinks: [{ title: String, url: String, _id: false }],
       _id: false,

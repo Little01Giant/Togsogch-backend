@@ -60,10 +60,10 @@ describe('buildUniversity', () => {
     expect(r.value.tuition).toEqual([]);
   });
 
-  it('англи хэл, хугацаа, холбоосыг admission (төлбөртэй хэсэг)-д, улирлыг enum-д буулгана', () => {
+  it('англи хэл, холбоосыг admission (төлбөртэй хэсэг)-д, улирлыг enum-д буулгана; хугацааг хадгалахгүй', () => {
     const r: any = buildUniversity(list, { ieltsMin: '6.5', toeflMin: '', applicationDeadlines: 'Jan 15', admissionSourceUrl: 'https://x.edu/apply', intakes: 'autumn;Spring;september', languagesOfInstruction: 'English;French' });
     expect(r.value.admission.englishTests).toEqual([{ test: 'IELTS', minScore: '6.5' }]);
-    expect(r.value.admission.deadlines).toEqual([{ label: 'Application', date: 'Jan 15' }]);
+    expect(r.value.admission.deadlines).toBeUndefined();
     expect(r.value.admission.applicationLinks).toEqual([{ title: 'Admissions', url: 'https://x.edu/apply' }]);
     expect(r.value.intakes).toEqual(['fall', 'spring']);
     expect(r.value.languagesOfInstruction).toEqual(['English', 'French']);
