@@ -30,11 +30,12 @@ const remoteOk = process.argv.includes('--yes-remote');
     const media = u.media ?? {};
     const set: Record<string, any> = {};
     // logoUrl: хоосон, эсвэл өмнө нь манай скриптээр орсон (media.logo байгаа) үед
-    if (it.logo) {
+    // R2 руу хуулагдсан (media.*.originalUrl байгаа) зургийг эх хаягаар дарахгүй
+    if (it.logo && !media.logo?.originalUrl) {
       if (!u.logoUrl || media.logo) { set.logoUrl = it.logo.url; set['media.logo'] = { sourceUrl: it.logo.sourceUrl, license: it.logo.license, licenseUrl: it.logo.licenseUrl, author: it.logo.author }; stat.logo++; }
       else stat.skippedManual++;
     }
-    if (it.cover) {
+    if (it.cover && !media.cover?.originalUrl) {
       if (!(u.images ?? []).length || media.cover) {
         set.images = [it.cover.url, ...(media.cover ? (u.images ?? []).slice(1) : [])];
         set['media.cover'] = { sourceUrl: it.cover.sourceUrl, license: it.cover.license, licenseUrl: it.cover.licenseUrl, author: it.cover.author };
