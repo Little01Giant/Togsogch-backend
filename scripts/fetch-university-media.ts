@@ -121,7 +121,7 @@ async function articleFallback(all: UniversityMedia[]) {
 
 async function main() {
   const mainRows = parseCsv(fs.readFileSync(path.join(dataDir, 'universities-wikidata.csv'), 'utf8'));
-  const extraFile = path.join(dataDir, 'universities-wikidata-extra.csv'); // resolve-wikidata-ids.ts-ийн шалгагдсан үр дүн
+  const extraFile = path.join(dataDir, 'universities-wikidata-extra.csv'); // заавал биш: Wikidata ID-г гараар нөхсөн (order,wikidataId) файл
   const extra = new Map((fs.existsSync(extraFile) ? parseCsv(fs.readFileSync(extraFile, 'utf8')) : []).map((r) => [r.order, r.wikidataId]));
   const list = mainRows.map((r) => (/^Q\d+$/.test(r.wikidataId) ? r : { ...r, wikidataId: extra.get(r.order) ?? '' })).filter((r) => /^Q\d+$/.test(r.wikidataId)).slice(0, limit);
   const prev: UniversityMedia[] = !refresh && fs.existsSync(outFile) ? JSON.parse(fs.readFileSync(outFile, 'utf8')) : [];
