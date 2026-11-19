@@ -580,7 +580,7 @@ describe('Нэвтрэлт (зөвхөн Google)', () => {
 
 describe('Сургуулийн эрх: сургууль/улсаар төлж нээх ба backend хамгаалалт', () => {
   let admin: ReturnType<typeof agent>; let slug: string; let uniId: string; let slug2: string; let countryId: string; let slugOther: string;
-  const SECRET = { englishTests: [{ test: 'IELTS', minScore: 6.5 }], standardizedTests: [{ test: 'SAT', minScore: '1200' }], procedure: ['Нууц алхам'], applicationLinks: [{ title: 'Apply', url: 'https://apply.example.edu/' }] };
+  const SECRET = { englishTests: [{ test: 'IELTS', minScore: 6.5 }], procedure: ['Нууц алхам'], applicationLinks: [{ title: 'Apply', url: 'https://apply.example.edu/' }] };
 
   beforeAll(async () => {
     admin = await login('admin@example.com', 'admin');
@@ -611,7 +611,7 @@ describe('Сургуулийн эрх: сургууль/улсаар төлж н
     expect(r.name).toBe('Locked Uni A');
     expect(r.access.unlocked).toBe(false);
     expect(r.country.universityCount).toBe(2); // Эрхланд: нийтлэгдсэн 2 сургууль (нийтийн тоо, төлбөртэй өгөгдөл биш)
-    expect(r.access.categories.map((c: any) => c.key).sort()).toEqual(['english', 'exams', 'procedure', 'tuition']);
+    expect(r.access.categories.map((c: any) => c.key).sort()).toEqual(['english', 'procedure', 'tuition']);
     expect(r.paid).toBeUndefined();
     const raw = JSON.stringify(r);
     for (const s of ['4321', 'apply.example.edu', 'IELTS', 'Нууц алхам', 'Нууц улсын дүрэм QRS', 'rules.example.gov']) expect(raw).not.toContain(s);

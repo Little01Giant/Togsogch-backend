@@ -199,7 +199,6 @@ export class CatalogService {
     return [
       { key: 'tuition', available: (u.tuition ?? []).length > 0 },
       { key: 'english', available: (a.englishTests ?? []).length > 0 || (country?.admissionRules ?? []).length > 0 },
-      { key: 'exams', available: (a.standardizedTests ?? []).length > 0 },
       { key: 'procedure', available: (a.procedure ?? []).length > 0 || (a.applicationLinks ?? []).length > 0 },
     ];
   }
@@ -210,7 +209,6 @@ export class CatalogService {
       tuition: u.tuition ?? [],
       english: a.englishTests ?? [],
       languageRules: (country?.admissionRules ?? []).map((r: any) => ({ text: r.text, sourceName: r.sourceName ?? null, sourceUrl: r.sourceUrl ?? null, verifiedAt: r.verifiedAt ?? null })),
-      exams: a.standardizedTests ?? [],
       procedure: { steps: a.procedure ?? [], links: a.applicationLinks ?? [] },
       programs: programs.map((p) => ({ id: String(p._id), name: p.name, level: p.level, department: p.department ?? null, language: p.language ?? null, durationMonths: p.durationMonths ?? null, annualTuition: p.annualTuition ?? null, currency: p.currency ?? 'USD', applicationPeriod: p.applicationPeriod ?? null, requirements: p.requirements ?? [] })),
     };
