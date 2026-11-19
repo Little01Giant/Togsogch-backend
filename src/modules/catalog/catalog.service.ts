@@ -194,29 +194,21 @@ export class CatalogService {
   }
 
   /** Төлбөртэй мэдээллийн ангилал бүр: мэдээлэл байгаа эсэх (агуулгыг задруулахгүй) */
-  static categories(u: any, programs: any[]) {
+  static categories(u: any, programs: any[], country?: any) {
     const a = u.admission ?? {};
-    const hasProgReq = programs.some((p) => (p.requirements ?? []).length);
     return [
       { key: 'tuition', available: (u.tuition ?? []).length > 0 },
-      { key: 'english', available: (a.englishTests ?? []).length > 0 },
-      { key: 'exams', available: (a.standardizedTests ?? []).length > 0 },
-      { key: 'requirements', available: (a.requirements ?? []).length > 0 || hasProgReq },
-      { key: 'documents', available: (a.documents ?? []).length > 0 },
-      { key: 'deadlines', available: (a.deadlines ?? []).length > 0 || programs.some((p) => p.applicationPeriod) },
+      { key: 'english', available: (a.englishTests ?? []).length > 0 || (country?.admissionRules ?? []).length > 0 },
       { key: 'procedure', available: (a.procedure ?? []).length > 0 || (a.applicationLinks ?? []).length > 0 },
     ];
   }
 
-  private paidPayload(u: any, programs: any[]) {
+  private paidPayload(u: any, programs: any[], country?: any) {
     const a = u.admission ?? {};
     return {
       tuition: u.tuition ?? [],
       english: a.englishTests ?? [],
-      exams: a.standardizedTests ?? [],
-      requirements: { general: a.requirements ?? [], programs: programs.filter((p) => (p.requirements ?? []).length).map((p) => ({ name: p.name, level: p.level, requirements: p.requirements })) },
-      documents: a.documents ?? [],
-      deadlines: [...(a.deadlines ?? []), ...programs.filter((p) => p.applicationPeriod).map((p) => ({ label: p.name, date: p.applicationPeriod }))],
+      languageRules: (country?.admissionRules ?? []).map((r: any) => ({ text: r.text, sourceName: r.sourceName ?? null, sourceUrl: r.sourceUrl ?? null, verifiedAt: r.verifiedAt ?? null })),
       procedure: { steps: a.procedure ?? [], links: a.applicationLinks ?? [] },
       programs: programs.map((p) => ({ id: String(p._id), name: p.name, level: p.level, department: p.department ?? null, language: p.language ?? null, durationMonths: p.durationMonths ?? null, annualTuition: p.annualTuition ?? null, currency: p.currency ?? 'USD', applicationPeriod: p.applicationPeriod ?? null, requirements: p.requirements ?? [] })),
     };
@@ -243,7 +235,7 @@ export class CatalogService {
       country: { id: String(c._id), slug: c.slug, code: c.code, nameMn: c.nameMn, nameEn: c.nameEn, flag: c.flag ?? null, universityCount, livingCostMonthlyUsd: c.livingCostMonthlyUsd ?? null, tuitionEstimate: c.tuitionEstimate ?? null, source: c.source ? { sourceName: c.source.sourceName ?? null, sourceUrl: c.source.sourceUrl ?? null, verifiedAt: c.source.verifiedAt ?? null, lastUpdatedAt: c.source.lastUpdatedAt ?? null, verificationStatus: c.source.verificationStatus ?? null } : null },
       source: u.source ? { verifiedAt: u.source.verifiedAt ?? null, lastUpdatedAt: u.source.lastUpdatedAt ?? null, verificationStatus: u.source.verificationStatus ?? null } : null,
     };
-    return { ...free, access: { unlocked, categories: CatalogService.categories(u, programs) }, ...(unlocked ? { paid: this.paidPayload(u, programs) } : {}) };
+    return { ...free, access: { unlocked, categories: CatalogService.categories(u, programs, c) }, ...(unlocked ? { paid: this.paidPayload(u, programs, c) } : {}) };
   }
 
   /**

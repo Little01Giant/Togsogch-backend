@@ -44,10 +44,8 @@ function build(j: any) {
   const englishTests: any[] = [];
   if (a.ieltsMin != null) englishTests.push({ test: 'IELTS', minScore: String(a.ieltsMin) });
   if (a.toeflMin != null) englishTests.push({ test: 'TOEFL', minScore: String(a.toeflMin) });
-  const deadlines = (a.deadlines ?? []).filter((d: any) => typeof d === 'string' && d).map((d: string) => { const i = d.indexOf(':'); return i > 0 ? { label: d.slice(0, i).trim(), date: d.slice(i + 1).trim() } : { label: 'Application', date: d }; });
   const applicationLinks = https(a.applicationUrl) ? [{ title: 'Application', url: a.applicationUrl }] : [];
-  const requirements = (a.requirements ?? []).filter((x: any) => typeof x === 'string' && x);
-  const admission = englishTests.length || deadlines.length || applicationLinks.length || requirements.length ? { englishTests, deadlines, applicationLinks, requirements } : undefined;
+  const admission = englishTests.length || applicationLinks.length ? { englishTests, applicationLinks } : undefined;
   const intakes = [...new Set((a.intakes ?? []).map((s: string) => INTAKE[String(s).toLowerCase()]).filter(Boolean))];
   const rankings = (j.rankings ?? []).filter((r: any) => PROV.includes(r.provider) && typeof r.year === 'number' && https(r.sourceUrl) && (r.rankText || typeof r.rank === 'number'))
     .map((r: any) => ({ provider: r.provider, rank: typeof r.rank === 'number' ? r.rank : undefined, rankText: r.rankText || undefined, year: r.year, sourceUrl: r.sourceUrl }));

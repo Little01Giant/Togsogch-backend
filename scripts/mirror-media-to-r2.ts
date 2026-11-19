@@ -16,10 +16,10 @@ const UA = 'TogsogchEducationBot/1.0 (university directory; non-commercial resea
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 async function download(url: string): Promise<Buffer | null> {
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 5; i++) {
     try {
       const r = await fetch(url, { headers: { 'user-agent': UA }, redirect: 'follow', signal: AbortSignal.timeout(30000) });
-      if (r.status === 429 || r.status >= 500) { await sleep(2500 * (i + 1)); continue; }
+      if (r.status === 429 || r.status >= 500) { await sleep(8000 * (i + 1)); continue; } // Wikimedia хурдны хязгаар: удаан хүлээнэ
       if (!r.ok || !/^image\//i.test(r.headers.get('content-type') ?? '')) return null;
       const body = Buffer.from(await r.arrayBuffer());
       return body.length > 0 && body.length <= 15 * 1024 * 1024 ? body : null;
@@ -62,7 +62,14 @@ async function shrink(input: Buffer, kind: 'logo' | 'cover'): Promise<Buffer | n
     for (const { u, kind, current, source } of jobs.slice(0, limit)) {
       const raw = await download(source);
       if (!raw) { stat.failedDownload++; console.warn(`Татаж чадсангүй: ${u.slug} ${kind}`); await sleep(300); continue; }
-      const small = await shrink(raw, kind);
+      let small = await shrink(raw, kind);
+      // .ico (sharp уншдаггүй) лого бол Google favicon үйлчилгээгээс PNG хэлбэрээр авна
+      if (!small && kind === 'logo') {
+        try {
+          const g = await download(`https://www.google.com/s2/favicons?domain=${new URL(source).hostname}&sz=128`);
+          small = g ? await shrink(g, kind) : null;
+        } catch { /* орхино */ }
+      }
       if (!small) { stat.failedConvert++; console.warn(`Хөрвүүлж чадсангүй: ${u.slug} ${kind}`); continue; }
       const key = `universities/${u.slug}/${kind}.webp`;
       await s3.send(new PutObjectCommand({ Bucket: R2_BUCKET!, Key: key, Body: small, ContentType: 'image/webp', CacheControl: 'public, max-age=31536000, immutable' }));
@@ -73,7 +80,7 @@ async function shrink(input: Buffer, kind: 'logo' | 'cover'): Promise<Buffer | n
       // өмнө нь (хэмжээ багасгаагүй) хуулагдсан R2 объект байвал устгана
       if (current.startsWith(base) && !current.endsWith('.webp')) { try { await s3.send(new DeleteObjectCommand({ Bucket: R2_BUCKET!, Key: current.slice(base.length + 1) })); } catch { /* орхино */ } }
       stat.uploaded++; stat.bytesBefore += raw.length; stat.bytesAfter += small.length;
-      await sleep(300);
+      await sleep(1200);
     }
   }
   console.log(JSON.stringify({ mode: apply ? 'APPLY' : 'DRY-RUN', ...stat, avgKB: stat.uploaded ? Math.round(stat.bytesAfter / stat.uploaded / 1024) : 0 }, null, 1));

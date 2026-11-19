@@ -580,11 +580,11 @@ describe('Нэвтрэлт (зөвхөн Google)', () => {
 
 describe('Сургуулийн эрх: сургууль/улсаар төлж нээх ба backend хамгаалалт', () => {
   let admin: ReturnType<typeof agent>; let slug: string; let uniId: string; let slug2: string; let countryId: string; let slugOther: string;
-  const SECRET = { englishTests: [{ test: 'IELTS', minScore: 6.5 }], standardizedTests: [{ test: 'SAT', minScore: '1200' }], requirements: ['Нууц шаардлага XYZ'], documents: ['Нууц бичиг баримт'], deadlines: [{ label: 'Өргөдөл', date: '2027-01-15' }], procedure: ['Нууц алхам'], applicationLinks: [{ title: 'Apply', url: 'https://apply.example.edu/' }] };
+  const SECRET = { englishTests: [{ test: 'IELTS', minScore: 6.5 }], procedure: ['Нууц алхам'], applicationLinks: [{ title: 'Apply', url: 'https://apply.example.edu/' }] };
 
   beforeAll(async () => {
     admin = await login('admin@example.com', 'admin');
-    const c = (await admin.post('/api/v1/admin/countries').set(H).send({ nameMn: 'Эрхланд', nameEn: 'Accessland', code: 'AC1', status: 'published' }).expect(201)).body;
+    const c = (await admin.post('/api/v1/admin/countries').set(H).send({ nameMn: 'Эрхланд', nameEn: 'Accessland', code: 'AC1', status: 'published', admissionRules: [{ text: 'Нууц улсын дүрэм QRS', sourceName: 'Тест эх сурвалж', sourceUrl: 'https://rules.example.gov/' }] }).expect(201)).body;
     const mk = async (name: string, extra: any = {}) => (await admin.post('/api/v1/admin/universities').set(H).send({ name, countryId: c._id, status: 'published', tuition: [{ level: 'bachelor', annualFee: 4321, annualFeeUsd: 4321, currency: 'USD' }], admission: SECRET, ...extra }).expect(201)).body;
     const a = await mk('Locked Uni A', { featured: true });
     const b = await mk('Locked Uni B');
@@ -611,10 +611,10 @@ describe('Сургуулийн эрх: сургууль/улсаар төлж н
     expect(r.name).toBe('Locked Uni A');
     expect(r.access.unlocked).toBe(false);
     expect(r.country.universityCount).toBe(2); // Эрхланд: нийтлэгдсэн 2 сургууль (нийтийн тоо, төлбөртэй өгөгдөл биш)
-    expect(r.access.categories.map((c: any) => c.key).sort()).toEqual(['deadlines', 'documents', 'english', 'exams', 'procedure', 'requirements', 'tuition']);
+    expect(r.access.categories.map((c: any) => c.key).sort()).toEqual(['english', 'procedure', 'tuition']);
     expect(r.paid).toBeUndefined();
     const raw = JSON.stringify(r);
-    for (const s of ['4321', 'Нууц шаардлага XYZ', 'Нууц бичиг баримт', 'apply.example.edu', 'IELTS', 'Нууц алхам']) expect(raw).not.toContain(s);
+    for (const s of ['4321', 'apply.example.edu', 'IELTS', 'Нууц алхам', 'Нууц улсын дүрэм QRS', 'rules.example.gov']) expect(raw).not.toContain(s);
   });
 
   it('жагсаалтын карт: лого/зураг/нэр/улс; төлбөр, шаардлагагүй; featured ажиллана', async () => {
@@ -662,7 +662,8 @@ describe('Сургуулийн эрх: сургууль/улсаар төлж н
     const det = (await u.get(`/api/v1/universities/${slug}`).expect(200)).body;
     expect(det.access.unlocked).toBe(true);
     expect(JSON.stringify(det.paid)).toContain('4321');
-    expect(JSON.stringify(det.paid)).toContain('Нууц шаардлага XYZ');
+    expect(JSON.stringify(det.paid)).toContain('Нууц алхам');
+    expect(det.paid.languageRules[0]).toMatchObject({ text: 'Нууц улсын дүрэм QRS', sourceUrl: 'https://rules.example.gov/' }); // улсын дүрэм төлбөртэй хэсэгт
     expect(JSON.stringify(det.paid)).toContain('apply.example.edu');
     expect((await u.get(`/api/v1/universities/${slug2}`).expect(200)).body.paid).toBeUndefined(); // өөр сургууль хаалттай
     expect((await u.get(`/api/v1/universities/${slugOther}`).expect(200)).body.paid).toBeUndefined();
