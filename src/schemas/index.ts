@@ -57,6 +57,8 @@ export class Country {
   @Prop() admissionGeneral?: string;
   @Prop({ type: [String], default: [] }) commonExams: string[];
   @Prop() tuitionRange?: string;
+  /** Тухайн улсын олон улсын оюутанд хамаарах хууль, журам (хэлний шаардлага, виз гэх мэт). Албан ёсны эх сурвалжтай. Сургуулийн «Хэлний шаардлага» хэсгийн дор (төлбөртэй) харагдана. */
+  @Prop({ type: [{ text: String, sourceName: String, sourceUrl: String, verifiedAt: String, _id: false }], default: [] }) admissionRules: { text: string; sourceName?: string; sourceUrl?: string; verifiedAt?: string }[];
   /** Тооцоолсон БАРИМЖАА (scripts/compute-country-tuition-estimates.ts): улсын сургуулиудын цуглуулсан бодит төлбөрөөс. Сургуулийн дүн биш. */
   @Prop({
     type: { level: String, items: [{ currency: String, n: Number, min: Number, median: Number, max: Number, _id: false }], basis: String, sourceName: String, sourceUrl: String, computedAt: Date, _id: false },
