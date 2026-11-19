@@ -17,7 +17,11 @@ const SYSTEM = 'Чи мэргэжлийн орчуулагч. Хэрэглэгч
   'ЗӨВХӨН орчуул: эх дээр байхгүй баримт, тоо, дүгнэлт, үнэлгээ НЭМЭХГҮЙ, хасахгүй. Тоо, он, хувийг эхтэй яг ижил үлдээ: эхэд үгээр бичсэн тоог (жишээ нь eight, two) үгээр, цифрээр бичсэнийг цифрээр орчуул, хөрвүүлж болохгүй. ' +
   'Сургууль, хот, хүний нэрийг латин үсгээр (эхийнх шиг) үлдээж болно. Зөвхөн орчуулгыг буцаа, тайлбар, хашилт, толгой бүү нэм.';
 
-const nums = (s: string): string[] => s.match(/\d+/g) ?? [];
+const WORD_NUM: Record<string, string> = { one: '1', two: '2', three: '3', four: '4', five: '5', six: '6', seven: '7', eight: '8', nine: '9', ten: '10', eleven: '11', twelve: '12', first: '1', second: '2', third: '3', fourth: '4', fifth: '5', sixth: '6', seventh: '7', eighth: '8', ninth: '9', tenth: '10', twice: '2', single: '1', dozen: '12',
+  // Монголоор сарыг «12-р сар» гэж цифрээр бичдэг
+  january: '1', february: '2', march: '3', april: '4', may: '5', june: '6', july: '7', august: '8', september: '9', october: '10', november: '11', december: '12' };
+/** Тоонууд (цифр + эхэд үгээр бичсэн жижиг тоо): орчуулга цифрээр бичсэн ч, эх үгээр бичсэн ч таарна. */
+const nums = (s: string): string[] => [...(s.match(/\d+/g) ?? []), ...(s.toLowerCase().match(/\b[a-z]+\b/g) ?? []).map((w) => WORD_NUM[w]).filter((x): x is string => !!x)];
 
 async function translate(en: string): Promise<string | null> {
   for (let i = 0; i < 3; i++) {
