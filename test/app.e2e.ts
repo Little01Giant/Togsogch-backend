@@ -594,6 +594,18 @@ describe('Сургуулийн эрх: сургууль/улсаар төлж н
     slugOther = o.slug;
   });
 
+  it('лого/зураг/танилцуулгын эх сурвалж, лиценз (media) нийтийн дэлгэрэнгүйд буцна; аюултай URL-ийг няцаана', async () => {
+    const c = (await admin.post('/api/v1/admin/countries').set(H).send({ nameMn: 'Медиа', nameEn: 'Medialand', code: 'MD1', status: 'published' }).expect(201)).body;
+    const media = { logo: { sourceUrl: 'https://commons.wikimedia.org/wiki/File:X.svg', license: 'Public domain' }, description: { sourceName: 'Wikipedia', sourceUrl: 'https://en.wikipedia.org/wiki/X', license: 'CC BY-SA 4.0', translatedByAi: true } };
+    const body = { name: 'Media Uni', countryId: c._id, status: 'published', logoUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/X.svg?width=256', description: 'Тест танилцуулга', media };
+    const u = (await admin.post('/api/v1/admin/universities').set(H).send(body).expect(201)).body;
+    const r = (await agent().get(`/api/v1/universities/${u.slug}`).expect(200)).body;
+    expect(r.media.logo.license).toBe('Public domain');
+    expect(r.media.description.translatedByAi).toBe(true);
+    expect(r.logoUrl).toContain('Special:FilePath');
+    await admin.post('/api/v1/admin/universities').set(H).send({ ...body, name: 'Bad Media Uni', media: { logo: { sourceUrl: 'javascript:alert(1)', license: 'x' } } }).expect(400);
+  });
+
   it('нэвтрээгүй хэрэглэгч: үнэгүй хэсэг + категорийн заагч; төлбөртэй өгөгдөл ОГТ байхгүй', async () => {
     const r = (await agent().get(`/api/v1/universities/${slug}`).expect(200)).body;
     expect(r.name).toBe('Locked Uni A');

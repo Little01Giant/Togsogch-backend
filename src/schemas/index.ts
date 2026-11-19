@@ -129,6 +129,8 @@ export class University {
   @Prop() description?: string;
   @Prop() logoUrl?: string;
   @Prop({ type: [String], default: [] }) images: string[];
+  /** Лого/зураг/танилцуулгын эх сурвалж, лиценз, зохиогч (Wikimedia Commons / Wikipedia). Харуулахдаа заавал заана. */
+  @Prop({ type: SchemaTypes.Mixed, default: {} }) media: { logo?: any; cover?: any; description?: any };
   @Prop({ type: [String], default: [] }) degreeLevels: string[]; // language_prep|foundation|bachelor|master|phd
   @Prop({ type: [String], default: [] }) subjects: string[]; // subject category keys
   @Prop({ type: [String], default: [] }) languagesOfInstruction: string[];

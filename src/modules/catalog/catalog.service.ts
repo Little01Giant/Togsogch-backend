@@ -236,7 +236,7 @@ export class CatalogService {
       !!user && (user.role !== 'user' || this.ent.hasUniversityAccess(user.id, u._id, c._id)),
     ]);
     const free = {
-      id: String(u._id), slug: u.slug, name: u.name, nameMn: u.nameMn ?? null, description: u.description ?? null, logoUrl: u.logoUrl ?? null, images: u.images ?? [],
+      id: String(u._id), slug: u.slug, name: u.name, nameMn: u.nameMn ?? null, description: u.description ?? null, logoUrl: u.logoUrl ?? null, images: u.images ?? [], media: u.media ?? {},
       city: u.city ?? null, website: u.website ?? null, foundedYear: u.foundedYear ?? null, type: u.type ?? null, degreeLevels: u.degreeLevels ?? [], subjects: u.subjects ?? [],
       languagesOfInstruction: u.languagesOfInstruction ?? [], intakes: u.intakes ?? [], studyModes: u.studyModes ?? [], acceptsInternational: u.acceptsInternational ?? true,
       rankings: u.rankings ?? [], scholarships: u.scholarships ?? [], other: u.other ?? {},
