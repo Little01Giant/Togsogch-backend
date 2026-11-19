@@ -5,3 +5,5 @@ dist
 dist-e2e
 *.log
 scripts/data/*.xlsx
+.env.*
+!.env.example

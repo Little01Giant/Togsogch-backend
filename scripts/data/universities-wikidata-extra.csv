@@ -1,0 +1,63 @@
+order,name,countrySlug,wikidataId,matchedLabel,description,score
+11,"Nanyang Technological University, Singapore (NTU Singapore)",singapore,Q721064,"Nanyang Technological University","autonomous university in Singapore",1.00
+47,"Korea University",south-korea,Q39997,"Korea University","university in Seoul, South Korea",1.00
+58,"University of Birmingham",uk,Q223429,"University of Birmingham","university in Birmingham, England, United Kingdom",1.00
+88,"Freie Universitaet Berlin",germany,Q153006,"Freie Universität Berlin","public research university in Berlin, Germany",1.00
+110,"Aalto University",finland,Q300980,"Aalto University","Finnish university",1.00
+126,"University of Basel",switzerland,Q372608,"University of Basel","public university in Basel, Switzerland",1.00
+137,"Wuhan University",china,Q1108197,"Wuhan University","university in Wuhan, China",1.00
+163,"The Ohio State University",usa,Q309331,"Ohio State University","public research university in Columbus, Ohio, United States",1.00
+174,"Friedrich-Alexander-Universität Erlangen-Nürnberg",germany,Q101261372,"Friedrich Alexander Universität Erlangen-Nürnberg Naturwissenschaftliche Fakultät","academic department",1.00
+185,"University of Strathclyde",uk,Q1859178,"University of Strathclyde","university in Glasgow, Scotland, UK",1.00
+207,"Sun Yat-sen University",china,Q178972,"Sun Yat-sen University","university in Guangdong, China",1.00
+218,"University of Sussex",uk,Q1161297,"University of Sussex","university in Brighton and Hove, UK",1.00
+234,"University of Notre Dame",usa,Q178848,"University of Notre Dame","Catholic university located in Notre Dame, Indiana, United States",1.00
+245,"Universidad Carlos III de Madrid (UC3M)",spain,Q1247135,"Universidad Carlos III de Madrid","Spanish university",1.00
+266,"South China University of Technology",china,Q835366,"South China University of Technology","University in Guangdong, China",1.00
+277,"University of Oulu",finland,Q1357517,"University of Oulu","university in Oulu, Finland",1.00
+289,"George Washington University",usa,Q432637,"George Washington University","private university in Washington, D.C., USA",1.00
+20,"EPFL – École polytechnique fédérale de Lausanne",switzerland,Q262760,"École Polytechnique Fédérale de Lausanne","via DB name search",1.00
+31,"Université PSL",france,Q1546437,"Paris Dauphine-PSL University","via DB name search",1.00
+98,"KIT, Karlsruhe Institute of Technology",germany,Q309988,"Karlsruhe Institute of Technology","via DB name search",1.00
+99,"Sapienza University of Rome",italy,Q209344,"Sapienza University of Rome","via DB name search",1.00
+196,"Albert-Ludwigs-Universitaet Freiburg",germany,Q153987,"University of Freiburg","via DB name search",1.00
+255,"Heriot-Watt University",uk,Q1610024,"Heriot-Watt University","via DB name search",1.00
+267,"University of Rome ""Tor Vergata""",italy,Q1031803,"University of Rome Tor Vergata","via DB name search",1.00
+278,"City St George’s University of London",uk,Q124917493,"City St George's, University of London","via DB name search",1.00
+287,"Goethe-University Frankfurt am Main",germany,Q50662,"Goethe University Frankfurt","via DB name search",1.00
+300,"University of Turin",italy,Q499911,"University of Turin","via DB name search",1.00
+304,"University of Naples - Federico II",italy,Q691851,"University of Naples Federico II","via DB name search",1.00
+311,"University of Saskatchewan",canada,Q1514848,"University of Saskatchewan","via DB name search",1.00
+331,"Essex, University of",uk,Q1075104,"University of Essex","via DB name search",1.00
+344,"Shoolini University of Biotechnology and Management Sciences",india,Q28172491,"Shoolini University","via DB name search",1.00
+347,"USI - Università della Svizzera italiana",switzerland,Q689617,"Università della Svizzera italiana","via DB name search",1.00
+356,"Stony Brook University, State University of New York",usa,Q969850,"Stony Brook University","via DB name search",1.00
+383,"Ural Federal University - UrFU",russia,Q1506552,"Ural Federal University","via DB name search",1.00
+385,"Indian Institute of Technology BHU Varanasi (IIT BHU Varanasi)",india,Q3701750,"IIT (BHU) Varanasi","via DB name search",1.00
+398,"Northumbria University",uk,Q2503794,"Northumbria University","via DB name search",1.00
+400,"The University of Georgia",usa,Q761534,"University of Georgia","via DB name search",1.00
+419,"Université Paul Sabatier Toulouse III",france,Q1273188,"Paul Sabatier University","via DB name search",1.00
+423,"Paris Lodron University of Salzburg",austria,Q27265,"University of Salzburg","via DB name search",1.00
+444,"Vellore Institute of Technology (VIT), Vellore, India",india,Q3298919,"Vellore Institute of Technology","via DB name search",1.00
+452,"Christian-Albrechts-University zu Kiel",germany,Q156737,"Kiel University","via DB name search",1.00
+453,"HUFS - Hankuk (Korea) University of Foreign Studies",south-korea,Q208736,"Hankuk University of Foreign Studies","via DB name search",1.00
+456,"University of Eastern Finland",finland,Q2093139,"University of Eastern Finland","via DB name search",1.00
+462,"Nottingham Trent University",uk,Q2002619,"Nottingham Trent University","via DB name search",1.00
+492,"Kingston University, London",uk,Q2503809,"Kingston University","via DB name search",1.00
+503,"Thapar Institute of Engineering & Technology",india,Q7710683,"Thapar Institute of Engineering and Technology","via DB name search",1.00
+504,"The University of Tennessee, Knoxville",usa,Q1150105,"University of Tennessee","via DB name search",1.00
+515,"Maynooth University",ireland,Q2601879,"Maynooth University","via DB name search",1.00
+520,"TUHH Hamburg University of Technology",germany,Q1060,"Hamburg University of Technology","via DB name search",1.00
+521,"University of Missouri, Columbia",usa,Q579968,"University of Missouri","via DB name search",1.00
+527,"Syracuse University",usa,Q617433,"Syracuse University","via DB name search",1.00
+538,"Missouri University of Science and Technology",usa,Q4380853,"Missouri University of Science and Technology","via DB name search",1.00
+549,"Jiangnan University",china,Q6191676,"Jiangnan University","via DB name search",1.00
+560,"University of Pecs",hungary,Q1187444,"University of Pécs","via DB name search",1.00
+569,"ITMO University",russia,Q1342013,"ITMO University","via DB name search",1.00
+571,"Martin-Luther-Universität Halle-Wittenberg",germany,Q32120,"Martin Luther University Halle-Wittenberg","via DB name search",1.00
+575,"The National University of Science and Technology MISIS",russia,Q4315005,"National University of Science and Technology MISIS","via DB name search",1.00
+582,"University of Mons",belgium,Q1742161,"University of Mons","via DB name search",1.00
+584,"University of Nebraska - Lincoln",usa,Q1353679,"University of Nebraska–Lincoln","via DB name search",1.00
+590,"Catania University",italy,Q1248821,"University of Catania","via DB name search",1.00
+604,"Universitat Rovira i Virgili",spain,Q3133193,"University of Rovira i Virgili","via DB name search",1.00
+610,"University of Lincoln",uk,Q2738646,"University of Lincoln","via DB name search",1.00
