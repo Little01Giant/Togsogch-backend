@@ -7,3 +7,7 @@ dist-e2e
 scripts/data/*.xlsx
 .env.*
 !.env.example
+
+# скриптийн завсрын үр дүн (локал дээр үлдэнэ, репод орохгүй)
+scripts/data/official-site-media.json
+scripts/data/university-media.json
