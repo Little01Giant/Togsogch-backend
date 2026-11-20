@@ -1,4 +1,4 @@
-import { findUnsafeUrls, isDevEnv, productionConfigProblems, str } from './security';
+import { applyEnvAliases, findUnsafeUrls, isDevEnv, productionConfigProblems, qpayCallbackBase, str } from './security';
 
 describe('isDevEnv', () => {
   it('NODE_ENV тохируулаагүй/production үед хаалттай', () => {
@@ -45,5 +45,24 @@ describe('str', () => {
     expect(str('a')).toBe('a');
     expect(str({ $ne: 'x' })).toBeUndefined();
     expect(str(['a'])).toBeUndefined();
+  });
+});
+
+describe('GoAylal-тай ижил орчны хувьсагчийн нэр', () => {
+  it('CORS_ORIGIN нь FRONTEND_URL-ийн alias; манай нэр заасан бол тэр давуу', () => {
+    expect(applyEnvAliases({ CORS_ORIGIN: 'https://temuul.mn' }).FRONTEND_URL).toBe('https://temuul.mn');
+    expect(applyEnvAliases({ FRONTEND_URL: 'https://a.mn', CORS_ORIGIN: 'https://b.mn' }).FRONTEND_URL).toBe('https://a.mn');
+  });
+  it('QPAY_CALLBACK_URL (замтай нь) давуу; үгүй бол PUBLIC_API_URL + стандарт зам', () => {
+    expect(qpayCallbackBase({ QPAY_CALLBACK_URL: 'https://api.mn/api/v1/payments/qpay/callback/' })).toBe('https://api.mn/api/v1/payments/qpay/callback');
+    expect(qpayCallbackBase({ QPAY_CALLBACK_URL: 'https://x.mn/cb', PUBLIC_API_URL: 'https://y.mn' })).toBe('https://x.mn/cb');
+    expect(qpayCallbackBase({ PUBLIC_API_URL: 'https://api.mn/' })).toBe('https://api.mn/api/v1/payments/qpay/callback');
+    expect(qpayCallbackBase({}, 4001)).toBe('http://localhost:4001/api/v1/payments/qpay/callback');
+  });
+  it('production: PUBLIC_API_URL байхгүй ч https QPAY_CALLBACK_URL хангалттай; http бол няцаана', () => {
+    const base = { JWT_ACCESS_SECRET: 'q8Zr1vXk0Lm9Tn4Bw7Yc3Hd6Fa2Jp5Gs8Uo1Ie4', JWT_REFRESH_SECRET: 'Rt5Ky2Nb8Vc1Xz4Mq7Lw0Hp3Gd6Fs9Ja2Uo5Ei8', MONGODB_URI: 'mongodb+srv://x', FRONTEND_URL: 'https://app.example.mn', QPAY_BASE_URL: 'https://q', QPAY_CLIENT_ID: 'u', QPAY_CLIENT_SECRET: 'p', QPAY_INVOICE_CODE: 'c' };
+    expect(productionConfigProblems({ ...base, QPAY_CALLBACK_URL: 'https://api.example.mn/api/v1/payments/qpay/callback' })).toEqual([]);
+    expect(productionConfigProblems({ ...base, QPAY_CALLBACK_URL: 'http://api.example.mn/cb' })).toHaveLength(1);
+    expect(productionConfigProblems(base)).toHaveLength(1);
   });
 });

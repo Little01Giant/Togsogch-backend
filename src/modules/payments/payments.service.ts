@@ -5,9 +5,9 @@ import { Model, Types } from 'mongoose';
 import { randomBytes } from 'crypto';
 import { AssessmentAttempt, Country, Payment, PaymentProduct, Subscription, University } from '../../schemas';
 import { ProviderFactory } from './provider';
-import { isTestEnv } from '../../common/security';
+import { isTestEnv, qpayCallbackBase } from '../../common/security';
 
-const INVOICE_TTL_MS = 30 * 60 * 1000;
+const INVOICE_TTL_MS = 15 * 60 * 1000; // GoAylal-тай ижил: нэхэмжлэх 15 минут хүчинтэй
 const err = (C: any, code: string, message: string) => new C({ code, message });
 
 /** Эрхийн шалгалт (premium нээлттэй эсэх). Бусад модуль ашиглана. */
@@ -115,8 +115,8 @@ export class PaymentsService {
     const provider = this.providers.get();
     const senderInvoiceNo = `CH${Date.now().toString(36).toUpperCase()}${randomBytes(3).toString('hex').toUpperCase()}`;
     const callbackToken = randomBytes(24).toString('hex');
-    const base = (this.cfg.get<string>('PUBLIC_API_URL') ?? `http://localhost:${this.cfg.get('PORT') ?? 4100}`).replace(/\/$/, '');
-    const inv = await provider.createInvoice({ senderInvoiceNo, amount, description: `Chiglel: ${product.key}`, callbackUrl: `${base}/api/v1/payments/qpay/callback/${callbackToken}` });
+    const base = qpayCallbackBase({ QPAY_CALLBACK_URL: this.cfg.get<string>('QPAY_CALLBACK_URL'), PUBLIC_API_URL: this.cfg.get<string>('PUBLIC_API_URL') }, this.cfg.get('PORT') ?? 4100);
+    const inv = await provider.createInvoice({ senderInvoiceNo, amount, description: `Chiglel: ${product.key}`, callbackUrl: `${base}/${callbackToken}` });
 
     const doc = await this.payments.create({
       userId, productKey, targetId: target, amount, currency: 'MNT', status: 'pending', senderInvoiceNo, callbackToken, idempotencyKey, provider: provider.name,
@@ -160,14 +160,17 @@ export class PaymentsService {
   }
 
   private async reconcile(p: any, source = 'poll') {
-    if (p.status !== 'pending') return p;
+    // Хугацаа дууссан нэхэмжлэх хожим төлөгдсөн байж болно (GoAylal-тай ижил): мөнгө орсон бол эрхийг олгоно.
+    // Дууссан нэхэмжлэхийг poll-оор QPay-аас дахин асуухгүй (callback / гараар шалгахад л).
+    const late = p.status === 'expired' && source !== 'poll';
+    if (p.status !== 'pending' && !late) return p;
     const provider = this.providers.get();
-    if (this.mayAskProvider(p, source, provider)) {
+    if (late || this.mayAskProvider(p, source, provider)) {
       try {
         if (provider.name === 'qpay') await this.payments.updateOne({ _id: p._id }, { $set: { lastCheckedAt: new Date() } });
         const r = await provider.check(p.qpayInvoiceId, { mockPaidAmount: p.mockPaidAmount });
         if (r.paid && r.paidAmount >= p.amount) {
-          const won = await this.payments.findOneAndUpdate({ _id: p._id, status: 'pending' }, { $set: { status: 'paid', paidAt: new Date(), paidAmount: r.paidAmount, qpayPaymentId: r.paymentId }, $push: { logs: { at: new Date(), event: 'paid', detail: source } } }, { returnDocument: 'after' }).select('+qrImage +qrText');
+          const won = await this.payments.findOneAndUpdate({ _id: p._id, status: { $in: ['pending', 'expired'] } }, { $set: { status: 'paid', paidAt: new Date(), paidAmount: r.paidAmount, qpayPaymentId: r.paymentId }, $push: { logs: { at: new Date(), event: 'paid', detail: source } } }, { returnDocument: 'after' }).select('+qrImage +qrText');
           await this.ent.grant({ userId: p.userId, productKey: p.productKey, targetId: p.targetId, paymentId: p._id }); // paid болсон бол (өөр процесс нь шилжүүлсэн ч) эрхийг баталгаажуулна
           return won ?? (await this.payments.findById(p._id).select('+qrImage +qrText'));
         }
@@ -177,7 +180,7 @@ export class PaymentsService {
         this.note(p, 'check_error', String(e?.message ?? e).slice(0, 120)); await p.save().catch(() => undefined);
       }
     }
-    if (p.expiresAt < new Date()) {
+    if (p.status === 'pending' && p.expiresAt < new Date()) {
       const upd = await this.payments.findOneAndUpdate({ _id: p._id, status: 'pending' }, { $set: { status: 'expired' }, $push: { logs: { at: new Date(), event: 'expired' } } }, { returnDocument: 'after' }).select('+qrImage +qrText');
       if (upd) await provider.cancel?.(p.qpayInvoiceId).catch(() => false); // хугацаа дууссан нэхэмжлэхийг QPay дээр хаана
       return upd ?? (await this.payments.findById(p._id).select('+qrImage +qrText'));
@@ -186,6 +189,9 @@ export class PaymentsService {
   }
 
   async cancel(userId: string, id: string) {
+    // Цонхыг хаахын өмнөхөн төлсөн байж болно: цуцлахаасаа өмнө QPay-аас нэг удаа шалгаж, төлөгдсөн бол цуцлахгүй.
+    const cur = await this.payments.findOne({ _id: id, userId, status: 'pending' }).select('+qrImage +qrText');
+    if (cur && (await this.reconcile(cur, 'manual')).status === 'paid') return { ok: true, paid: true };
     const r = await this.payments.findOneAndUpdate({ _id: id, userId, status: 'pending' }, { $set: { status: 'cancelled' }, $push: { logs: { at: new Date(), event: 'cancelled' } } }, { returnDocument: 'after' });
     if (!r) throw err(NotFoundException, 'NOT_FOUND', 'Хүлээгдэж буй төлбөр олдсонгүй.');
     if (r.qpayInvoiceId) await this.providers.get().cancel?.(r.qpayInvoiceId).catch(() => false);

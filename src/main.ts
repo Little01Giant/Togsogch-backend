@@ -6,7 +6,7 @@ import { ConfigService } from '@nestjs/config';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
-import { productionConfigProblems } from './common/security';
+import { applyEnvAliases, productionConfigProblems } from './common/security';
 
 export async function configure(app: any) {
   app.setGlobalPrefix('api/v1');
@@ -18,6 +18,7 @@ export async function configure(app: any) {
 }
 
 async function bootstrap() {
+  applyEnvAliases(process.env);
   if (process.env.NODE_ENV === 'production') {
     const problems = productionConfigProblems(process.env);
     if (problems.length) { console.error('Production тохиргооны алдаа:\n - ' + problems.join('\n - ')); process.exit(1); }

@@ -714,6 +714,22 @@ describe('Сургуулийн эрх: сургууль/улсаар төлж н
     expect((await other.get(`/api/v1/universities/${slug}`).expect(200)).body.paid).toBeUndefined();
   });
 
+  it('РЕГРЕСС: хугацаа дууссан нэхэмжлэх хожим төлөгдсөн бол (callback) эрх олгогдоно — мөнгө алдагдахгүй (GoAylal-тай ижил)', async () => {
+    const u = await login('late-payer@example.com');
+    const p = (await u.post('/api/v1/payments').set(H).send({ productKey: 'university_access', targetId: uniId }).expect(200)).body;
+    const col = conn().collection('payments');
+    const oid = new mongoose.Types.ObjectId(p.id);
+    await col.updateOne({ _id: oid }, { $set: { expiresAt: new Date(Date.now() - 1000) } });
+    expect((await u.post(`/api/v1/payments/${p.id}/verify`).set(H).expect(200)).body.status).toBe('expired');
+    expect((await u.get(`/api/v1/universities/${slug}`).expect(200)).body.paid).toBeUndefined();
+    await u.post(`/api/v1/payments/${p.id}/dev-confirm`).set(H).send({}).expect(200); // QPay-д төлөгдсөнийг дуурайна (poll нь дууссан нэхэмжлэхийг дахин асуухгүй)
+    expect((await u.get(`/api/v1/universities/${slug}`).expect(200)).body.paid).toBeUndefined();
+    const doc: any = await col.findOne({ _id: oid });
+    await request(app.getHttpServer()).get(`/api/v1/payments/qpay/callback/${doc.callbackToken}`).expect(200);
+    expect((await u.get(`/api/v1/universities/${slug}`).expect(200)).body.access.unlocked).toBe(true);
+    expect((await col.findOne({ _id: oid }))?.status).toBe('paid');
+  });
+
   it('улсаар худалдаж авбал тэр улсын БҮХ сургууль нээгдэнэ, өөр улсынх нээгдэхгүй; улс авсны дараа сургууль тусад нь авах нь 409', async () => {
     const u = await login('country@example.com');
     await buy(u, 'country_access', countryId);

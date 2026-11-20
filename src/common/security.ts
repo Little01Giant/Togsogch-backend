@@ -8,6 +8,22 @@ export const isTestEnv = (nodeEnv?: string) => nodeEnv === 'test';
 
 const WEAK = /change-?me|secret|password|example|test/i;
 
+/**
+ * GoAylal төслийн орчны хувьсагчийн нэрийг дэмжинэ (нэг тохиргоог хоёр төсөлд хуулахад амар):
+ * `CORS_ORIGIN` → `FRONTEND_URL` (манай нэр заасан бол тэр давуу). `QPAY_CALLBACK_URL` нь payments.service-д шууд уншигдана.
+ */
+export function applyEnvAliases(env: Record<string, string | undefined>) {
+  if (!env.FRONTEND_URL && env.CORS_ORIGIN) env.FRONTEND_URL = env.CORS_ORIGIN;
+  return env;
+}
+
+/** QPay-д өгөх callback-ийн суурь хаяг (токен/нэхэмжлэхийн дугаар хойноос нь нэмэгдэнэ). `QPAY_CALLBACK_URL` (GoAylal-тай ижил, замтай нь) давуу; үгүй бол `PUBLIC_API_URL` + стандарт зам. */
+export function qpayCallbackBase(env: Record<string, string | undefined>, port: string | number = 4100): string {
+  const full = env.QPAY_CALLBACK_URL?.trim();
+  if (full) return full.replace(/\/+$/, '');
+  return `${(env.PUBLIC_API_URL ?? `http://localhost:${port}`).replace(/\/+$/, '')}/api/v1/payments/qpay/callback`;
+}
+
 /** Production-д эхлэхээс өмнө тохиргооны шаардлага шалгана; зөрчилтэй бол жагсаалт буцаана. */
 export function productionConfigProblems(env: Record<string, string | undefined>): string[] {
   const p: string[] = [];
@@ -23,7 +39,8 @@ export function productionConfigProblems(env: Record<string, string | undefined>
   if ((env.PAYMENT_PROVIDER ?? 'qpay') === 'qpay') {
     const id = env.QPAY_CLIENT_ID || env.QPAY_USERNAME, secret = env.QPAY_CLIENT_SECRET || env.QPAY_PASSWORD;
     if (!(env.QPAY_BASE_URL && id && secret && env.QPAY_INVOICE_CODE)) p.push('QPAY_* тохиргоо дутуу (QPAY_BASE_URL, QPAY_CLIENT_ID, QPAY_CLIENT_SECRET, QPAY_INVOICE_CODE)');
-    if (!env.PUBLIC_API_URL || !/^https:\/\//.test(env.PUBLIC_API_URL)) p.push('PUBLIC_API_URL нь https:// байх ёстой (QPay callback)');
+    const cb = env.QPAY_CALLBACK_URL || env.PUBLIC_API_URL;
+    if (!cb || !/^https:\/\//.test(cb)) p.push('QPAY_CALLBACK_URL (эсвэл PUBLIC_API_URL) нь https:// байх ёстой (QPay callback)');
     const every = env.QPAY_STATUS_CHECK_INTERVAL_S;
     if (every !== undefined && every !== '' && !/^\d+$/.test(every)) p.push('QPAY_STATUS_CHECK_INTERVAL_S нь бүхэл тоо (секунд) байх ёстой');
   }
