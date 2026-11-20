@@ -1128,3 +1128,39 @@ describe('QpayProvider: хуучирсан token', () => {
     expect(n).toBe(2);
   });
 });
+
+describe('Зугаа цэнгээний «дүр» тестүүд (мөнгөний зан төлөв, стресс, хүч чадал, чөтгөрийн анчин, Halloween)', () => {
+  const KEYS = ['money', 'stress', 'strength', 'hunter', 'halloween'];
+
+  it('жагсаалтад 5 тест гарч, бүгд үр дүн нь үнэгүй (freeResult)', async () => {
+    const list = (await agent().get('/api/v1/assessments').expect(200)).body;
+    expect(list.slice(0, 3).map((x: any) => x.key)).toEqual(['career', 'city', 'masters']); // төлбөртэй 3 тест эхэнд
+    for (const k of KEYS) {
+      const a = list.find((x: any) => x.key === k);
+      expect(!!a).toBe(true);
+      expect(a.available).toBe(true);
+      expect(a.freeResult).toBe(true);
+      expect(a.questionCount).toBe(8);
+    }
+  });
+
+  for (const key of KEYS) {
+    it(`${key}: асуулт а/б/в/г, оноо ил гарахгүй; хариулж дуусгахад үр дүн төлбөргүй, сервер оноолно`, async () => {
+      const def = (await agent().get(`/api/v1/assessments/${key}/active`).expect(200)).body;
+      expect(def.questions).toHaveLength(8);
+      for (const q of def.questions) expect(q.options.map((o: any) => o.key)).toEqual(['a', 'b', 'v', 'g']);
+      expect(JSON.stringify(def)).not.toContain('weights');
+      const u = await login(`archetype-${key}@example.com`);
+      const att = await completeAny(u, key); // бүх асуултад эхний сонголт (а)
+      const r = (await u.get(`/api/v1/attempts/${att}/result`).expect(200)).body;
+      expect(r.locked).toBe(false);
+      expect(r.kind).toBe('archetype');
+      expect(r.testKey).toBe(key);
+      expect(r.primary.key).toBe('a');
+      expect(r.primary.tips).toHaveLength(3);
+      expect(r.total).toBe(8);
+      expect(r.premium).toBeNull();
+      await request(app.getHttpServer()).get(`/api/v1/attempts/${att}/result`).expect(401); // нэвтрээгүй хэрэглэгч харахгүй
+    });
+  }
+});

@@ -4,9 +4,22 @@
  * Төлбөр, рейтинг, элсэлтийн шаардлагыг зохиохгүй.
  */
 import { AREAS, GOALS } from '../modules/scoring/areas';
+import { getArchetypeTest } from '../modules/scoring/archetype-tests';
 
 const opts = (m: Record<string, string>) => Object.entries(m).map(([key, label]) => ({ key, label }));
 const L5 = (min: string, max: string) => ({ min: 1, max: 5, minLabel: min, maxLabel: max });
+
+/** Зугаа цэнгээний «дүр/төрөл» тест (мөнгөний зан төлөв, стресс, хүч чадлын зүйрлэл, чөтгөрийн ангууч, Halloween): асуулт бүр а/б/в/г төрлийн нэгийг дэмжинэ. */
+export function buildArchetypeAssessment(key: string) {
+  const test = getArchetypeTest(key);
+  if (!test) throw new Error(`Archetype тест олдсонгүй: ${key}`);
+  const sections = [{ key: 'quiz', title: test.title, description: 'Хамгийн их тохирох хариултаа сонгоорой.', order: 1 }];
+  const questions = test.items.map(([qkey, text, labels], i) => ({
+    key: qkey, section: 'quiz', order: i, required: true, type: 'single', text,
+    options: ['a', 'b', 'v', 'g'].map((k, j) => ({ key: k, label: labels[j] })),
+  }));
+  return { sections, questions };
+}
 
 /** «Хөгжилтэй зан төлөвийн тест» (зугаа цэнгээн): 10 асуулт, хариулт бүр а/б/в/г төрлийн нэгийг дэмжинэ. Тест өгсөн хүний мэргэжил, улс сонголтод нөлөөлөхгүй. */
 export function buildPersonaAssessment() {

@@ -7,7 +7,8 @@ import { buildCareerAssessment, buildCareers, CAREER_BANK_REV, LEGACY_CAREER_SLU
 import { DEFAULT_CAREER_CONFIG } from '../modules/scoring/career.strategy';
 import { DEFAULT_MASTERS_CONFIG } from '../modules/scoring/masters.strategy';
 import { DEFAULT_CITY_CONFIG } from '../modules/scoring/city.strategy';
-import { buildCityAssessment, buildMastersAssessment, buildPersonaAssessment, buildThinkingAssessment, COUNTRY_PROFILES, MASTER_FIELDS } from './phase2';
+import { buildArchetypeAssessment, buildCityAssessment, buildMastersAssessment, buildPersonaAssessment, buildThinkingAssessment, COUNTRY_PROFILES, MASTER_FIELDS } from './phase2';
+import { ARCHETYPE_TESTS } from '../modules/scoring/archetype-tests';
 
 config();
 
@@ -97,6 +98,7 @@ export async function seed(uri: string) {
     // «Хэлний бэлтгэл» ба «Суралцах хот»-ыг нэг тест болгон нэгтгэсэн (түлхүүр нь `city`). Хуучин `language` тестийг шинээр үүсгэхгүй.
     { key: 'city', title: 'Ямар улс надад тохирох вэ?', subtitle: 'Хэл, сонирхол, зорилгодоо тулгуурлан аль улсад суралцах нь чамд хамгийн тохиромжтойг мэд.', description: 'Сурах хэл, зан чанар, орчны сонголтоор тохирох топ 3 хотыг олж, санхүү болон голч дүнтэй тулгаж бодит замналыг гаргана. Мэргэжил тодорхойлох, магистрын тестийг өгвөл холбоотой сургуулиуд гарна.', build: buildCityAssessment(), cfg: DEFAULT_CITY_CONFIG },
     { key: 'persona', title: 'Хөгжилтэй зан төлөвийн тест', subtitle: 'Та яг ямар хүн бэ? 10 асуултаар зугаацаарай.', description: 'Зугаа цэнгээний тест. Мэргэжил, улс сонгоход нөлөөлөхгүй.', build: buildPersonaAssessment(), cfg: {} },
+    ...ARCHETYPE_TESTS.map((x) => ({ key: x.key, title: x.title, subtitle: x.subtitle, description: x.description, build: buildArchetypeAssessment(x.key), cfg: {} })),
     { key: 'thinking', title: 'Сэтгэлгээний хэв маягийн тест', subtitle: 'Аналитик, бүтээлч, практик, логик — аль сэтгэлгээ чамд давамгай вэ?', description: '15 асуулт (албадмал сонголт ба нөхцөл байдал). Өөрийн үнэлгээнд суурилсан; мэргэжил, улс сонгоход нөлөөлөхгүй.', build: buildThinkingAssessment(), cfg: {} },
   ];
   // Хуучин тусдаа `language` тест `city`-д нэгтгэгдсэн: хуучин DB-д үлдсэн бол архивлана (жагсаалт, эхлүүлэхээс нуугдана; өмнөх үр дүн хэвээр).

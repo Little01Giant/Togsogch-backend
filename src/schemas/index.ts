@@ -286,7 +286,7 @@ CareerSchema.index({ nameMn: 'text', nameEn: 'text', description: 'text' }, { de
 /* ───────────── assessments ───────────── */
 @Schema(T)
 export class Assessment {
-  @Prop({ required: true, unique: true, enum: ['career', 'masters', 'language', 'city', 'persona', 'thinking'] }) key: string;
+  @Prop({ required: true, unique: true, enum: ['career', 'masters', 'language', 'city', 'persona', 'thinking', 'money', 'stress', 'strength', 'hunter', 'halloween'] }) key: string;
   @Prop({ required: true }) title: string;
   @Prop() subtitle?: string;
   @Prop() description?: string;
