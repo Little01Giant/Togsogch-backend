@@ -714,6 +714,17 @@ describe('Сургуулийн эрх: сургууль/улсаар төлж н
     expect((await other.get(`/api/v1/universities/${slug}`).expect(200)).body.paid).toBeUndefined();
   });
 
+  it('РЕГРЕСС: ижил idempotency түлхүүртэй цуцлагдсан нэхэмжлэх буцахгүй — шинэ pending нэхэмжлэх (QR) үүснэ', async () => {
+    const u = await login('dead-key@example.com');
+    const a = (await u.post('/api/v1/payments').set(H).set('Idempotency-Key', 'dead-key-1').send({ productKey: 'university_access', targetId: uniId }).expect(200)).body;
+    expect(a.status).toBe('pending');
+    await u.post(`/api/v1/payments/${a.id}/cancel`).set(H).expect(200);
+    const b = (await u.post('/api/v1/payments').set(H).set('Idempotency-Key', 'dead-key-1').send({ productKey: 'university_access', targetId: uniId }).expect(200)).body;
+    expect(b.status).toBe('pending');
+    expect(b.id).not.toBe(a.id);
+    expect(b.qrImage).toContain('data:image/png;base64');
+  });
+
   it('РЕГРЕСС: хугацаа дууссан нэхэмжлэх хожим төлөгдсөн бол (callback) эрх олгогдоно — мөнгө алдагдахгүй (GoAylal-тай ижил)', async () => {
     const u = await login('late-payer@example.com');
     const p = (await u.post('/api/v1/payments').set(H).send({ productKey: 'university_access', targetId: uniId }).expect(200)).body;
