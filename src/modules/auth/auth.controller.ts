@@ -34,7 +34,8 @@ export class AuthController {
   @Public() @CsrfExempt() @Get('google/callback') @UseGuards(GoogleOAuthGuard)
   async googleCallback(@Req() req: any, @Res() res: Response) {
     await this.auth.issue(req.user, res);
-    res.redirect(`${this.cfg.get('FRONTEND_URL')}/auth/callback`);
+    // FRONTEND_URL таслалтай (олон origin) байж болно (CORS) → буцах хаяг нь эхнийх
+    res.redirect(`${(this.cfg.get<string>('FRONTEND_URL') ?? '').split(',')[0].trim()}/auth/callback`);
   }
 
   @Public() @Post('dev-login') @HttpCode(200) @Throttle({ default: { limit: Number(process.env.DEV_LOGIN_LIMIT ?? 20), ttl: 60000 } })
