@@ -3,13 +3,17 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { Assessment, AssessmentAttempt, AssessmentQuestion, AssessmentResult, AssessmentVersion, Career, Country, MasterField, Program, Skill, University } from '../../schemas';
 import { getStrategy, QuestionSnapshot } from '../scoring';
+import { ARCHETYPE_TEST_KEYS } from '../scoring/archetype-tests';
 import { STATIC_LABELS } from '../../seed/content';
 import { CAREER_CATEGORY_TO_UNI_SUBJECTS } from '../scoring/career-uni-subjects';
 import { EntitlementsService } from '../payments/payments.service';
 import { lockResult, premiumForResult, RoadPhase } from '../payments/premium';
 
 /** Төлбөргүй үр дүнтэй тестүүд (хувийн/төлбөртэй мэдээлэл агуулаагүй зугаа цэнгээний тест). */
-const FREE_KINDS = new Set(['persona', 'thinking']);
+const FREE_KINDS = new Set(['persona', 'thinking', 'archetype', ...ARCHETYPE_TEST_KEYS]);
+
+/** Тестүүдийн жагсаалтын эхний дараалал (бусад нь түлхүүрийн үсгийн дарааллаар). */
+const LEAD_ORDER = ['career', 'city', 'masters'];
 
 const bad = (code: string, message: string, details?: any) => new BadRequestException({ code, message, details });
 
@@ -60,7 +64,10 @@ export class AssessmentsService {
   ) {}
 
   async list() {
-    const all: any[] = await this.assessments.find().sort({ key: 1 }).lean();
+    const found: any[] = await this.assessments.find().sort({ key: 1 }).lean();
+    // Төлбөртэй гурван тест (мэргэжил, улс, магистр) эхэнд, бусад нь үсгийн дарааллаар
+    const rank = (k: string) => { const i = LEAD_ORDER.indexOf(k); return i < 0 ? LEAD_ORDER.length : i; };
+    const all = [...found].sort((a, b) => rank(a.key) - rank(b.key));
     // Нийтлэгдэж байсан (идэвхтэй хувилбартай) боловч одоо draft болсон тест = архивлагдсан (жишээ нь нэгтгэгдсэн «language») → жагсаалтад харуулахгүй
     const rows = all.filter((a) => a.status === 'published' || !a.activeVersionId);
     return Promise.all(rows.map(async (a) => {
