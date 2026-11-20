@@ -70,14 +70,16 @@ export class PaymentsService {
   listProducts() { return this.products.find({ active: true }).sort({ priceMnt: 1 }).select('key title description priceMnt scope').lean(); }
 
   private shape(p: any) {
-    return { id: String(p._id), productKey: p.productKey, targetId: p.targetId ? String(p.targetId) : null, amount: p.amount, currency: p.currency, status: p.status, qrImage: p.qrImage ?? null, qrText: p.qrText ?? null, shortUrl: p.shortUrl ?? null, urls: p.urls ?? [], expiresAt: p.expiresAt, paidAt: p.paidAt ?? null, provider: p.provider };
+    return { id: String(p._id), productKey: p.productKey, targetId: p.targetId ? String(p.targetId) : null, invoiceNumber: p.senderInvoiceNo ?? null, amount: p.amount, currency: p.currency, status: p.status, qrImage: p.qrImage ?? null, qrText: p.qrText ?? null, shortUrl: p.shortUrl ?? null, urls: p.urls ?? [], expiresAt: p.expiresAt, paidAt: p.paidAt ?? null, provider: p.provider };
   }
   private note(p: any, event: string, detail?: string) { p.logs.push({ at: new Date(), event, detail }); }
 
   async create(userId: string, productKey: string, targetId: string | undefined, idempotencyKey?: string) {
     if (idempotencyKey) {
       const prev = await this.payments.findOne({ userId, idempotencyKey }).select('+qrImage +qrText').lean();
-      if (prev) return this.shape(prev);
+      // Төлөгдсөн/хүлээгдэж буй нэхэмжлэхийг л буцаана. Хугацаа дууссан/цуцлагдсан/амжилтгүйг буцаавал хэрэглэгч шууд «дууссан» мэдэгдэл харна → шинэ нэхэмжлэх үүсгэнэ (түлхүүр нь нэг удаагийнх тул дахин хадгалахгүй).
+      if (prev && (prev.status === 'pending' || prev.status === 'paid')) return this.shape(prev);
+      if (prev) idempotencyKey = undefined;
     }
     const product = await this.products.findOne({ key: productKey, active: true }).lean();
     if (!product) throw err(NotFoundException, 'NOT_FOUND', 'Ийм бүтээгдэхүүн олдсонгүй.');
