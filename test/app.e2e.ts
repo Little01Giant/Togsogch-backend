@@ -714,6 +714,19 @@ describe('Сургуулийн эрх: сургууль/улсаар төлж н
     expect((await other.get(`/api/v1/universities/${slug}`).expect(200)).body.paid).toBeUndefined();
   });
 
+  it('РЕГРЕСС: дуусах дөхсөн (5 мин-аас бага) нэхэмжлэхийг дахин өгөхгүй — шинэ нэхэмжлэх; хангалттай хугацаатайг дахин ашиглана', async () => {
+    const u = await login('near-expiry@example.com');
+    const a = (await u.post('/api/v1/payments').set(H).send({ productKey: 'university_access', targetId: uniId }).expect(200)).body;
+    const same = (await u.post('/api/v1/payments').set(H).send({ productKey: 'university_access', targetId: uniId }).expect(200)).body;
+    expect(same.id).toBe(a.id); // 15 мин үлдсэн: дахин ашиглана
+    await conn().collection('payments').updateOne({ _id: new mongoose.Types.ObjectId(a.id) }, { $set: { expiresAt: new Date(Date.now() + 60_000) } });
+    const b = (await u.post('/api/v1/payments').set(H).send({ productKey: 'university_access', targetId: uniId }).expect(200)).body;
+    expect(b.id).not.toBe(a.id);
+    expect(b.status).toBe('pending');
+    expect((await conn().collection('payments').findOne({ _id: new mongoose.Types.ObjectId(a.id) }))?.status).toBe('cancelled');
+    expect(new Date(b.expiresAt).getTime() - Date.now()).toBeGreaterThan(10 * 60 * 1000);
+  });
+
   it('РЕГРЕСС: ижил idempotency түлхүүртэй цуцлагдсан нэхэмжлэх буцахгүй — шинэ pending нэхэмжлэх (QR) үүснэ', async () => {
     const u = await login('dead-key@example.com');
     const a = (await u.post('/api/v1/payments').set(H).set('Idempotency-Key', 'dead-key-1').send({ productKey: 'university_access', targetId: uniId }).expect(200)).body;

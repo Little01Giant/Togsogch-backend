@@ -7,6 +7,8 @@ import { AssessmentAttempt, Country, Payment, PaymentProduct, Subscription, Univ
 import { ProviderFactory } from './provider';
 import { isTestEnv, qpayCallbackBase } from '../../common/security';
 
+/** Хүлээгдэж буй нэхэмжлэхийг дахин ашиглахад үлдсэн байх хамгийн бага хугацаа (бага бол шинийг үүсгэнэ). */
+const REUSE_MIN_LEFT_MS = 5 * 60 * 1000;
 const INVOICE_TTL_MS = 15 * 60 * 1000; // GoAylal-тай ижил: нэхэмжлэх 15 минут хүчинтэй
 const err = (C: any, code: string, message: string) => new C({ code, message });
 
@@ -111,8 +113,17 @@ export class PaymentsService {
     if (await this.ent.has(userId, productKey, target ? String(target) : null)) throw err(ConflictException, 'ALREADY_OWNED', 'Та энэ боломжийг аль хэдийн худалдан авсан байна.');
 
     // Давхар төлбөрөөс сэргийлэх: ижил бүтээгдэхүүн/зорилтод хүчинтэй pending invoice байвал түүнийг дахин ашиглана
-    const open = await this.payments.findOne({ userId, productKey, targetId: target ?? null, status: 'pending', expiresAt: { $gt: new Date() } }).select('+qrImage +qrText').lean();
-    if (open) return this.shape(open);
+    const open = await this.payments.findOne({ userId, productKey, targetId: target ?? null, status: 'pending', expiresAt: { $gt: new Date() } }).select('+qrImage +qrText');
+    if (open) {
+      // Дуусах дөхсөн нэхэмжлэхийг дахин өгөхгүй (хэрэглэгч QR харангуут «дууссан» болдог байсан): хангалттай хугацаатай бол л дахин ашиглана
+      if (open.expiresAt.getTime() - Date.now() >= REUSE_MIN_LEFT_MS) return this.shape(open);
+      const r = await this.reconcile(open, 'manual'); // сүүлчийн удаа QPay-аас шалгана: төлөгдсөн байж магадгүй
+      if (r.status === 'paid') return this.shape(r);
+      if (r.status === 'pending') {
+        await this.payments.updateOne({ _id: open._id, status: 'pending' }, { $set: { status: 'cancelled' }, $push: { logs: { at: new Date(), event: 'cancelled', detail: 'near_expiry' } } });
+        if (open.qpayInvoiceId) await this.providers.get().cancel?.(open.qpayInvoiceId).catch(() => false);
+      }
+    }
 
     const provider = this.providers.get();
     const senderInvoiceNo = `CH${Date.now().toString(36).toUpperCase()}${randomBytes(3).toString('hex').toUpperCase()}`;
