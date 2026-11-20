@@ -27,12 +27,9 @@ function latestRanking(rankings: any[], provider: string) {
 }
 
 const COUNTRY_TEXT_LOCKED = ['educationSystem', 'tuitionRange', 'admissionGeneral', 'languagePrepInfo', 'scholarshipInfo'] as const;
-const COUNTRY_LIST_LOCKED = ['commonExams', 'pros', 'cons'] as const;
-const TEASER_LINES = 2;
-/** Эхний 2 мөр, гэхдээ ядаж нэг мөр үргэлж хаалттай (1–2 мөртэй хэсэг бүтнээрээ задрахгүй). */
-const teaserCount = (n: number) => Math.min(TEASER_LINES, n - 1);
-/** Текстийг мөр (өгүүлбэр) болгон салгана — frontend-ийн жагсаалттай ижил дүрэм. */
-const splitLines = (text?: string | null): string[] => (text ? text.split(/\n{2,}/).flatMap((p) => p.split(/(?<=\.)\s+(?=[А-ЯӨҮA-Z«(])/)).map((s) => s.trim()).filter(Boolean) : []);
+/** Улсын хуудсан дээр карт болгон харуулах сургуулийн тоо (бусдыг «Бүх их сургууль» хуудаснаас). */
+const COUNTRY_UNI_CARDS = 8;
+const COUNTRY_LIST_LOCKED =['commonExams', 'pros', 'cons'] as const;
 
 @Injectable()
 export class CatalogService {
@@ -80,7 +77,7 @@ export class CatalogService {
     if (q.q) { const re = new RegExp(escapeRegex(String(q.q)), 'i'); filter.$or = [{ nameMn: re }, { nameEn: re }]; }
     // Гурван асуулга хоорондоо хамааралгүй тул зэрэг ажиллуулна (алсын DB-д дараалсан дуудлага бүр ~100мс нэмдэг).
     const [items, total, counts] = await Promise.all([
-      this.countries.find(filter).sort({ nameMn: 1 }).skip(skip).limit(pageSize).select('slug code nameMn nameEn flag region overview universityCount livingCostMonthlyUsd matchProfile.languages bachelorDuration masterDuration source').lean(),
+      this.countries.find(filter).sort({ nameMn: 1 }).skip(skip).limit(pageSize).select('slug code nameMn nameEn flag region overview universityCount livingCostMonthlyUsd languages matchProfile.languages bachelorDuration masterDuration source').lean(),
       this.countries.countDocuments(filter),
       this.unis.aggregate([{ $match: { status: 'published', deletedAt: null } }, { $group: { _id: '$countryId', n: { $sum: 1 } } }]),
     ]);
@@ -90,30 +87,32 @@ export class CatalogService {
 
   /**
    * Улс: ерөнхий мэдээлэл, визийн холбоос, сургуулиуд нээлттэй. Бусад мэдээлэл (төлбөр, шаардлага, шалгалт, давуу/сул тал…)
-   * нь `country_access` авсан хэрэглэгчид (эсвэл админд) бүтнээрээ; бусдад зөвхөн эхний 2 мөр серверээс л ирнэ.
+   * нь `country_access` авсан хэрэглэгчид (эсвэл админд) бүтнээрээ; бусдад талбарууд огт ирэхгүй (зөвхөн `access.lockedFields` нэрс).
    */
   async getCountry(slug: string, user?: { id: string; role: string }) {
     const c: any = await this.countries.findOne({ slug, status: 'published', deletedAt: null }).lean();
     if (!c) throw new NotFoundException({ code: 'NOT_FOUND', message: 'Улс олдсонгүй.' });
-    const [universities, unlocked] = await Promise.all([
-      this.unis.find({ countryId: c._id, status: 'published', deletedAt: null }).sort({ name: 1 }).limit(100).select('slug name nameMn city logoUrl type').lean(),
+    const base = { countryId: c._id, status: 'published', deletedAt: null };
+    const [ranked, universityCount, quote, unlocked] = await Promise.all([
+      this.unis.find({ ...base, bestQsWorld: { $gt: 0 } }).sort({ bestQsWorld: 1, name: 1 }).limit(COUNTRY_UNI_CARDS).lean(),
+      this.unis.countDocuments(base),
+      this.ent.countryQuote(c._id),
       !!user && (user.role !== 'user' || this.ent.has(user.id, 'country_access', String(c._id))),
     ]);
-    if (unlocked) return { ...c, universities, access: { unlocked: true, truncated: [] as string[] } };
-    const truncated: string[] = [];
-    for (const f of COUNTRY_TEXT_LOCKED) {
-      const parts = splitLines(c[f]);
-      if (!parts.length) continue;
-      truncated.push(f);
-      c[f] = parts.slice(0, teaserCount(parts.length)).join(' ');
+    // Шилдэг (QS-ээр) сургуулиуд эхэнд; дутвал үлдсийг нэрээр нөхнө.
+    const rest = ranked.length < COUNTRY_UNI_CARDS
+      ? await this.unis.find({ ...base, _id: { $nin: ranked.map((r) => r._id) } }).sort({ name: 1 }).limit(COUNTRY_UNI_CARDS - ranked.length).lean()
+      : [];
+    const universities = [...ranked, ...rest].map((u) => this.toCard({ ...u, country: c }));
+    if (unlocked) return { ...c, universities, universityCount, access: { unlocked: true, lockedFields: [] as string[] } };
+    // Төлбөртэй талбарыг хариунаас бүрэн хасна; зөвхөн ямар талбар түгжээтэйг (нэрийг нь) мэдэгдэнэ.
+    const lockedFields: string[] = [];
+    for (const f of [...COUNTRY_TEXT_LOCKED, ...COUNTRY_LIST_LOCKED]) {
+      const v = c[f];
+      if (Array.isArray(v) ? v.length : typeof v === 'string' && v.trim()) lockedFields.push(f);
+      delete c[f];
     }
-    for (const f of COUNTRY_LIST_LOCKED) {
-      const arr: string[] = c[f] ?? [];
-      if (!arr.length) continue;
-      truncated.push(f);
-      c[f] = arr.slice(0, teaserCount(arr.length));
-    }
-    return { ...c, universities, access: { unlocked: false, truncated } };
+    return { ...c, universities, universityCount, access: { unlocked: false, lockedFields, price: quote } };
   }
 
   /* ── universities ── */
@@ -139,7 +138,8 @@ export class CatalogService {
       const cs = await this.countries.find({ slug: { $in: country } }).select('_id').lean();
       and.push({ countryId: { $in: cs.map((c) => c._id) } });
     }
-    const degree = toArray(q.degree); if (degree.length) and.push({ degreeLevels: { $in: degree } });
+    /** Зэрэг: тусад нь заасан `degreeLevels` эсвэл төлбөрийн бичлэгийн түвшнээс (бүх сургуульд бөглөгдсөн) */
+    const degree = toArray(q.degree); if (degree.length) and.push({ $or: [{ degreeLevels: { $in: degree } }, { 'tuition.level': { $in: degree } }] });
     const type = toArray(q.type); if (type.length) and.push({ type: { $in: type } });
     const subject = toArray(q.subject); if (subject.length) and.push({ subjects: { $in: subject } });
     const intake = toArray(q.intake); if (intake.length) and.push({ intakes: { $in: intake } });
@@ -161,17 +161,17 @@ export class CatalogService {
       qsWorld: { _k: 1, name: 1 }, qsAsia: { _k2: 1, name: 1 },
     };
     const sort = typeof q.sort === 'string' && Object.prototype.hasOwnProperty.call(sorts, q.sort) ? sorts[q.sort] : sorts.name;
-    const pipeline: PipelineStage[] = [
-      { $match: { $and: and } },
-      { $addFields: { _k: { $ifNull: ['$bestQsWorld', 1e9] }, _k2: { $ifNull: ['$bestQsAsia', 1e9] } } },
-      { $sort: sort },
-      { $facet: {
-        items: [{ $skip: skip }, { $limit: pageSize }, { $lookup: { from: 'countries', localField: 'countryId', foreignField: '_id', as: 'country' } }, { $unwind: { path: '$country', preserveNullAndEmptyArrays: true } }],
-        total: [{ $count: 'n' }],
-      } },
-    ];
-    const [r] = await this.unis.aggregate(pipeline);
-    return { items: (r.items as any[]).map((u) => this.toCard(u)), total: r.total[0]?.n ?? 0, page, pageSize };
+    /** Томоохон талбарыг (шаардлага, төлбөр, тайлбар) хаяж, зөвхөн картанд хэрэгтэйг үлдээнэ */
+    const cardFields: PipelineStage = { $project: { slug: 1, name: 1, nameMn: 1, logoUrl: 1, images: { $slice: [{ $ifNull: ['$images', []] }, 1] }, city: 1, type: 1, countryId: 1, subjects: 1, createdAt: 1, bestQsWorld: 1, bestQsAsia: 1, degreeLevels: { $setUnion: [{ $ifNull: ['$degreeLevels', []] }, { $map: { input: { $ifNull: ['$tuition', []] }, as: 'x', in: '$$x.level' } }] } } };
+    const join: PipelineStage[] = [{ $lookup: { from: 'countries', localField: 'countryId', foreignField: '_id', as: 'country' } }, { $unwind: { path: '$country', preserveNullAndEmptyArrays: true } }];
+    const byRank = sort === sorts.qsWorld || sort === sorts.qsAsia;
+    /** Нэр/шинэ эрэмбэ индексээр хийгддэг тул эхлээд эрэмбэлж, хуудасны мөрүүдийг л бүрэн уншина; QS эрэмбэд тооцоолсон түлхүүр хэрэгтэй тул эхлээд хураангуйлна */
+    const pipeline: PipelineStage[] = byRank
+      ? [{ $match: { $and: and } }, cardFields, { $addFields: { _k: { $ifNull: ['$bestQsWorld', 1e9] }, _k2: { $ifNull: ['$bestQsAsia', 1e9] } } }, { $sort: sort }, { $skip: skip }, { $limit: pageSize }, ...join]
+      : [{ $match: { $and: and } }, { $sort: sort }, { $skip: skip }, { $limit: pageSize }, cardFields, ...join];
+    /** $facet нь бүх үр дүнг санах ойд хадгалдаг тул хуудаслалт ба нийт тоог тусад нь, зэрэг авна */
+    const [items, total] = await Promise.all([this.unis.aggregate(pipeline), this.unis.countDocuments({ $and: and })]);
+    return { items: (items as any[]).map((u) => this.toCard(u)), total, page, pageSize };
   }
 
   /** Жагсаалтын карт: ЗӨВХӨН үнэгүй мэдээлэл (лого, зураг, нэр, улс). Төлбөр/шаардлага хэзээ ч орохгүй. */
@@ -208,6 +208,7 @@ export class CatalogService {
     return {
       tuition: u.tuition ?? [],
       english: a.englishTests ?? [],
+      englishUrl: a.languagePageUrl ?? null,
       languageRules: (country?.admissionRules ?? []).map((r: any) => ({ text: r.text, sourceName: r.sourceName ?? null, sourceUrl: r.sourceUrl ?? null, verifiedAt: r.verifiedAt ?? null })),
       procedure: { steps: a.procedure ?? [], links: a.applicationLinks ?? [] },
       programs: programs.map((p) => ({ id: String(p._id), name: p.name, level: p.level, department: p.department ?? null, language: p.language ?? null, durationMonths: p.durationMonths ?? null, annualTuition: p.annualTuition ?? null, currency: p.currency ?? 'USD', applicationPeriod: p.applicationPeriod ?? null, requirements: p.requirements ?? [] })),
@@ -222,17 +223,19 @@ export class CatalogService {
     const u: any = await this.unis.findOne({ slug, status: 'published', deletedAt: null }).populate('countryId').lean();
     if (!u) throw new NotFoundException({ code: 'NOT_FOUND', message: 'Их сургууль олдсонгүй.' });
     const c = u.countryId;
-    const [programs, universityCount, unlocked] = await Promise.all([
+    const [programs, universityCount, quote, unlocked] = await Promise.all([
       this.programs.find({ universityId: u._id, status: 'published', deletedAt: null }).sort({ level: 1, name: 1 }).lean(),
       this.unis.countDocuments({ countryId: c._id, status: 'published', deletedAt: null }),
-      !!user && (user.role !== 'user' || this.ent.hasUniversityAccess(user.id, u._id, c._id)),
+      this.ent.countryQuote(c._id),
+      // `freeAccess` бол бүх хэрэглэгчид нээлттэй; үгүй бол нэвтэрсэн админ эсвэл төлж нээсэн хэрэглэгч
+      u.freeAccess === true || (!!user && (user.role !== 'user' || this.ent.hasUniversityAccess(user.id, u._id, c._id))),
     ]);
     const free = {
       id: String(u._id), slug: u.slug, name: u.name, nameMn: u.nameMn ?? null, description: u.description ?? null, logoUrl: u.logoUrl ?? null, images: u.images ?? [], media: u.media ?? {},
       city: u.city ?? null, website: u.website ?? null, foundedYear: u.foundedYear ?? null, type: u.type ?? null, degreeLevels: u.degreeLevels ?? [], subjects: u.subjects ?? [],
       languagesOfInstruction: u.languagesOfInstruction ?? [], intakes: u.intakes ?? [], studyModes: u.studyModes ?? [], acceptsInternational: u.acceptsInternational ?? true,
       rankings: u.rankings ?? [], scholarships: u.scholarships ?? [], other: u.other ?? {},
-      country: { id: String(c._id), slug: c.slug, code: c.code, nameMn: c.nameMn, nameEn: c.nameEn, flag: c.flag ?? null, universityCount, livingCostMonthlyUsd: c.livingCostMonthlyUsd ?? null, tuitionEstimate: c.tuitionEstimate ?? null, source: c.source ? { sourceName: c.source.sourceName ?? null, sourceUrl: c.source.sourceUrl ?? null, verifiedAt: c.source.verifiedAt ?? null, lastUpdatedAt: c.source.lastUpdatedAt ?? null, verificationStatus: c.source.verificationStatus ?? null } : null },
+      country: { id: String(c._id), slug: c.slug, code: c.code, nameMn: c.nameMn, nameEn: c.nameEn, flag: c.flag ?? null, universityCount, unlockPrice: quote, livingCostMonthlyUsd: c.livingCostMonthlyUsd ?? null, tuitionEstimate: c.tuitionEstimate ?? null, source: c.source ? { sourceName: c.source.sourceName ?? null, sourceUrl: c.source.sourceUrl ?? null, verifiedAt: c.source.verifiedAt ?? null, lastUpdatedAt: c.source.lastUpdatedAt ?? null, verificationStatus: c.source.verificationStatus ?? null } : null },
       source: u.source ? { verifiedAt: u.source.verifiedAt ?? null, lastUpdatedAt: u.source.lastUpdatedAt ?? null, verificationStatus: u.source.verificationStatus ?? null } : null,
     };
     return { ...free, access: { unlocked, categories: CatalogService.categories(u, programs, c) }, ...(unlocked ? { paid: this.paidPayload(u, programs, c) } : {}) };
@@ -266,10 +269,19 @@ export class CatalogService {
 
   /** Filter-ийн сонголтууд (улс, хот) */
   async filterMeta() {
-    const [countries, cities] = await Promise.all([
-      this.countries.find({ status: 'published', deletedAt: null }).sort({ nameMn: 1 }).select('slug nameMn nameEn flag').lean(),
-      this.unis.distinct('city', { status: 'published', deletedAt: null, city: { $ne: null } }),
+    const base = { status: 'published', deletedAt: null };
+    const [countries, cities, degreeA, degreeB, type, subject, ranking, scholarship] = await Promise.all([
+      this.countries.find({ status: 'published', deletedAt: null }).sort({ nameMn: 1 }).select('slug code nameMn nameEn flag').lean(),
+      this.unis.distinct('city', { ...base, city: { $ne: null } }),
+      this.unis.distinct('degreeLevels', base),
+      this.unis.distinct('tuition.level', base),
+      this.unis.distinct('type', base),
+      this.unis.distinct('subjects', base),
+      this.unis.distinct('rankings.provider', base),
+      this.unis.distinct('scholarshipTypes', base),
     ]);
-    return { countries, cities: (cities as string[]).sort() };
+    const clean = (a: unknown[]) => [...new Set(a.filter((x): x is string => typeof x === 'string' && x !== ''))].sort();
+    /** `available`: аль шүүлтүүрийн сонголтод ЖИНХЭНЭ өгөгдөл байгааг заана (хоосон сонголтыг UI харуулахгүй) */
+    return { countries, cities: clean(cities as unknown[]), available: { degree: clean([...degreeA, ...degreeB]), type: clean(type), subject: clean(subject), ranking: clean(ranking), scholarship: clean(scholarship) } };
   }
 }

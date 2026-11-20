@@ -13,7 +13,24 @@ const err = (C: any, code: string, message: string) => new C({ code, message });
 /** Эрхийн шалгалт (premium нээлттэй эсэх). Бусад модуль ашиглана. */
 @Injectable()
 export class EntitlementsService {
-  constructor(@InjectModel(Subscription.name) private subs: Model<Subscription>) {}
+  constructor(
+    @InjectModel(Subscription.name) private subs: Model<Subscription>,
+    @InjectModel(PaymentProduct.name) private products: Model<PaymentProduct>,
+    @InjectModel(University.name) private universities: Model<University>,
+  ) {}
+
+  /**
+   * Улс нээх үнэ = (нээгдэх, ө.х. үнэгүй биш нийтлэгдсэн сургуулийн тоо) × нэг сургуулийн нэгж үнэ (`country_access` бүтээгдэхүүний priceMnt).
+   * Үнийг ЗӨВХӨН сервер тооцно (клиент дүн өгч болохгүй).
+   */
+  async countryQuote(countryId: Types.ObjectId | string) {
+    const [schools, product] = await Promise.all([
+      this.universities.countDocuments({ countryId, status: 'published', deletedAt: null, freeAccess: { $ne: true } }),
+      this.products.findOne({ key: 'country_access', active: true }).select('priceMnt').lean(),
+    ]);
+    const unitMnt = product?.priceMnt ?? 500;
+    return { schools, unitMnt, priceMnt: unitMnt * Math.max(schools, 1) };
+  }
 
   async has(userId: string, productKey: string, targetId?: string | null) {
     return !!(await this.subs.exists({ userId, productKey, targetId: targetId ? new Types.ObjectId(targetId) : null }));
@@ -65,6 +82,7 @@ export class PaymentsService {
     const product = await this.products.findOne({ key: productKey, active: true }).lean();
     if (!product) throw err(NotFoundException, 'NOT_FOUND', 'Ийм бүтээгдэхүүн олдсонгүй.');
     let target: Types.ObjectId | undefined;
+    let amount = product.priceMnt;
     if (product.scope === 'attempt') {
       if (!targetId || !Types.ObjectId.isValid(targetId)) throw err(BadRequestException, 'TARGET_REQUIRED', 'Аль тестийн үр дүн болохыг заана уу.');
       const at = await this.attempts.findById(targetId).lean();
@@ -74,8 +92,9 @@ export class PaymentsService {
     } else if (product.scope === 'university' || product.scope === 'country') {
       if (!targetId || !Types.ObjectId.isValid(targetId)) throw err(BadRequestException, 'TARGET_REQUIRED', product.scope === 'university' ? 'Аль сургуулийг нээхийг заана уу.' : 'Аль улсыг нээхийг заана уу.');
       if (product.scope === 'university') {
-        const u: any = await this.universities.findOne({ _id: targetId, status: 'published', deletedAt: null }).select('_id countryId').lean();
+        const u: any = await this.universities.findOne({ _id: targetId, status: 'published', deletedAt: null }).select('_id countryId freeAccess').lean();
         if (!u) throw err(NotFoundException, 'NOT_FOUND', 'Их сургууль олдсонгүй.');
+        if (u.freeAccess) throw err(ConflictException, 'FREE_ACCESS', 'Энэ сургуулийн мэдээлэл үнэгүй нээлттэй тул төлбөр шаардахгүй.');
         target = u._id;
         // улсыг бүхэлд нь аль хэдийн авсан бол сургуулийг тусад нь төлөх шаардлагагүй
         if (await this.ent.hasUniversityAccess(userId, u._id, u.countryId)) throw err(ConflictException, 'ALREADY_OWNED', 'Та энэ сургуулийн мэдээллийг аль хэдийн нээсэн байна.');
@@ -83,6 +102,7 @@ export class PaymentsService {
         const c: any = await this.countries.findOne({ _id: targetId, status: 'published', deletedAt: null }).select('_id').lean();
         if (!c) throw err(NotFoundException, 'NOT_FOUND', 'Улс олдсонгүй.');
         target = c._id;
+        amount = (await this.ent.countryQuote(c._id)).priceMnt; // сургуулийн тоо × нэгж үнэ
       }
     }
     // Бүх бүтээгдэхүүн нэг л удаа авна
@@ -96,10 +116,10 @@ export class PaymentsService {
     const senderInvoiceNo = `CH${Date.now().toString(36).toUpperCase()}${randomBytes(3).toString('hex').toUpperCase()}`;
     const callbackToken = randomBytes(24).toString('hex');
     const base = (this.cfg.get<string>('PUBLIC_API_URL') ?? `http://localhost:${this.cfg.get('PORT') ?? 4100}`).replace(/\/$/, '');
-    const inv = await provider.createInvoice({ senderInvoiceNo, amount: product.priceMnt, description: `Chiglel: ${product.key}`, callbackUrl: `${base}/api/v1/payments/qpay/callback/${callbackToken}` });
+    const inv = await provider.createInvoice({ senderInvoiceNo, amount, description: `Chiglel: ${product.key}`, callbackUrl: `${base}/api/v1/payments/qpay/callback/${callbackToken}` });
 
     const doc = await this.payments.create({
-      userId, productKey, targetId: target, amount: product.priceMnt, currency: 'MNT', status: 'pending', senderInvoiceNo, callbackToken, idempotencyKey, provider: provider.name,
+      userId, productKey, targetId: target, amount, currency: 'MNT', status: 'pending', senderInvoiceNo, callbackToken, idempotencyKey, provider: provider.name,
       qpayInvoiceId: inv.invoiceId, qrText: inv.qrText, qrImage: inv.qrImage, shortUrl: inv.shortUrl, urls: inv.urls ?? [], expiresAt: new Date(Date.now() + INVOICE_TTL_MS),
       logs: [{ at: new Date(), event: 'invoice_created' }],
     });
