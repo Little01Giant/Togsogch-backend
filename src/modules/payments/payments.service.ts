@@ -222,7 +222,8 @@ export class PaymentsService {
   }
 
   async mine(userId: string) {
-    const items = await this.payments.find({ userId }).sort({ createdAt: -1 }).limit(50).lean();
+    // Түүх нь бодитоор төлөгдсөн гүйлгээг л харуулна (GoAylal-тай ижил): нээгээд төлөөгүй/дууссан/цуцлагдсан нэхэмжлэх түүх биш.
+    const items = await this.payments.find({ userId, status: 'paid' }).sort({ paidAt: -1, createdAt: -1 }).limit(50).lean();
     return items.map((p) => ({ id: String(p._id), productKey: p.productKey, targetId: p.targetId ? String(p.targetId) : null, amount: p.amount, currency: p.currency, status: p.status, createdAt: (p as any).createdAt, paidAt: p.paidAt ?? null }));
   }
 }

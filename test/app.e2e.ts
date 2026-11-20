@@ -727,6 +727,19 @@ describe('Сургуулийн эрх: сургууль/улсаар төлж н
     expect(new Date(b.expiresAt).getTime() - Date.now()).toBeGreaterThan(10 * 60 * 1000);
   });
 
+  it('РЕГРЕСС: төлбөрийн түүх (/payments/me) зөвхөн төлөгдсөн гүйлгээг харуулна — pending/цуцлагдсан/дууссан орохгүй', async () => {
+    const u = await login('history-only-paid@example.com');
+    const cancelled = (await u.post('/api/v1/payments').set(H).send({ productKey: 'university_access', targetId: uniId }).expect(200)).body;
+    await u.post(`/api/v1/payments/${cancelled.id}/cancel`).set(H).expect(200);
+    await u.post('/api/v1/payments').set(H).send({ productKey: 'university_access', targetId: uniId }).expect(200); // pending
+    expect((await u.get('/api/v1/payments/me').expect(200)).body).toEqual([]);
+    const paid = await buy(u, 'university_access', uniId);
+    const mine = (await u.get('/api/v1/payments/me').expect(200)).body;
+    expect(mine).toHaveLength(1);
+    expect(mine[0].id).toBe(paid.id);
+    expect(mine[0].status).toBe('paid');
+  });
+
   it('РЕГРЕСС: ижил idempotency түлхүүртэй цуцлагдсан нэхэмжлэх буцахгүй — шинэ pending нэхэмжлэх (QR) үүснэ', async () => {
     const u = await login('dead-key@example.com');
     const a = (await u.post('/api/v1/payments').set(H).set('Idempotency-Key', 'dead-key-1').send({ productKey: 'university_access', targetId: uniId }).expect(200)).body;
@@ -1076,5 +1089,42 @@ describe('Аюулгүй байдлын шалгалт (review)', () => {
     const rows = Array.from({ length: 400 }, (_, i) => ({ name: `Bulk ${i}`, countrySlug: 'japan', sourceUrl: 'https://example.edu/' + 'x'.repeat(600), description: 'd'.repeat(100) }));
     await admin.post('/api/v1/admin/tools/import/universities').set(H).send({ rows, dryRun: true }).expect(201);
     await admin.post('/api/v1/admin/tools/import/universities').set(H).send({ rows: [{ name: 'x'.repeat(3 * 1024 * 1024) }], dryRun: true }).expect(413);
+  });
+});
+
+describe('QpayProvider: хуучирсан token', () => {
+  const cfg: any = { get: (k: string) => ({ QPAY_BASE_URL: 'https://qpay.test', QPAY_CLIENT_ID: 'id', QPAY_CLIENT_SECRET: 'secret', QPAY_INVOICE_CODE: 'CODE' } as Record<string, string>)[k] };
+  const json = (status: number, body: unknown) => new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
+  const input = { senderInvoiceNo: 'CH1', amount: 990, description: 'x', callbackUrl: 'https://cb' };
+  const realFetch = globalThis.fetch;
+  const withFetch = async (impl: (url: string, init?: any) => Promise<Response>, run: () => Promise<void>) => {
+    globalThis.fetch = (async (u: any, i?: any) => impl(String(u), i)) as any;
+    try { await run(); } finally { globalThis.fetch = realFetch; }
+  };
+
+  for (const bad of [401, 403]) {
+    it(`/invoice ${bad} буцаавал token-ыг шинэчилж нэг удаа дахин оролдоно (GoAylal-д гарсан «хуучин token» асуудал)`, async () => {
+      const { QpayProvider } = await import('../src/modules/payments/provider');
+      const tokens = ['stale', 'fresh']; const calls: string[] = [];
+      await withFetch(async (u, init) => {
+        if (u.endsWith('/auth/token')) { calls.push('token'); return json(200, { access_token: tokens.shift(), expires_in: 3600 }); }
+        calls.push(`invoice:${init.headers.Authorization}`);
+        return init.headers.Authorization === 'Bearer stale' ? json(bad, { message: 'TOKEN_INVALID' }) : json(200, { invoice_id: 'INV1', qr_text: 'qr', urls: [] });
+      }, async () => {
+        const inv = await new QpayProvider(cfg).createInvoice(input);
+        expect(inv.invoiceId).toBe('INV1');
+        expect(calls).toEqual(['token', 'invoice:Bearer stale', 'token', 'invoice:Bearer fresh']);
+      });
+    });
+  }
+
+  it('шинэ token-оор ч алдаа ирвэл дахин оролдохгүй, алдаа шиднэ (төгсгөлгүй давталтгүй)', async () => {
+    const { QpayProvider } = await import('../src/modules/payments/provider');
+    let n = 0; let failed = false;
+    await withFetch(async (u) => (u.endsWith('/auth/token') ? json(200, { access_token: `t${n++}`, expires_in: 3600 }) : json(403, { message: 'FORBIDDEN' })), async () => {
+      try { await new QpayProvider(cfg).createInvoice(input); } catch { failed = true; }
+    });
+    expect(failed).toBe(true);
+    expect(n).toBe(2);
   });
 });
