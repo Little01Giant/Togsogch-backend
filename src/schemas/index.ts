@@ -51,6 +51,8 @@ export class Country {
   @Prop() overview?: string;
   @Prop() educationSystem?: string;
   @Prop() universityCount?: number;
+  /** Тухайн улсад хамгийн өргөн хэрэглэгддэг хэл(үүд): 1 хэл ~80%+ бол ганцаар, үгүй бол хамгийн өргөн хэрэглэгддэг 2. Хэлний код (en, de…). Харуулах зориулалттай; тестийн оноолтод (`matchProfile.languages`) нөлөөлөхгүй. */
+  @Prop({ type: [String], default: [] }) languages: string[];
   @Prop() bachelorDuration?: string;
   @Prop() masterDuration?: string;
   @Prop() languagePrepInfo?: string;
@@ -152,10 +154,13 @@ export class University {
   @Prop({ index: true }) bestQsWorld?: number;
   @Prop({ index: true }) bestQsAsia?: number;
   @Prop({ default: false, index: true }) featured: boolean;
+  /** Төлбөртэй мэдээллийг (төлбөр, шалгалтын шаардлага, элсэлтийн явц) БҮХ хэрэглэгчид нээлттэй болгоно (нэвтрээгүйд ч). Мэдээлэл дутуу сургуульд ашиглана; админ тохируулна. */
+  @Prop({ default: false }) freeAccess: boolean;
   /** ТӨЛБӨРТЭЙ мэдээлэл (сургууль эсвэл улсаар төлж нээгдэнэ). Нийтийн API-д хэзээ ч шууд буцаахгүй. */
   @Prop({
     type: {
       englishTests: [{ test: String, minScore: String, note: String, _id: false }],
+      languagePageUrl: String,
       procedure: [String],
       applicationLinks: [{ title: String, url: String, _id: false }],
       _id: false,
@@ -170,6 +175,9 @@ export class University {
 export const UniversitySchema = SchemaFactory.createForClass(University);
 UniversitySchema.index({ name: 'text', nameMn: 'text', city: 'text' }, { default_language: 'none', name: 'uni_text' });
 UniversitySchema.index({ countryId: 1, type: 1, status: 1 });
+/** Нийтийн жагсаалт: нийтлэгдсэн + нэрээр / шинэ эрэмбээр (хуудаслалт индексээр, бүх баримтыг уншихгүй) */
+UniversitySchema.index({ status: 1, deletedAt: 1, name: 1 });
+UniversitySchema.index({ status: 1, deletedAt: 1, createdAt: -1 });
 UniversitySchema.index({ 'rankings.provider': 1, 'rankings.rank': 1 });
 
 /* ───────────── programs ───────────── */

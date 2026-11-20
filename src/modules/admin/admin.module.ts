@@ -1,5 +1,6 @@
 import { BadRequestException, Body, Controller, Delete, Get, HttpCode, Injectable, Module, NotFoundException, Param, Patch, Post, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { publicCache } from '../../common/ttl-cache';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { AdminAuditLog, Assessment, AssessmentAttempt, AssessmentQuestion, Career, CareerCategory, ContentSource, Country, MasterField, Payment, PaymentProduct, Program, Skill, University, User } from '../../schemas';
@@ -97,6 +98,7 @@ export class AdminCrudController {
     const doc = new d.model(data);
     this.finalize(r, doc, data);
     await doc.save();
+    publicCache.clear();
     await this.audit.log(u, 'create', r, String(doc._id), { name: (doc as any).name ?? (doc as any).nameMn });
     return doc.toObject();
   }
@@ -110,6 +112,7 @@ export class AdminCrudController {
     doc.set(data);
     this.finalize(r, doc, data);
     await doc.save();
+    publicCache.clear();
     await this.audit.log(u, 'update', r, id, { fields: Object.keys(data) });
     return doc.toObject();
   }
@@ -122,12 +125,14 @@ export class AdminCrudController {
       if (!doc || !d.model.schema.path('source')) throw new NotFoundException({ code: 'NOT_FOUND', message: 'Бичлэг олдсонгүй.' });
       doc.source = { ...(doc.source?.toObject?.() ?? doc.source ?? {}), verifiedAt: new Date(), verifiedBy: u.email, verificationStatus: 'verified', lastUpdatedAt: new Date() };
       await doc.save();
+      publicCache.clear();
       await this.audit.log(u, 'verify', r, id);
       return { id, verifiedAt: doc.source.verifiedAt };
     }
     if (!d.hasStatus || !['publish', 'unpublish'].includes(action)) throw new BadRequestException({ code: 'BAD_REQUEST', message: 'Буруу үйлдэл.' });
     const doc = await d.model.findByIdAndUpdate(id, { $set: { status: action === 'publish' ? 'published' : 'draft' } }, { returnDocument: "after" });
     if (!doc) throw new NotFoundException({ code: 'NOT_FOUND', message: 'Бичлэг олдсонгүй.' });
+    publicCache.clear();
     await this.audit.log(u, action, r, id);
     return { id, status: (doc as any).status };
   }
@@ -137,6 +142,7 @@ export class AdminCrudController {
     const d = this.def(r);
     const res = d.soft ? await d.model.findByIdAndUpdate(id, { $set: { deletedAt: new Date(), status: 'draft' } }) : await d.model.findByIdAndDelete(id);
     if (!res) throw new NotFoundException({ code: 'NOT_FOUND', message: 'Бичлэг олдсонгүй.' });
+    publicCache.clear();
     await this.audit.log(u, 'delete', r, id);
     return { ok: true };
   }

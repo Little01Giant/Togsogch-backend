@@ -76,11 +76,12 @@ export async function seed(uri: string) {
   await Sub.updateMany({ productKey: 'premium_report' }, { $set: { productKey: 'test_result' } });
   const products = [
     { key: 'test_result', title: 'Тестийн үр дүн нээх', description: 'Энэ тестийн үр дүнг нэг удаа төлж нээнэ. Нээсэн үр дүнг дахин төлбөргүй үзнэ.', priceMnt: 9900, scope: 'attempt' },
-    { key: 'university_access', title: 'Сургуулийн мэдээлэл нээх', description: 'Энэ сургуулийн төлбөртэй мэдээллийг (төлбөр, шаардлага, хугацаа) үүрд нээнэ.', priceMnt: 1000, scope: 'university' },
-    { key: 'country_access', title: 'Улсын бүх сургууль нээх', description: 'Энэ улсад байгаа бүх сургуулийн төлбөртэй мэдээллийг үүрд нээнэ.', priceMnt: 5000, scope: 'country' },
+    { key: 'university_access', title: 'Сургуулийн мэдээлэл нээх', description: 'Энэ сургуулийн төлбөртэй мэдээллийг (төлбөр, шаардлага, хугацаа) үүрд нээнэ.', priceMnt: 990, scope: 'university' },
+    { key: 'country_access', title: 'Улсын бүх сургууль нээх', description: 'Энэ улсад байгаа бүх сургуулийн төлбөртэй мэдээллийг үүрд нээнэ. Үнэ = нээгдэх сургуулийн тоо × 500 ₮ (priceMnt нь НЭГ сургуулийн нэгж үнэ).', priceMnt: 500, scope: 'country' },
   ];
   for (const p of products) await Product.updateOne({ key: p.key }, { $setOnInsert: { ...p, active: true } }, { upsert: true });
-  await Product.updateMany({ key: { $in: ['premium_roadmap', 'premium_comparison', 'credits_1', 'credits_5', 'credits_10'] } }, { $set: { active: false } }); // шинэ шаардлагад байхгүй; хуучин багцуудыг (credits_*) идэвхгүй болгоно
+  await Product.updateMany({ key: { $in: ['premium_roadmap', 'premium_comparison'] } }, { $set: { active: false } }); // шинэ шаардлагад байхгүй
+  await Product.deleteMany({ key: { $in: ['credits_1', 'credits_5', 'credits_10'] } }); // кредит/багц байхгүй: админы жагсаалтад ч үлдээхгүй
 
   // «Ирээдүйтэй 25 мэргэжил»: эрэмбэ нийтлэгдэх хүртэл харуулах РЕДАКЦИЙН сонголт (оноо/хувьгүй)
   const CANDIDATES = ['software-developers', 'data-scientists', 'information-security-analysts', 'robotics-engineers', 'computer-and-information-research-scientists', 'registered-nurses', 'family-medicine-physicians', 'biochemists-and-biophysicists', 'environmental-engineers', 'financial-quantitative-analysts', 'market-research-analysts-and-marketing-specialists', 'web-and-digital-interface-designers', 'mechanical-engineers', 'civil-engineers', 'electrical-engineers', 'logisticians', 'medical-and-clinical-laboratory-technologists', 'computer-network-architects', 'architects-except-landscape-and-naval', 'clinical-and-counseling-psychologists', 'nurse-practitioners', 'agricultural-engineers', 'pharmacists', 'project-management-specialists', 'mechatronics-engineers'];

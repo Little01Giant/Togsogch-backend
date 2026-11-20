@@ -138,6 +138,26 @@ describe('Admin CRUD + universities filter/pagination', () => {
     expect(noSch.body.total).toBe(20);
   });
 
+  it('зэрэг (degree) шүүлтүүр: degreeLevels хоосон ч төлбөрийн бичлэгийн түвшнээр олно; мета зөвхөн бодит сонголтыг өгнө', async () => {
+    const created = await admin.post('/api/v1/admin/universities').set(H).send({
+      name: 'Tuition Only University', countryId, city: 'Gamma', type: 'public', status: 'published',
+      tuition: [{ level: 'phd', annualFee: 1000, currency: 'USD' }],
+    }).expect(201);
+    const pub = agent();
+    const r = await pub.get('/api/v1/universities?degree=phd&pageSize=50').expect(200);
+    expect(r.body.items.map((u: any) => u.name)).toContain('Tuition Only University');
+    expect(r.body.items.find((u: any) => u.name === 'Tuition Only University').degreeLevels).toContain('phd');
+    // нийтийн жагсаалт кэшлэгдэх толгойтой; сургуулийн дэлгэрэнгүй (хэрэглэгч тус бүрийн эрхээс хамаарна) public кэшгүй
+    expect(r.headers['cache-control']).toContain('s-maxage');
+    const detail = await pub.get(`/api/v1/universities/${created.body.slug}`).expect(200);
+    expect(String(detail.headers['cache-control'] ?? '')).not.toContain('public');
+    const meta = await pub.get('/api/v1/meta/filters').expect(200);
+    for (const d of ['phd', 'bachelor', 'master']) expect(meta.body.available.degree).toContain(d);
+    expect(meta.body.available.scholarship).toEqual(['full']);
+    expect(meta.body.available.type.sort()).toEqual(['private', 'public']);
+    await admin.delete(`/api/v1/admin/universities/${created.body._id}`).set(H).catch(() => undefined);
+  });
+
   it('QS эрэмбэ: рейтинггүй сургуулиуд төгсгөлд; картад 0 биш null', async () => {
     const r = await agent().get('/api/v1/universities?sort=qsWorld&pageSize=5').expect(200);
     expect(r.body.items.slice(0, 3).map((u: any) => u.name)).toEqual(['Test University 01', 'Test University 02', 'Test University 03']);
@@ -151,6 +171,23 @@ describe('Admin CRUD + universities filter/pagination', () => {
     expect((await agent().get('/api/v1/universities?q=Hidden').expect(200)).body.total).toBe(1);
     await admin.delete(`/api/v1/admin/universities/${created.body._id}`).set(H).expect(200);
     expect((await agent().get('/api/v1/universities?q=Hidden').expect(200)).body.total).toBe(0);
+  });
+
+  it('freeAccess сургууль: нэвтрээгүй хэрэглэгчид ч төлбөртэй мэдээлэл нээлттэй; энгийн сургуульд нуугдана; төлбөр үүсгэхгүй', async () => {
+    const mk = (name: string, freeAccess: boolean) => admin.post('/api/v1/admin/universities').set(H).send({
+      name, countryId, status: 'published', freeAccess, tuition: [{ level: 'bachelor', annualFee: 1234, currency: 'USD' }],
+    }).expect(201);
+    const free = await mk('Free Access Uni', true);
+    const paid = await mk('Paid Only Uni', false);
+    const a = await agent().get(`/api/v1/universities/${free.body.slug}`).expect(200);
+    expect(a.body.access.unlocked).toBe(true);
+    expect(a.body.paid.tuition[0].annualFee).toBe(1234);
+    const b = await agent().get(`/api/v1/universities/${paid.body.slug}`).expect(200);
+    expect(b.body.access.unlocked).toBe(false);
+    expect(b.body.paid).toBeUndefined();
+    expect(JSON.stringify(b.body)).not.toContain('1234');
+    await admin.delete(`/api/v1/admin/universities/${free.body._id}`).set(H).expect(200);
+    await admin.delete(`/api/v1/admin/universities/${paid.body._id}`).set(H).expect(200);
   });
 
   it('аудит лог бичигдсэн', async () => {
@@ -412,8 +449,8 @@ describe('Төлбөр: тестийн үр дүн (9,900 ₮, нэг удаа)'
   it('бүтээгдэхүүний жагсаалт нийтийн; нэвтрээгүй хэрэглэгч төлбөр үүсгэж чадахгүй', async () => {
     const r = await agent().get('/api/v1/payments/products').expect(200);
     expect(r.body.map((p: any) => p.key).sort()).toEqual(['country_access', 'test_result', 'university_access']);
-    expect(r.body.find((p: any) => p.key === 'university_access')).toMatchObject({ priceMnt: 1000, scope: 'university' });
-    expect(r.body.find((p: any) => p.key === 'country_access')).toMatchObject({ priceMnt: 5000, scope: 'country' });
+    expect(r.body.find((p: any) => p.key === 'university_access')).toMatchObject({ priceMnt: 990, scope: 'university' });
+    expect(r.body.find((p: any) => p.key === 'country_access')).toMatchObject({ priceMnt: 500, scope: 'country' });
     expect(JSON.stringify(r.body)).not.toContain('credit');
     await request(app.getHttpServer()).post('/api/v1/payments').set(H).send({ productKey: 'test_result' }).expect(401);
   });
@@ -641,7 +678,7 @@ describe('Сургуулийн эрх: сургууль/улсаар төлж н
   it('1,000 ₮: сервер талын үнэ; төлөөгүй/дутуу төлсөн бол нээхгүй; төлсний дараа нэг удаа; давтан verify давхардахгүй', async () => {
     const u = await login('c1@example.com');
     const p = (await u.post('/api/v1/payments').set(H).send({ productKey: 'university_access', targetId: uniId, amount: 1 }).expect(200)).body;
-    expect(p.amount).toBe(1000);
+    expect(p.amount).toBe(990);
     await u.post(`/api/v1/payments/${p.id}/verify`).set(H).expect(200);
     expect((await u.get(`/api/v1/universities/${slug}`).expect(200)).body.paid).toBeUndefined();
     await u.post(`/api/v1/payments/${p.id}/dev-confirm`).set(H).send({ amount: 500 }).expect(200);
@@ -652,7 +689,7 @@ describe('Сургуулийн эрх: сургууль/улсаар төлж н
     expect((await u.get(`/api/v1/universities/${slug}`).expect(200)).body.access.unlocked).toBe(true);
     expect(await conn().collection('subscriptions').countDocuments({ productKey: 'university_access', targetId: new mongoose.Types.ObjectId(uniId) })).toBeGreaterThanOrEqual(1);
     const mine = (await u.get('/api/v1/payments/me').expect(200)).body;
-    expect(mine[0]).toMatchObject({ productKey: 'university_access', amount: 1000 });
+    expect(mine[0]).toMatchObject({ productKey: 'university_access', amount: 990 });
     expect('credits' in mine[0]).toBe(false);
   });
 
@@ -704,14 +741,15 @@ describe('Сургуулийн эрх: сургууль/улсаар төлж н
     }).expect(200);
     const locked = (await agent().get('/api/v1/countries/accessland').expect(200)).body;
     expect(locked.access).toMatchObject({ unlocked: false });
-    expect(locked.access.truncated.sort()).toEqual(['admissionGeneral', 'commonExams', 'cons', 'pros', 'tuitionRange']);
+    expect(locked.access.lockedFields.sort()).toEqual(['admissionGeneral', 'commonExams', 'cons', 'pros', 'tuitionRange']);
     expect(locked.overview).toContain('Хоёр дахь өгүүлбэр ил');
     expect(locked.visaLinks).toHaveLength(1);
     expect(locked.universities.length).toBe(2);
-    expect(locked.tuitionRange).toBe('Нэг дэх мөр. Хоёр дахь мөр.');
-    expect(locked.pros).toEqual(['Давуу 1', 'Давуу 2']);
+    expect(locked.universityCount).toBe(2);
+    expect(typeof locked.universities[0].slug).toBe('string');
+    for (const f of ['tuitionRange', 'admissionGeneral', 'commonExams', 'pros', 'cons', 'educationSystem']) expect(f in locked).toBe(false);
     const raw = JSON.stringify(locked);
-    for (const s of ['НУУЦ_ТӨЛБӨР', 'НУУЦ_ШААРДЛАГА', 'НУУЦ_ШАЛГАЛТ', 'НУУЦ_ДАВУУ', 'НУУЦ_СУЛ']) expect(raw).not.toContain(s);
+    for (const s of ['Нэг дэх мөр', 'Давуу 1', 'Сул 1', 'SAT', 'НУУЦ_ТӨЛБӨР', 'НУУЦ_ШААРДЛАГА', 'НУУЦ_ШАЛГАЛТ', 'НУУЦ_ДАВУУ', 'НУУЦ_СУЛ']) expect(raw).not.toContain(s);
     const u = await login('country-page@example.com');
     expect((await u.get('/api/v1/countries/accessland').expect(200)).body.access.unlocked).toBe(false); // нэвтэрсэн ч төлөөгүй
     await buy(u, 'country_access', countryId);
@@ -722,6 +760,71 @@ describe('Сургуулийн эрх: сургууль/улсаар төлж н
     const other = await login('country-page-other@example.com'); // өөр хэрэглэгчид нээгдээгүй
     expect((await other.get('/api/v1/countries/accessland').expect(200)).body.access.unlocked).toBe(false);
     expect((await admin.get('/api/v1/countries/accessland').expect(200)).body.access.unlocked).toBe(true);
+  });
+
+  it('БҮТЭН АЯЛАЛ: нэвтрээгүй → нэвтэрнэ → тест үр дүн → сургууль → улс; бүх шатанд эрх, профайл, төлбөрийн түүх зөв', async () => {
+    await admin.patch(`/api/v1/admin/countries/${countryId}`).set(H).send({ tuitionRange: 'Нэг мөр. Хоёр мөр. Гурав ЖУРНЕЙ_НУУЦ мөр.', pros: ['А', 'Б', 'ЖУРНЕЙ_ДАВУУ'] }).expect(200);
+
+    // 1) Нэвтрээгүй: ямар ч төлбөртэй өгөгдөл ирэхгүй, төлбөр үүсгэж чадахгүй
+    const anon = agent();
+    const country0 = (await anon.get('/api/v1/countries/accessland').expect(200)).body;
+    expect(country0.access.unlocked).toBe(false);
+    expect(country0.access.lockedFields).toContain('tuitionRange');
+    expect(JSON.stringify(country0)).not.toContain('ЖУРНЕЙ_');
+    // Үнэ: сургууль 990 ₮; улс = нээгдэх (үнэгүй биш) сургуулийн тоо × 500 ₮ — сервер тооцно
+    const schools = await conn().collection('universities').countDocuments({ countryId: new mongoose.Types.ObjectId(countryId), status: 'published', deletedAt: null, freeAccess: { $ne: true } });
+    expect(country0.access.price).toEqual({ schools, unitMnt: 500, priceMnt: 500 * schools });
+    expect((await anon.get(`/api/v1/universities/${slug}`).expect(200)).body.country.unlockPrice.priceMnt).toBe(500 * schools);
+    expect((await anon.get(`/api/v1/universities/${slug}`).expect(200)).body.paid).toBeUndefined();
+    await request(app.getHttpServer()).post('/api/v1/payments').set(H).send({ productKey: 'university_access', targetId: uniId }).expect(401);
+    await request(app.getHttpServer()).get('/api/v1/users/me/access').expect(401);
+
+    // 2) Нэвтэрсэн, төлөөгүй: тест өгнө, үр дүн түгжээтэй; профайл хоосон
+    const u = await login('journey@example.com');
+    expect((await u.get('/api/v1/users/me/access').expect(200)).body).toEqual({ unlocked: [], countries: [] });
+    const attempt = await completeCareer(u);
+    expect((await u.get(`/api/v1/attempts/${attempt}/result`).expect(200)).body.locked).toBe(true);
+
+    // 3) Тестийн үр дүн нээх
+    await unlockResult(u, attempt);
+    expect((await u.get(`/api/v1/attempts/${attempt}/result`).expect(200)).body.locked).toBe(false);
+
+    // 4) Нэг сургууль: зөвхөн тэр нээгдэнэ, профайлд сургууль болж харагдана
+    await buy(u, 'university_access', uniId);
+    expect(JSON.stringify((await u.get(`/api/v1/universities/${slug}`).expect(200)).body.paid)).toContain('4321');
+    expect((await u.get(`/api/v1/universities/${slug2}`).expect(200)).body.paid).toBeUndefined();
+    expect((await u.get('/api/v1/countries/accessland').expect(200)).body.access.unlocked).toBe(false); // улсын хэсэг хаалттай хэвээр
+    let acc = (await u.get('/api/v1/users/me/access').expect(200)).body;
+    expect(acc.unlocked.map((x: any) => x.slug)).toEqual([slug]);
+    expect(acc.countries).toEqual([]);
+
+    // 5) Улс: бүх сургууль + улсын бүх хэсэг нээгдэнэ, профайлд улс болж нэмэгдэнэ
+    const countryPay = await buy(u, 'country_access', countryId);
+    expect(countryPay.amount).toBe(500 * schools); // клиент дүн өгөөгүй, сервер сургуулийн тоогоор тооцсон
+    expect(JSON.stringify((await u.get(`/api/v1/universities/${slug2}`).expect(200)).body.paid)).toContain('4321');
+    expect((await u.get(`/api/v1/universities/${slugOther}`).expect(200)).body.paid).toBeUndefined(); // өөр улс хаалттай
+    const country1 = (await u.get('/api/v1/countries/accessland').expect(200)).body;
+    expect(country1.access.unlocked).toBe(true);
+    expect(country1.access.lockedFields).toEqual([]);
+    expect(JSON.stringify(country1)).toContain('ЖУРНЕЙ_НУУЦ');
+    expect(country1.pros).toHaveLength(3);
+    acc = (await u.get('/api/v1/users/me/access').expect(200)).body;
+    expect(acc.countries.map((x: any) => x.slug)).toEqual(['accessland']);
+    expect(acc.unlocked.map((x: any) => x.slug)).toEqual([slug]);
+
+    // 6) Давтан худалдан авалт 409; төлбөрийн түүхэнд 3 төлөгдсөн бүтээгдэхүүн
+    for (const [productKey, targetId] of [['test_result', attempt], ['university_access', uniId], ['country_access', countryId]] as const) {
+      await u.post('/api/v1/payments').set(H).send({ productKey, targetId }).expect(409);
+    }
+    const paid = (await u.get('/api/v1/payments/me').expect(200)).body.filter((p: any) => p.status === 'paid');
+    expect(paid.map((p: any) => p.productKey).sort()).toEqual(['country_access', 'test_result', 'university_access']);
+
+    // 7) Өөр хэрэглэгчид юу ч нээгдээгүй
+    const other = await login('journey-other@example.com');
+    expect((await other.get('/api/v1/countries/accessland').expect(200)).body.access.unlocked).toBe(false);
+    expect((await other.get(`/api/v1/universities/${slug2}`).expect(200)).body.paid).toBeUndefined();
+    expect((await other.get(`/api/v1/attempts/${attempt}/result`)).status).not.toBe(200);
+    expect((await other.get('/api/v1/users/me/access').expect(200)).body).toEqual({ unlocked: [], countries: [] });
   });
 
   it('мэргэжлийн хуудас: Монголын их сургуулийн ЭЕШ-ийн шаардлага нийтэд харагдана; байхгүй бол хоосон; профайл ирэхгүй', async () => {

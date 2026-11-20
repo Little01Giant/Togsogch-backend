@@ -1,5 +1,6 @@
 import { BadRequestException, Body, Controller, Get, Put, Param, Post, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { publicCache } from '../../common/ttl-cache';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { AdminAuditLog, AssessmentAttempt, AssessmentResult, Career, Country, Payment, Program, Setting, University } from '../../schemas';
@@ -75,6 +76,7 @@ export class AdminToolsController {
       existing ? updated++ : created++;
       report.push({ row: i + 1, name: doc.name, status: existing ? 'updated' : 'created' });
     }
+    if (!dry) publicCache.clear();
     if (!dry) await this.logs.create({ actorId: u.id, actorEmail: u.email, action: 'import', resource: 'universities', changes: { created, updated, failed } });
     return { dryRun: dry, created, updated, failed, report };
   }
