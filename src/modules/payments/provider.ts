@@ -72,13 +72,15 @@ export class QpayProvider implements PaymentProvider {
     try {
       r = await fetch(`${this.base}${path}`, { method, headers: { Authorization: `Bearer ${t}`, 'content-type': 'application/json' }, body: body === undefined ? undefined : JSON.stringify(body) });
     } catch (e: any) { this.log.error(`${path} network: ${e?.message}`); throw unavailable('Төлбөрийн системтэй холбогдож чадсангүй.'); }
-    if (r.status === 401 && retry) { this.token = undefined; return this.send(method, path, body, false); }
+    // Cache-д байгаа token хүчингүй болсон байж болно (QPay шинэ token олгоход хуучныг хүчингүй болгох, өөр сервис ижил данс ашиглах, restart-ийн хоорондох зөрүү):
+    // 401/403 ирвэл token-ыг хаяж шинийг авч нэг удаа дахин оролдоно. Хүсэлт бүтэлгүйтсэн бол QPay сервер нэхэмжлэх үүсгээгүй тул давхар нэхэмжлэх үүсэхгүй.
+    if ((r.status === 401 || r.status === 403) && retry) { this.token = undefined; return this.send(method, path, body, false); }
     return r;
   }
 
   private async call(path: string, body: any): Promise<any> {
     const r = await this.send('POST', path, body);
-    if (!r.ok) { this.log.error(`${path} → ${r.status}`); throw unavailable('Төлбөрийн системээс алдаа ирлээ. Дахин оролдоно уу.'); }
+    if (!r.ok) { const detail = await r.text().catch(() => ''); this.log.error(`${path} → ${r.status} ${detail.slice(0, 300)}`); throw unavailable('Төлбөрийн системээс алдаа ирлээ. Дахин оролдоно уу.'); }
     return r.json();
   }
 
